@@ -46,7 +46,7 @@ into `guides/`.
 
 ## Setting up a company workspace
 
-This section is written so a person or an AI assistant can follow it step by step. Each step ends
+This section is written so a person or an AI assistant can follow it step by step. To hand the whole job to an AI assistant, give it `docs/setup-brief.md`. Each step ends
 with a check.
 
 ### 1. Make it and share it
