@@ -20,6 +20,7 @@ change it.
 | `docs/design/` | the original Paper handoff from Claude Design, and `redesign/`: the Workbench mockups the studio now follows (`docs/gate-studio-redesign.md`) | the UI's look deviates from Workbench on purpose (note why in `decisions.md`) |
 | `creative-library/README.md` | the technique library the design agent copies from: recipes, the `sync`/`render`/`harvest` toolchain, its skill, the seam with design-guide (`PLAN.md` there: parameter maps) | a recipe or the library's toolchain |
 | `docs/workspace.md` | workspaces: where personal data, built-in design systems and written guides live, the rule book a workspace uses, team setup | `app/workspace.py`, `projects.seed_builtin`, storage paths, `app/rulebook-builtin.json` |
+| `docs/setup-brief.md` | step-by-step brief for an AI assistant setting up a company workspace (design systems, guides, test, teammate README) | `app/workspace.py` commands, the plugin's tools, or the workspace layout |
 
 `tests/test_docs.py` fails when routes, event types, modules, MCP tools, CLI flags or test
 files are missing from these docs. Treat a failure as "update the doc", not "loosen the test".

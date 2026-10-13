@@ -70,6 +70,7 @@ Tests never call a model: they use a fake engine.
 ## Docs
 
 - `docs/workspace.md` — workspaces: guides, design systems, rules, team setup.
+- `docs/setup-brief.md` — a brief to hand an AI assistant that sets up a company workspace.
 - `SPEC.md` — scope, milestones, status, known limits.
 - `CLAUDE.md` — rules for agents maintaining this repo, and the doc map.
 - `docs/architecture.md` — modules, storage, routes, stream events.
