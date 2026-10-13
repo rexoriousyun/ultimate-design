@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokens — pass</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    padding: var(--space-lg);
+  }
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--fg);
+  }
+  .avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); display: block; }
+  button {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm) var(--space-md);
+    font-size: 1rem;
+  }
+  button.danger { background: var(--danger); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { padding: var(--space-sm) 0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar"></div>
+    <p>All colors, radii, and spacing here come from tokens.css.</p>
+    <ul>
+      <li>Item one</li>
+      <li>Item two</li>
+    </ul>
+    <button type="button">Confirm</button>
+    <button type="button" class="danger">Delete</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+/* Ultimate Design — "Workbench" tokens (docs/gate-studio-redesign.md, look A). Every component
+   style reads these; no raw values. */
+:root {
+  color-scheme: light dark;
+
+  /* Colour — light. Zero-chroma greys: the studio's own chrome has no hue, so it never shifts
+     how a design's colours read (docs/gate-studio-redesign.md, look A). */
+  --pm-bg: #f4f4f4;
+  --pm-surface: #ffffff;
+  --pm-field: #ffffff;
+  --pm-stage: #e4e4e4;            /* around the design: a neutral grey, never a tint */
+  --pm-surface-muted: #ececec;    /* hover, disabled fill */
+  --pm-surface-pressed: #e0e0e0;
+  --pm-bubble: #ececec;
+  --pm-border: #e2e2e2;           /* decorative dividers only */
+  --pm-border-control: #858585;   /* control edges, 3.6:1 */
+  --pm-border-control-hover: #5e5e5e;
+  --pm-track: #d6d6d6;
+  --pm-text: #171717;
+  --pm-text-muted: #5e5e5e;
+  --pm-text-disabled: #6b6b6b;
+  --pm-accent: #171717;           /* ink: the one primary action per view */
+  --pm-accent-hover: #333333;
+  --pm-accent-pressed: #000000;
+  --pm-accent-soft: #e8e8e8;
+  --pm-on-accent: #ffffff;
+  --pm-select: #1f55e0;           /* selection and focus, the only hue in the chrome */
+  --pm-select-soft: #eaf0ff;
+  --pm-inverse: #171717;
+  --pm-on-inverse: #ffffff;
+  --pm-inverse-dot: #8fb0ff;
+  --pm-danger: #b4231a;
+  --pm-danger-soft: #fbe9e7;
+  --pm-ok: #1d6b3a;
+  --pm-canvas: #ffffff;
+
+  /* Type */
+  --pm-font-ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pm-font-display: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pm-font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --pm-text-xs: 0.719rem;   /* 11.5 */
+  --pm-text-sm: 0.781rem;   /* 12.5 */
+  --pm-text-md: 0.844rem;   /* 13.5 */
+  --pm-text-lg: 1rem;       /* 16, agent replies */
+  --pm-text-xl: 1.125rem;   /* 18, panel headings */
+  --pm-text-2xl: 1.625rem;  /* 26, project name */
+  --pm-text-3xl: 2.25rem;   /* 36, Home title */
+  --pm-leading: 1.5;
+  --pm-leading-tight: 1.15;
+  --pm-weight-regular: 400;
+  --pm-weight-medium: 500;
+  --pm-weight-bold: 600;
+
+  /* Space */
+  --pm-space-1: 4px;  --pm-space-2: 8px;  --pm-space-3: 12px; --pm-space-4: 16px;
+  --pm-space-5: 20px; --pm-space-6: 24px; --pm-space-7: 32px; --pm-space-8: 48px;
+
+  /* In-between spacing the design uses (between the 4 px steps above) */
+  --pm-space-1h: 6px;  --pm-space-2h: 10px; --pm-space-3h: 14px; --pm-space-4h: 18px;
+  --pm-space-10: 80px;
+
+  /* Type: display sizes for titles */
+  --pm-text-input: 0.875rem;     /* 14, composer */
+  --pm-text-title: 1.25rem;      /* 20, card and empty-state titles */
+
+  /* Size */
+  --pm-control-h-xs: 24px;
+  --pm-control-h-sm: 28px;
+  --pm-chip-h: 30px;
+  --pm-badge: 20px;
+  --pm-check: 18px;
+  --pm-swatch-w: 40px;
+  --pm-dot: 6px;
+  --pm-header-h: 64px;
+  --pm-page-gutter: 40px;
+  --pm-rail-w: 64px;
+  --pm-card-min: 280px;
+  --pm-comments-max-h: 160px;
+  --pm-menu-w: 240px;
+  --pm-control-h: 32px;
+  --pm-control-h-lg: 36px;
+  --pm-control-h-touch: 44px;
+  --pm-chat-w: 380px;
+  --pm-tweaks-w: 240px;
+  --pm-toolbar-h: 52px;
+  --pm-outline-w: 200px;
+
+  /* Radius */
+  --pm-radius-sm: 6px;
+  --pm-radius-md: 8px;
+  --pm-radius-lg: 10px;
+  --pm-radius-pill: 999px;
+
+  /* Shadow */
+  --pm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.08);
+  --pm-shadow-canvas: 0 1px 2px rgb(0 0 0 / 0.12), 0 8px 24px rgb(0 0 0 / 0.08);
+  --pm-shadow-float: 0 2px 6px rgb(0 0 0 / 0.08), 0 16px 40px rgb(0 0 0 / 0.16);
+  --pm-focus-ring: 0 0 0 2px var(--pm-surface), 0 0 0 4px var(--pm-select);
+
+  /* Motion */
+  --pm-dur-fast: 120ms;
+  --pm-dur-base: 200ms;
+  --pm-dur-slow: 280ms;
+  --pm-rise: 6px;                 /* how far an entering element travels */
+  --pm-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --pm-spin: 1.2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pm-bg: #121212;
+    --pm-surface: #1b1b1b;
+    --pm-field: #161616;
+    --pm-stage: #262626;
+    --pm-surface-muted: #262626;
+    --pm-surface-pressed: #303030;
+    --pm-bubble: #262626;
+    --pm-border: #2c2c2c;
+    --pm-border-control: #7a7a7a;
+    --pm-border-control-hover: #b0b0b0;
+    --pm-track: #3a3a3a;
+    --pm-text: #ededed;
+    --pm-text-muted: #a8a8a8;
+    --pm-text-disabled: #9a9a9a;
+    --pm-accent: #ededed;
+    --pm-accent-hover: #ffffff;
+    --pm-accent-pressed: #ffffff;
+    --pm-accent-soft: #262626;
+    --pm-on-accent: #121212;
+    --pm-select: #8fb0ff;
+    --pm-select-soft: #1c2540;
+    --pm-inverse: #ededed;
+    --pm-on-inverse: #121212;
+    --pm-inverse-dot: #1f55e0;
+    --pm-danger: #f2a39c;
+    --pm-danger-soft: #3a2220;
+    --pm-ok: #7fd19b;
+    --pm-shadow-sm: none;
+    --pm-shadow-canvas: 0 0 0 1px #2c2c2c, 0 12px 32px rgb(0 0 0 / 0.5);
+    --pm-shadow-float: 0 2px 6px rgb(0 0 0 / 0.35), 0 16px 40px rgb(0 0 0 / 0.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --pm-dur-fast: 0ms; --pm-dur-base: 0ms; --pm-dur-slow: 0ms; --pm-rise: 0px; --pm-spin: 0s; }
+}

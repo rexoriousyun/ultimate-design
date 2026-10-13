@@ -1,0 +1,102 @@
+{
+  "id": "acorn-hoard",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "c615d0ea43c0",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "count": {
+      "verdict": "effective",
+      "values": [
+        0,
+        3,
+        7,
+        14,
+        24
+      ],
+      "steps": [
+        0.0022,
+        0.0026,
+        0.0122,
+        0.0119
+      ],
+      "meanEffect": 0.0072,
+      "minStep": 0.0022,
+      "threshold": 0.0005,
+      "strip": "sweeps/acorn-hoard/count.png"
+    },
+    "size": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "steps": [
+        0.0052,
+        0.0201,
+        0.0712,
+        0.0938
+      ],
+      "meanEffect": 0.0476,
+      "minStep": 0.0052,
+      "threshold": 0.0005,
+      "strip": "sweeps/acorn-hoard/size.png"
+    },
+    "spriteScale": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "steps": [
+        0.0477,
+        0.0636,
+        0.0856,
+        0.145
+      ],
+      "meanEffect": 0.0855,
+      "minStep": 0.0477,
+      "threshold": 0.0005,
+      "strip": "sweeps/acorn-hoard/spriteScale.png"
+    },
+    "pose": {
+      "verdict": "effective",
+      "values": [
+        "smile",
+        "joy",
+        "neutral",
+        "worry"
+      ],
+      "steps": [
+        0.0124,
+        0.0104,
+        0.01
+      ],
+      "meanEffect": 0.0109,
+      "minStep": 0.01,
+      "threshold": 0.0005,
+      "strip": "sweeps/acorn-hoard/pose.png"
+    }
+  }
+}

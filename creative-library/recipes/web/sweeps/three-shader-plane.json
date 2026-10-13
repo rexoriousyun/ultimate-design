@@ -1,0 +1,80 @@
+{
+  "id": "three-shader-plane",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "dd2d97bc09a7",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "scale": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        5,
+        8
+      ],
+      "steps": [
+        0.7382,
+        0.7926,
+        0.7943,
+        0.8004
+      ],
+      "meanEffect": 0.7814,
+      "minStep": 0.7382,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-shader-plane/scale.png"
+    },
+    "speed": {
+      "verdict": "unswept",
+      "reason": "motion: under reduced motion time is frozen at zero, as designed, so no still frame shows it"
+    },
+    "colorA": {
+      "verdict": "effective",
+      "values": [
+        "#07130c",
+        "#1e1b4b",
+        "#3b0a0a"
+      ],
+      "steps": [
+        0.8231,
+        0.8242
+      ],
+      "meanEffect": 0.8237,
+      "minStep": 0.8231,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-shader-plane/colorA.png"
+    },
+    "colorB": {
+      "verdict": "effective",
+      "values": [
+        "#4ade80",
+        "#f472b6",
+        "#facc15"
+      ],
+      "steps": [
+        0.8452,
+        0.8452
+      ],
+      "meanEffect": 0.8452,
+      "minStep": 0.8452,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-shader-plane/colorB.png"
+    }
+  }
+}

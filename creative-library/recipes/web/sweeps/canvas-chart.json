@@ -1,0 +1,98 @@
+{
+  "id": "canvas-chart",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "467355502961",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "type": {
+      "verdict": "effective",
+      "values": [
+        "line",
+        "bar"
+      ],
+      "steps": [
+        0.226
+      ],
+      "meanEffect": 0.226,
+      "minStep": 0.226,
+      "threshold": 0.0005,
+      "strip": "sweeps/canvas-chart/type.png"
+    },
+    "data": {
+      "verdict": "effective",
+      "values": [
+        [
+          {
+            "label": "Mon",
+            "value": 42
+          },
+          {
+            "label": "Tue",
+            "value": 58
+          },
+          {
+            "label": "Wed",
+            "value": 35
+          }
+        ],
+        [
+          {
+            "label": "Mon",
+            "value": 12
+          },
+          {
+            "label": "Tue",
+            "value": 26
+          },
+          {
+            "label": "Wed",
+            "value": 48
+          },
+          {
+            "label": "Thu",
+            "value": 20
+          }
+        ]
+      ],
+      "steps": [
+        0.0221
+      ],
+      "meanEffect": 0.0221,
+      "minStep": 0.0221,
+      "threshold": 0.0005,
+      "strip": "sweeps/canvas-chart/data.png"
+    },
+    "color": {
+      "verdict": "effective",
+      "values": [
+        "#2f9e4f",
+        "#c2255c",
+        "#3b5bdb"
+      ],
+      "steps": [
+        0.0132,
+        0.0131
+      ],
+      "meanEffect": 0.0132,
+      "minStep": 0.0131,
+      "threshold": 0.0005,
+      "strip": "sweeps/canvas-chart/color.png"
+    }
+  }
+}

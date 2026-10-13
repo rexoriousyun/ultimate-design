@@ -1,0 +1,56 @@
+{
+  "id": "duotone-filter",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "5bea8765cbf0",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "shadow": {
+      "verdict": "effective",
+      "values": [
+        "#14532d",
+        "#1e1b4b",
+        "#7f1d1d"
+      ],
+      "steps": [
+        0.3336,
+        0.3336
+      ],
+      "meanEffect": 0.3336,
+      "minStep": 0.3336,
+      "threshold": 0.0005,
+      "strip": "sweeps/duotone-filter/shadow.png"
+    },
+    "highlight": {
+      "verdict": "effective",
+      "values": [
+        "#e8f5ea",
+        "#fef3c7",
+        "#ffffff"
+      ],
+      "steps": [
+        0.3336,
+        0.3336
+      ],
+      "meanEffect": 0.3336,
+      "minStep": 0.3336,
+      "threshold": 0.0005,
+      "strip": "sweeps/duotone-filter/highlight.png"
+    }
+  }
+}

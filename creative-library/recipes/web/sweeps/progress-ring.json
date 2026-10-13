@@ -1,0 +1,98 @@
+{
+  "id": "progress-ring",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "c567ff1b7a7a",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "value": {
+      "verdict": "effective",
+      "values": [
+        0,
+        25,
+        62,
+        90,
+        100
+      ],
+      "steps": [
+        0.0185,
+        0.0187,
+        0.0157,
+        0.0145
+      ],
+      "meanEffect": 0.0169,
+      "minStep": 0.0145,
+      "threshold": 0.0005,
+      "strip": "sweeps/progress-ring/value.png"
+    },
+    "size": {
+      "verdict": "effective",
+      "values": [
+        48,
+        80,
+        120,
+        160,
+        200
+      ],
+      "steps": [
+        0.0451,
+        0.0608,
+        0.0728,
+        0.0824
+      ],
+      "meanEffect": 0.0653,
+      "minStep": 0.0451,
+      "threshold": 0.0005,
+      "strip": "sweeps/progress-ring/size.png"
+    },
+    "thickness": {
+      "verdict": "effective",
+      "values": [
+        3,
+        6,
+        10,
+        16,
+        24
+      ],
+      "steps": [
+        0.0135,
+        0.0164,
+        0.0213,
+        0.0239
+      ],
+      "meanEffect": 0.0188,
+      "minStep": 0.0135,
+      "threshold": 0.0005,
+      "strip": "sweeps/progress-ring/thickness.png"
+    },
+    "showValue": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.0072
+      ],
+      "meanEffect": 0.0072,
+      "minStep": 0.0072,
+      "threshold": 0.0005,
+      "strip": "sweeps/progress-ring/showValue.png"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+#!/bin/sh
+# Ultimate Design's Claude Code link (app/claude_code_mcp.py), run from the repo itself so the
+# terminal tools always match the studio they drive; the plugin carries no copy of the app.
+# ULTIMATE_DESIGN_DIR points elsewhere (tests do). See docs/claude-code.md.
+dir="${ULTIMATE_DESIGN_DIR:-$HOME/Documents/Github/ultimate-design}"
+[ -f "$dir/app/claude_code_mcp.py" ] || { echo "ultimate-design: no repo at $dir (set ULTIMATE_DESIGN_DIR)" >&2; exit 1; }
+command -v uv >/dev/null 2>&1 || { echo "ultimate-design: uv is not on PATH" >&2; exit 1; }
+exec uv run --quiet --directory "$dir" python -m app.claude_code_mcp

@@ -1,0 +1,72 @@
+{
+  "id": "scratch-off",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "9066e2e3eade",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "radius": {
+      "verdict": "unswept",
+      "reason": "acts only while someone scratches; the sweep has no pointer"
+    },
+    "threshold": {
+      "verdict": "unswept",
+      "reason": "acts only after scratching; the sweep has no pointer"
+    },
+    "width": {
+      "verdict": "effective",
+      "values": [
+        160,
+        240,
+        320,
+        400,
+        480
+      ],
+      "steps": [
+        0.0826,
+        0.0829,
+        0.0829,
+        0.0829
+      ],
+      "meanEffect": 0.0828,
+      "minStep": 0.0826,
+      "threshold": 0.0005,
+      "strip": "sweeps/scratch-off/width.png"
+    },
+    "height": {
+      "verdict": "effective",
+      "values": [
+        80,
+        110,
+        140,
+        180,
+        240
+      ],
+      "steps": [
+        0.0939,
+        0.0816,
+        0.0858,
+        0.1
+      ],
+      "meanEffect": 0.0903,
+      "minStep": 0.0816,
+      "threshold": 0.0005,
+      "strip": "sweeps/scratch-off/height.png"
+    }
+  }
+}

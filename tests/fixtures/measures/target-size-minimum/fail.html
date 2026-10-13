@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volunteer Sign-up</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 2rem;
+    max-width: 640px;
+  }
+  h1 { font-size: 2rem; margin: 0 0 0.5rem; }
+  h2 { font-size: 1.4rem; margin: 2rem 0 0.75rem; }
+  h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+  p { line-height: 1.5; color: #333333; }
+  .subtitle { font-size: 1.25rem; font-weight: 600; color: #4b4b4b; }
+  img.avatar { width: 96px; height: 96px; border-radius: 8px; display: block; margin: 1rem 0; }
+  label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+  input {
+    font-size: 1rem;
+    padding: 0.6rem 0.9rem;
+    min-height: 44px;
+    display: block;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    border: 1px solid #6b6b6b;
+    border-radius: 4px;
+  }
+  button, a.btn {
+    font-size: 1rem;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.6rem 1.1rem;
+    background: #14532d;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-right: 1rem;
+  }
+  .icon-btn { width: 16px; height: 16px; min-width: 0; min-height: 0; padding: 0; margin-right: 0; }
+  .icon-btn + .icon-btn { margin-left: 0; }
+  button:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 3px solid #1d4ed8;
+    outline-offset: 2px;
+  }
+  .pulse { width: 12px; height: 12px; border-radius: 50%; background: #14532d; display: inline-block; margin-left: 0.5rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    .pulse { animation: pulse 2s ease-in-out infinite; }
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+</style>
+</head>
+<body>
+  <h1>Volunteer Sign-up</h1>
+  <p class="subtitle">Join Saturday's river cleanup crew.</p>
+  <p>Bring gloves and closed-toe shoes. Sessions run rain or shine.</p>
+  <img class="avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%23cbd5e1'/%3E%3C/svg%3E" alt="Illustration of a person holding a trash-picking tool">
+
+  <h2>Your details</h2>
+  <form>
+    <label for="name">Full name</label>
+    <input id="name" name="name" type="text" autocomplete="name">
+
+    <label for="email">Email address</label>
+    <input id="email" name="email" type="email" autocomplete="email">
+
+    <h3>Preferences</h3>
+    <label for="shift">Preferred shift</label>
+    <input id="shift" name="shift" type="text" placeholder="e.g. morning">
+
+    <button type="submit">Sign up<span class="pulse" aria-hidden="true"></span></button>
+    <a class="btn" href="#details">Learn more</a>
+    <button type="button" class="icon-btn" aria-label="Close form"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 2 L14 14 M14 2 L2 14" stroke="currentColor" stroke-width="2" fill="none"/></svg></button><button type="button" class="icon-btn" aria-label="Undo"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 8 L12 8 M4 8 L7 5 M4 8 L7 11" stroke="currentColor" stroke-width="2" fill="none"/></svg></button>
+  </form>
+</body>
+</html>

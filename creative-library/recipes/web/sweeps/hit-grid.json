@@ -1,0 +1,84 @@
+{
+  "id": "hit-grid",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "5ad9c75c34c2",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "cell": {
+      "verdict": "effective",
+      "values": [
+        16,
+        24,
+        40,
+        64,
+        96
+      ],
+      "steps": [
+        0.4545,
+        0.376,
+        0.2909,
+        0.209
+      ],
+      "meanEffect": 0.3326,
+      "minStep": 0.209,
+      "threshold": 0.0005,
+      "strip": "sweeps/hit-grid/cell.png"
+    },
+    "gap": {
+      "verdict": "effective",
+      "values": [
+        0,
+        4,
+        10,
+        16,
+        24
+      ],
+      "steps": [
+        0.359,
+        0.3339,
+        0.3188,
+        0.2555
+      ],
+      "meanEffect": 0.3168,
+      "minStep": 0.2555,
+      "threshold": 0.0005,
+      "strip": "sweeps/hit-grid/gap.png"
+    },
+    "lineWidth": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "steps": [
+        0.1045,
+        0.104,
+        0.104,
+        0.1034
+      ],
+      "meanEffect": 0.104,
+      "minStep": 0.1034,
+      "threshold": 0.0005,
+      "strip": "sweeps/hit-grid/lineWidth.png"
+    }
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ultimate-design/decision-log/v1",
+  "title": "One line of data/<slug>/decisions.jsonl",
+  "description": "A decision Rex made while designing in ultimate-design: a pick, a rejection or an override. Agreed with design-guide in docs/gate-rulebook.md (sections 9-14). Records are never edited; a correction names the record it supersedes.",
+  "type": "object",
+  "required": [
+    "v",
+    "id",
+    "at",
+    "project",
+    "kind",
+    "topic",
+    "subject",
+    "chose",
+    "over",
+    "why",
+    "why_source",
+    "rule",
+    "floor",
+    "dismissed",
+    "context",
+    "supersedes"
+  ],
+  "properties": {
+    "v": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^d-\\d{8}-\\d{6}-[0-9a-f]{4}$"
+    },
+    "at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "pick",
+        "reject",
+        "override"
+      ]
+    },
+    "topic": {
+      "enum": [
+        "color",
+        "type",
+        "layout",
+        "spacing",
+        "density",
+        "shape",
+        "motion",
+        "imagery",
+        "copy",
+        "component",
+        "hierarchy",
+        "direction",
+        "other"
+      ]
+    },
+    "subject": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selector": {
+          "type": "string"
+        },
+        "property": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string",
+          "description": "for a pick from the agent's ask_questions: the question as Rex saw it"
+        },
+        "scenario": {
+          "type": "string",
+          "description": "design-guide's elicitation log only: the A/B demo pair Rex answered (confidence counts distinct scenarios)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "chose": {
+      "description": "what Rex chose, as shown to him: an option's label (or a taste rule's alternative id), a CSS value, a version sha",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      ]
+    },
+    "over": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "the alternatives not chosen; empty for an override"
+    },
+    "from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "overrides only: the value before, null when it could not be read"
+    },
+    "why": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Rex's own words, verbatim, or null. Never written by a model."
+    },
+    "why_source": {
+      "enum": [
+        "chat",
+        "answer",
+        "comment",
+        "studio",
+        null
+      ]
+    },
+    "rule": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "the design-guide rule id the decision touches"
+    },
+    "floor": {
+      "type": "boolean",
+      "description": "true when the rule is an accessibility-floor rule; the periodic pass ignores these"
+    },
+    "dismissed": {
+      "type": "boolean",
+      "description": "true when this override dismissed a verify finding of `rule` (it says the rule does not fit; the pass counts it toward a revision), false for a change Rex made to a value"
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "kind",
+        "design_system",
+        "palette",
+        "version",
+        "rulebook"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "design",
+            "design-system"
+          ]
+        },
+        "design_system": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "palette": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "the page's Wada palette (<meta name=\"palette\">), e.g. wada:112"
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "the design version the decision was made on"
+        },
+        "rulebook": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "the rulebook version verify used, when there was one"
+        }
+      },
+      "additionalProperties": false
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "via": {
+      "enum": [
+        "elicited",
+        "in-build",
+        "derived",
+        "authored"
+      ],
+      "description": "design-guide's elicitation log only: how the pick was made. Absent on the studio's records."
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "override"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "from"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "why": {
+            "type": "string"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "why_source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "dismissed": {
+            "const": true
+          }
+        },
+        "required": [
+          "dismissed"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "const": "override"
+          },
+          "rule": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

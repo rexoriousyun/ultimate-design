@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C · Lightbox — projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --proof: #8c8c8c; --pill: #ffffff; --raised: #f0f0f0; --line: #dcdcdc;
+    --text: #141414; --dim: #595959; --ink: #141414; --on-ink: #ffffff; --fail: #8f1b14; --ok: #14532d;
+    --sans: "IBM Plex Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--proof); color: var(--text); font: 13px/1.45 var(--sans); }
+  button, input { font: inherit; color: inherit; }
+  .bar { position: sticky; top: 0; display: flex; align-items: center; gap: 12px; padding: 14px; z-index: 2; }
+  .pill { background: var(--pill); border-radius: 12px; box-shadow: 0 1px 2px rgb(0 0 0 / .2), 0 6px 20px rgb(0 0 0 / .12); display: flex; align-items: center; gap: 4px; padding: 4px; }
+  .pill a, .pill button { border: 0; background: none; border-radius: 8px; padding: 0 12px; min-height: 34px; display: inline-flex; align-items: center; text-decoration: none; color: var(--text); }
+  .pill [aria-current], .pill [aria-pressed="true"] { background: var(--raised); font-weight: 500; }
+  .pill .primary { background: var(--ink); color: var(--on-ink); font-weight: 600; }
+  .badge { font: 11px var(--mono); background: var(--fail); color: #fff; border-radius: 99px; padding: 0 5px; margin-left: 5px; }
+  .search { flex: 1; max-width: 520px; margin: 0 auto; }
+  .search input { border: 0; background: none; flex: 1; min-height: 34px; padding: 0 8px; }
+  .wordmark { font: 600 14px var(--mono); padding: 0 8px; }
+  h1 { position: absolute; left: -9999px; }
+  .sheet { padding: 6px 40px 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 28px; }
+  figure { margin: 0; display: grid; gap: 8px; }
+  figure img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; box-shadow: 0 2px 10px rgb(0 0 0 / .25); }
+  figcaption { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; color: #0a0a0a; }
+  figcaption strong { font-weight: 600; font-size: 14px; }
+  figcaption span { font: 11px var(--mono); }
+  .state { background: #fff; border-radius: 4px; padding: 0 6px; }
+  .state.bad { color: var(--fail); } .state.ok { color: var(--ok); }
+</style>
+</head>
+<body>
+  <header class="bar">
+    <nav class="pill" aria-label="Sections"><span class="wordmark" aria-hidden="true">UD</span><a href="#" aria-current="page">Projects</a><a href="#">Systems</a><a href="#">Library</a><a href="#">Rules<span class="badge">3</span></a></nav>
+    <label class="pill search"><input aria-label="Search projects, systems, techniques" placeholder="Search projects, systems, techniques  /"></label>
+    <div class="pill"><button aria-pressed="true">All</button><button aria-pressed="false">Needs approval</button><button class="primary" data-priority="2">New…</button></div>
+  </header>
+  <h1 data-priority="3">Projects</h1>
+  <main class="sheet" data-priority="1">
+    <figure><img src="../assets/thumb-groove-cellar.png" alt=""><figcaption><strong>Groove Cellar</strong><span class="state bad">2 findings</span><span>wada 112 · 2h ago</span></figcaption></figure>
+    <figure><img src="../assets/thumb-budget-overview.png" alt=""><figcaption><strong>Budget overview</strong><span class="state ok">approved v4</span><span>Flambed Squirrel · yesterday</span></figcaption></figure>
+    <figure><img src="../assets/thumb-tea-house.png" alt=""><figcaption><strong>Tea House</strong><span>3 directions · yesterday</span></figcaption></figure>
+    <figure><img src="../assets/thumb-grove-contrast.png" alt=""><figcaption><strong>Grove contrast</strong><span>Flambed Squirrel · Sep 18</span></figcaption></figure>
+    <figure><img src="../assets/thumb-fix-check.png" alt=""><figcaption><strong>Fix check</strong><span class="state ok">approved v2</span><span>Sep 18</span></figcaption></figure>
+    <figure><img src="../assets/thumb-attach-check.png" alt=""><figcaption><strong>Attach check</strong><span>Sep 18</span></figcaption></figure>
+  </main>
+</body>
+</html>

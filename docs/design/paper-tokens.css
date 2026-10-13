@@ -1,0 +1,115 @@
+/* prototype-maker — "Paper" tokens. Every component style reads these; no raw values. */
+:root {
+  color-scheme: light dark;
+
+  /* Colour — light */
+  --pm-bg: #f7f6f3;
+  --pm-surface: #fffefc;
+  --pm-field: #ffffff;
+  --pm-stage: #f0eee9;            /* around the design; the design itself stays #fff */
+  --pm-surface-muted: #efede8;    /* hover, disabled fill */
+  --pm-surface-pressed: #e4e1da;
+  --pm-bubble: #e9e6df;
+  --pm-border: #e4e1da;           /* decorative dividers only */
+  --pm-border-control: #8f8a80;   /* control edges, 3.5:1 */
+  --pm-border-control-hover: #5f5b53;
+  --pm-track: #d8d4cb;
+  --pm-text: #1c1b19;
+  --pm-text-muted: #5f5b53;
+  --pm-text-disabled: #6f6b62;
+  --pm-accent: #3d4a8f;
+  --pm-accent-hover: #2f3a75;
+  --pm-accent-pressed: #252e5e;
+  --pm-accent-soft: #e6e8f4;
+  --pm-on-accent: #ffffff;
+  --pm-inverse: #1c1b19;
+  --pm-on-inverse: #fffefc;
+  --pm-inverse-dot: #aab4ea;
+  --pm-danger: #a3322a;
+  --pm-danger-soft: #fbeae8;
+  --pm-canvas: #ffffff;
+
+  /* Type */
+  --pm-font-ui: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pm-font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --pm-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --pm-text-xs: 0.719rem;   /* 11.5 */
+  --pm-text-sm: 0.781rem;   /* 12.5 */
+  --pm-text-md: 0.844rem;   /* 13.5 */
+  --pm-text-lg: 1rem;       /* 16, agent replies */
+  --pm-text-xl: 1.125rem;   /* 18, panel headings */
+  --pm-text-2xl: 1.625rem;  /* 26, project name */
+  --pm-text-3xl: 2.25rem;   /* 36, Home title */
+  --pm-leading: 1.5;
+  --pm-leading-tight: 1.15;
+  --pm-weight-regular: 400;
+  --pm-weight-medium: 500;
+  --pm-weight-bold: 600;
+
+  /* Space */
+  --pm-space-1: 4px;  --pm-space-2: 8px;  --pm-space-3: 12px; --pm-space-4: 16px;
+  --pm-space-5: 20px; --pm-space-6: 24px; --pm-space-7: 32px; --pm-space-8: 48px;
+
+  /* Size */
+  --pm-control-h: 32px;
+  --pm-control-h-lg: 36px;
+  --pm-control-h-touch: 44px;
+  --pm-chat-w: 400px;
+  --pm-tweaks-w: 240px;
+  --pm-toolbar-h: 52px;
+  --pm-versionbar-h: 56px;
+
+  /* Radius */
+  --pm-radius-sm: 6px;
+  --pm-radius-md: 8px;
+  --pm-radius-lg: 14px;
+  --pm-radius-pill: 999px;
+
+  /* Shadow */
+  --pm-shadow-sm: 0 1px 2px rgb(28 27 25 / 0.06);
+  --pm-shadow-canvas: 0 1px 3px rgb(28 27 25 / 0.08), 0 12px 32px rgb(28 27 25 / 0.08);
+  --pm-shadow-float: 0 2px 6px rgb(28 27 25 / 0.06), 0 16px 40px rgb(28 27 25 / 0.14);
+  --pm-focus-ring: 0 0 0 2px var(--pm-surface), 0 0 0 4px var(--pm-accent);
+
+  /* Motion */
+  --pm-dur-fast: 120ms;
+  --pm-dur-base: 200ms;
+  --pm-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --pm-spin: 1.2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pm-bg: #161513;
+    --pm-surface: #1e1d1a;
+    --pm-field: #191816;
+    --pm-stage: #0f0e0d;
+    --pm-surface-muted: #2a2825;
+    --pm-surface-pressed: #34322e;
+    --pm-bubble: #2c2a26;
+    --pm-border: #2f2d29;
+    --pm-border-control: #6f6a61;
+    --pm-border-control-hover: #aca79c;
+    --pm-track: #3a3833;
+    --pm-text: #f1efea;
+    --pm-text-muted: #aca79c;
+    --pm-text-disabled: #a09b90;
+    --pm-accent: #aab4ea;
+    --pm-accent-hover: #c3cbf2;
+    --pm-accent-pressed: #d6dcf7;
+    --pm-accent-soft: #262a44;
+    --pm-on-accent: #161a33;
+    --pm-inverse: #f1efea;
+    --pm-on-inverse: #1c1b19;
+    --pm-inverse-dot: #3d4a8f;
+    --pm-danger: #f2a39c;
+    --pm-danger-soft: #3a2220;
+    --pm-shadow-sm: none;
+    --pm-shadow-canvas: 0 0 0 1px #2f2d29, 0 12px 32px rgb(0 0 0 / 0.5);
+    --pm-shadow-float: 0 2px 6px rgb(0 0 0 / 0.35), 0 16px 40px rgb(0 0 0 / 0.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --pm-dur-fast: 0ms; --pm-dur-base: 0ms; --pm-spin: 0s; }
+}

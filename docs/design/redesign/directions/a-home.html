@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A · Workbench — projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f4f4f4; --panel: #ffffff; --raised: #ececec; --line: #e2e2e2; --line-strong: #c9c9c9;
+    --text: #171717; --dim: #5e5e5e; --ink: #171717; --on-ink: #ffffff;
+    --select: #1f55e0; --fail: #b4231a; --ok: #1d6b3a;
+    --sans: "Geist", system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); font: 13px/1.45 var(--sans);
+         display: grid; grid-template-columns: 60px 1fr; }
+  button, input { font: inherit; color: inherit; }
+  .rail { background: var(--panel); border-right: 1px solid var(--line); display: flex; flex-direction: column;
+          align-items: center; padding: 10px 0; gap: 4px; position: sticky; top: 0; height: 100vh; }
+  .mark { width: 32px; height: 32px; border-radius: 8px; background: var(--ink); color: var(--on-ink);
+          display: grid; place-items: center; font: 600 12px var(--mono); margin-bottom: 10px; }
+  .rail a { width: 52px; min-height: 48px; border-radius: 8px; display: grid; justify-items: center; align-content: center; gap: 2px;
+            color: var(--dim); text-decoration: none; font-size: 10px; }
+  .rail a svg { width: 18px; height: 18px; }
+  .rail a[aria-current] { background: var(--raised); color: var(--text); }
+  .rail .badge { font: 500 10px var(--mono); background: var(--fail); color: #fff; border-radius: 99px; padding: 0 5px; }
+  main { padding: 20px 32px 40px; min-width: 0; }
+  .head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  h1 { font-size: 20px; font-weight: 600; margin: 0 8px 0 0; }
+  .search { flex: 1; max-width: 560px; display: flex; align-items: center; gap: 8px; background: var(--panel);
+            border: 1px solid var(--line-strong); border-radius: 8px; padding: 0 10px; min-height: 36px; }
+  .search input { border: 0; background: none; flex: 1; min-height: 34px; }
+  .search kbd { font: 11px var(--mono); color: var(--dim); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
+  .spacer { flex: 1; }
+  .btn { border: 1px solid var(--line-strong); background: var(--panel); border-radius: 8px; padding: 0 14px; min-height: 36px; }
+  .btn.primary { background: var(--ink); color: var(--on-ink); border-color: var(--ink); font-weight: 600; }
+  .filters { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+  .filters button { border: 1px solid var(--line-strong); background: var(--panel); border-radius: 99px; padding: 0 12px; min-height: 30px; color: var(--dim); }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .filters .n { font: 11px var(--mono); margin-left: 4px; }
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); background: #ddd; }
+  .card .body { padding: 10px 12px 12px; display: grid; gap: 4px; }
+  .card h2 { font-size: 14px; font-weight: 600; margin: 0; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 10px; font: 11px var(--mono); color: var(--dim); align-items: center; }
+  .status { display: inline-flex; align-items: center; gap: 5px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .ok .dot { background: var(--ok); } .ok { color: var(--ok); }
+  .bad .dot { background: var(--fail); } .bad { color: var(--fail); }
+  .chip { border: 1px solid var(--line-strong); border-radius: 99px; padding: 0 7px; }
+</style>
+</head>
+<body>
+  <nav class="rail" aria-label="Sections">
+    <div class="mark" aria-hidden="true">UD</div>
+    <a href="#" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Projects</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/></svg>Systems</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 5l4 1-3 14-4-1z"/></svg>Library</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h14v16H5zM9 9h6M9 13h6"/></svg>Rules <span class="badge">3</span></a>
+  </nav>
+  <main>
+    <div class="head">
+      <h1 data-priority="3">Projects</h1>
+      <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input aria-label="Search projects, systems, techniques" placeholder="Search projects, systems, techniques"><kbd>/</kbd></label>
+      <div class="spacer"></div>
+      <button class="btn primary" data-priority="2">New…</button>
+    </div>
+    <div class="filters" role="group" aria-label="Show">
+      <button aria-pressed="true">All<span class="n">12</span></button>
+      <button aria-pressed="false">Needs approval<span class="n">3</span></button>
+      <button aria-pressed="false">Has findings<span class="n">2</span></button>
+      <button aria-pressed="false">Rexorious<span class="n">1</span></button>
+      <button aria-pressed="false">Flambed Squirrel<span class="n">2</span></button>
+      <button aria-pressed="false">No system<span class="n">9</span></button>
+    </div>
+    <ul class="grid" data-priority="1">
+      <li class="card"><img src="../assets/thumb-groove-cellar.png" alt=""><div class="body"><h2>Groove Cellar</h2><div class="meta"><span class="status bad"><span class="dot"></span>2 findings</span><span class="chip">wada 112</span><span>edited 2h ago</span></div></div></li>
+      <li class="card"><img src="../assets/thumb-budget-overview.png" alt=""><div class="body"><h2>Budget overview</h2><div class="meta"><span class="status ok"><span class="dot"></span>approved v4</span><span class="chip">Flambed Squirrel</span><span>yesterday</span></div></div></li>
+      <li class="card"><img src="../assets/thumb-tea-house.png" alt=""><div class="body"><h2>Tea House</h2><div class="meta"><span>3 directions on the board</span><span>yesterday</span></div></div></li>
+      <li class="card"><img src="../assets/thumb-grove-contrast.png" alt=""><div class="body"><h2>Grove contrast</h2><div class="meta"><span class="chip">Flambed Squirrel</span><span>Sep 18</span></div></div></li>
+      <li class="card"><img src="../assets/thumb-fix-check.png" alt=""><div class="body"><h2>Fix check</h2><div class="meta"><span class="status ok"><span class="dot"></span>approved v2</span><span>Sep 18</span></div></div></li>
+      <li class="card"><img src="../assets/thumb-attach-check.png" alt=""><div class="body"><h2>Attach check</h2><div class="meta"><span>Sep 18</span></div></div></li>
+    </ul>
+  </main>
+</body>
+</html>

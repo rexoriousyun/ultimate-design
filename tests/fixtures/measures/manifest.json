@@ -1,0 +1,321 @@
+{
+  "rulebook": "94ee73da0e90",
+  "cases": [
+    {
+      "rule": "contrast-minimum",
+      "measure": "contrast",
+      "params": {
+        "min": 4.5,
+        "large": 3
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "contrast-minimum/pass.html",
+      "expected": "pass"
+    },
+    {
+      "rule": "contrast-minimum",
+      "measure": "contrast",
+      "params": {
+        "min": 4.5,
+        "large": 3
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "contrast-minimum/fail.html",
+      "expected": "fail"
+    },
+    {
+      "rule": "design-system-conformance",
+      "measure": "design-system",
+      "params": {
+        "sources": "custom properties in stylesheets loaded from design-system/, light and dark",
+        "exceptions": [
+          "--ds-override-* custom properties (the design agent's declared exceptions, listed in verify's report)",
+          "colours in studio-edits*.css (Rex's own Edit-mode choices)"
+        ],
+        "components": "ds-<name> classes in design-system/components/components.css; a boxed element whose class names one of them but is not it is a look-alike"
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": {
+        "--ds-ink": "#f2f0ea",
+        "--ds-paper": "#15151f",
+        "--ds-accent": "#1f5f8b",
+        "--ds-on-accent": "#ffffff",
+        "--ds-line": "#5c5c70",
+        "--ds-font": "\"Georgia\", serif"
+      },
+      "file": "design-system-conformance/pass.html",
+      "expected": "pass"
+    },
+    {
+      "rule": "design-system-conformance",
+      "measure": "design-system",
+      "params": {
+        "sources": "custom properties in stylesheets loaded from design-system/, light and dark",
+        "exceptions": [
+          "--ds-override-* custom properties (the design agent's declared exceptions, listed in verify's report)",
+          "colours in studio-edits*.css (Rex's own Edit-mode choices)"
+        ],
+        "components": "ds-<name> classes in design-system/components/components.css; a boxed element whose class names one of them but is not it is a look-alike"
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": {
+        "--ds-ink": "#f2f0ea",
+        "--ds-paper": "#15151f",
+        "--ds-accent": "#1f5f8b",
+        "--ds-on-accent": "#ffffff",
+        "--ds-line": "#5c5c70",
+        "--ds-font": "\"Georgia\", serif"
+      },
+      "file": "design-system-conformance/fail.html",
+      "expected": "fail"
+    },
+    {
+      "rule": "hierarchy-matches-priority",
+      "measure": "hierarchy",
+      "params": {
+        "marks": "data-priority=\"1\", \"2\", \"3\"… on the elements, in order of importance",
+        "prominence": "text size × weight × text contrast × fill × outline × position, from rendered styles",
+        "margin": "each lower priority scores at least 10% less than every higher one in its scope",
+        "scope": "one [data-option] section, or the page",
+        "unmarked": "no unmarked text may rival priority 1",
+        "missing": "a design page with no data-priority marks is itself a finding; design-system specimens are exempt"
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "hierarchy-matches-priority/pass.html",
+      "expected": "pass"
+    },
+    {
+      "rule": "hierarchy-matches-priority",
+      "measure": "hierarchy",
+      "params": {
+        "marks": "data-priority=\"1\", \"2\", \"3\"… on the elements, in order of importance",
+        "prominence": "text size × weight × text contrast × fill × outline × position, from rendered styles",
+        "margin": "each lower priority scores at least 10% less than every higher one in its scope",
+        "scope": "one [data-option] section, or the page",
+        "unmarked": "no unmarked text may rival priority 1",
+        "missing": "a design page with no data-priority marks is itself a finding; design-system specimens are exempt"
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "hierarchy-matches-priority/fail.html",
+      "expected": "fail"
+    },
+    {
+      "rule": "no-raw-design-values",
+      "measure": "token-only",
+      "params": {
+        "properties": [
+          "color",
+          "background-color",
+          "border-color",
+          "padding-top",
+          "padding-right",
+          "padding-bottom",
+          "padding-left",
+          "margin-top",
+          "margin-right",
+          "margin-bottom",
+          "margin-left",
+          "border-radius"
+        ]
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": {
+        "--bg": "#ffffff",
+        "--surface": "#f5f5f5",
+        "--fg": "#1a1a1a",
+        "--accent": "#2563eb",
+        "--danger": "#b91c1c",
+        "--radius-sm": "4px",
+        "--radius-md": "8px",
+        "--space-sm": "8px",
+        "--space-md": "16px",
+        "--space-lg": "24px"
+      },
+      "file": "no-raw-design-values/pass.html",
+      "expected": "pass"
+    },
+    {
+      "rule": "no-raw-design-values",
+      "measure": "token-only",
+      "params": {
+        "properties": [
+          "color",
+          "background-color",
+          "border-color",
+          "padding-top",
+          "padding-right",
+          "padding-bottom",
+          "padding-left",
+          "margin-top",
+          "margin-right",
+          "margin-bottom",
+          "margin-left",
+          "border-radius"
+        ]
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": {
+        "--bg": "#ffffff",
+        "--surface": "#f5f5f5",
+        "--fg": "#1a1a1a",
+        "--accent": "#2563eb",
+        "--danger": "#b91c1c",
+        "--radius-sm": "4px",
+        "--radius-md": "8px",
+        "--space-sm": "8px",
+        "--space-md": "16px",
+        "--space-lg": "24px"
+      },
+      "file": "no-raw-design-values/fail.html",
+      "expected": "fail"
+    },
+    {
+      "rule": "palette-conformance",
+      "measure": "palette",
+      "params": {
+        "meta": "<meta name=\"palette\" content=\"wada:NNN\">, one of Sanzo Wada's 348 combinations (creative-library/palettes/wada/)",
+        "exceptions": [
+          "--palette-override-* custom properties (the design agent's declared exceptions, listed in verify's report)",
+          "colours in studio-edits*.css (Rex's own Edit-mode choices)"
+        ]
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "palette-conformance/pass.html",
+      "expected": "pass"
+    },
+    {
+      "rule": "palette-conformance",
+      "measure": "palette",
+      "params": {
+        "meta": "<meta name=\"palette\" content=\"wada:NNN\">, one of Sanzo Wada's 348 combinations (creative-library/palettes/wada/)",
+        "exceptions": [
+          "--palette-override-* custom properties (the design agent's declared exceptions, listed in verify's report)",
+          "colours in studio-edits*.css (Rex's own Edit-mode choices)"
+        ]
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "palette-conformance/fail.html",
+      "expected": "fail"
+    },
+    {
+      "rule": "reflow",
+      "measure": "reflow",
+      "params": {
+        "width": 320
+      },
+      "viewports": [
+        320
+      ],
+      "tokens": null,
+      "file": "reflow/pass.html",
+      "expected": "pass"
+    },
+    {
+      "rule": "reflow",
+      "measure": "reflow",
+      "params": {
+        "width": 320
+      },
+      "viewports": [
+        320
+      ],
+      "tokens": null,
+      "file": "reflow/fail.html",
+      "expected": "fail"
+    },
+    {
+      "rule": "target-size-enhanced",
+      "measure": "target-size",
+      "params": {
+        "min": 44
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "target-size-enhanced/pass.html",
+      "expected": "pass"
+    },
+    {
+      "rule": "target-size-enhanced",
+      "measure": "target-size",
+      "params": {
+        "min": 44
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "target-size-enhanced/fail.html",
+      "expected": "fail"
+    },
+    {
+      "rule": "target-size-minimum",
+      "measure": "target-size",
+      "params": {
+        "min": 24,
+        "spacing_exemption": true
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "target-size-minimum/pass.html",
+      "expected": "pass"
+    },
+    {
+      "rule": "target-size-minimum",
+      "measure": "target-size",
+      "params": {
+        "min": 24,
+        "spacing_exemption": true
+      },
+      "viewports": [
+        1440,
+        390
+      ],
+      "tokens": null,
+      "file": "target-size-minimum/fail.html",
+      "expected": "fail"
+    }
+  ]
+}

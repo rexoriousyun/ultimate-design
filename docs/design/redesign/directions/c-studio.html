@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C · Lightbox — studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Direction C, Lightbox: the board is the whole screen, on a neutral proofing grey; every
+     control floats in a small white pill; the agent is a command bar that opens into a thread.
+     Nothing permanent stands between Rex and the frames. */
+  :root {
+    --proof: #8c8c8c; --pill: #ffffff; --raised: #f0f0f0; --line: #dcdcdc;
+    --text: #141414; --dim: #595959; --ink: #141414; --on-ink: #ffffff; --fail: #b4231a; --ok: #1d6b3a;
+    --sans: "IBM Plex Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; height: 100vh; overflow: hidden; background: var(--proof); color: var(--text); font: 13px/1.45 var(--sans); position: relative; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  .pill { position: absolute; background: var(--pill); border-radius: 12px; box-shadow: 0 1px 2px rgb(0 0 0 / .2), 0 6px 20px rgb(0 0 0 / .12);
+          display: flex; align-items: center; gap: 4px; padding: 4px; z-index: 2; }
+  .pill button { border: 0; background: none; border-radius: 8px; padding: 0 10px; min-height: 32px; }
+  .pill button[aria-pressed="true"] { background: var(--raised); font-weight: 500; }
+  .pill .primary { background: var(--ink); color: var(--on-ink); font-weight: 600; }
+  .sep { width: 1px; align-self: stretch; background: var(--line); margin: 4px 2px; }
+  .proj { top: 14px; left: 14px; padding-right: 12px; }
+  .proj strong { font-weight: 600; font-size: 14px; }
+  .proj .meta { font: 11px var(--mono); color: var(--dim); margin-left: 8px; }
+  .view { top: 14px; left: 50%; transform: translateX(-50%); }
+  .acts { top: 14px; right: 14px; }
+  .board { position: absolute; inset: 0; padding: 92px 340px 150px 40px; display: grid; grid-template-columns: 1.6fr 1fr .45fr; gap: 28px; align-items: start; }
+  .frame { display: grid; gap: 6px; }
+  .frame figcaption { font: 12px var(--mono); color: #111; }
+  .frame img { display: block; width: 100%; box-shadow: 0 2px 10px rgb(0 0 0 / .25); }
+  .frame.selected img { outline: 3px solid #fff; outline-offset: 3px; }
+  .frame .tag { font: 11px var(--mono); background: #fff; padding: 1px 6px; border-radius: 4px; margin-left: 6px; }
+  .side { top: 74px; right: 14px; flex-direction: column; align-items: stretch; width: 300px; padding: 10px; gap: 6px; }
+  .side h2 { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--dim); margin: 2px 4px; }
+  .finding { border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; display: grid; gap: 1px; }
+  .finding code { font: 11px var(--mono); color: var(--dim); }
+  .finding b { color: var(--fail); }
+  .history { display: flex; gap: 6px; }
+  .history img { width: 64px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid var(--line); }
+  .history img:last-child { outline: 2px solid var(--ink); }
+  .agent { left: 50%; bottom: 18px; transform: translateX(-50%); width: min(760px, calc(100% - 28px)); flex-direction: column; align-items: stretch; padding: 10px; gap: 8px; }
+  .reply { display: grid; gap: 4px; padding: 4px 6px; }
+  .reply .steps { font: 11px var(--mono); color: var(--ok); }
+  .ask { display: flex; gap: 8px; align-items: center; }
+  .ask label { position: absolute; left: -9999px; }
+  .ask input { flex: 1; border: 1px solid var(--line); border-radius: 8px; min-height: 40px; padding: 0 12px; font: inherit; }
+</style>
+</head>
+<body>
+  <div class="pill proj"><button>← Projects</button><span class="sep"></span><strong data-priority="3">Groove Cellar</strong><span class="meta">wada 112 · 3 pages · 2 directions</span></div>
+  <div class="pill view" role="group" aria-label="View"><button aria-pressed="false">Page</button><button aria-pressed="true">Board</button><span class="sep"></span><button aria-pressed="true">All widths</button><button aria-pressed="false">1440</button><button aria-pressed="false">390</button></div>
+  <div class="pill acts"><button>Comment</button><button>Edit</button><button>Export</button><button class="primary" data-priority="2">Approve for build</button></div>
+  <main class="board" aria-label="Board">
+    <figure class="frame selected" data-priority="1"><figcaption>index.html · 1440<span class="tag">2 findings</span></figcaption><img src="../assets/design-groove-cellar.jpg" alt="Groove Cellar landing page at 1440 pixels"></figure>
+    <figure class="frame"><figcaption>menu.html · 1440</figcaption><img src="../assets/design-tea-house.jpg" alt="Menu page draft"></figure>
+    <figure class="frame"><figcaption>index.html · 390</figcaption><img src="../assets/design-groove-cellar-390.jpg" alt="Groove Cellar landing page at 390 pixels"></figure>
+  </main>
+  <aside class="pill side" aria-label="Selected frame">
+    <h2>Findings on index.html</h2>
+    <div class="finding"><span><b>Must fix</b> · footer note 3.9:1</span><code>contrast-minimum</code></div>
+    <div class="finding"><span>raw padding 17px</span><code>no-raw-design-values</code></div>
+    <h2>History</h2>
+    <div class="history"><img src="../assets/thumb-tea-house.png" alt="Version 1"><img src="../assets/thumb-fix-check.png" alt="Version 2"><img src="../assets/thumb-groove-cellar.png" alt="Version 3, current"></div>
+  </aside>
+  <form class="pill agent" aria-label="Agent">
+    <div class="reply"><span class="steps">● 14 steps · verified clean</span><span>Slowed the record to one turn every 6 s and shared the grain with the events page. Two findings remain on index.html.</span></div>
+    <div class="ask"><label for="ask">Ask the agent</label><input id="ask" placeholder="Ask the agent — describe a change, or click a frame to point at it"><button class="primary" type="submit">Send</button></div>
+  </form>
+</body>
+</html>

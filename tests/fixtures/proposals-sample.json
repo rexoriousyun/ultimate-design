@@ -1,0 +1,87 @@
+{
+  "generated": "2026-10-08T02:17:44.713Z",
+  "rulebook": "ac53d90d1abe",
+  "logs": 2,
+  "problems": [],
+  "threshold": {
+    "decisions": 3,
+    "projects": 2,
+    "contraryWindowDays": 91
+  },
+  "counted": {
+    "decisions": 4,
+    "superseded": 0,
+    "floor": 0,
+    "restores": 0
+  },
+  "proposals": [
+    {
+      "id": "p-7a1e21ae7d",
+      "kind": "new-rule",
+      "rule": null,
+      "about": {
+        "topic": "type",
+        "property": null,
+        "question": "Heading type?"
+      },
+      "current": null,
+      "direction": "Serif",
+      "projects": [
+        "bakery",
+        "florist"
+      ],
+      "decisions": [
+        {
+          "id": "d-20261008-021744-d8d8",
+          "project": "bakery",
+          "at": "2026-10-08T02:17:44Z",
+          "kind": "pick",
+          "chose": "Serif",
+          "over": [
+            "Sans"
+          ],
+          "why": "serif is warmer",
+          "why_source": "answer"
+        },
+        {
+          "id": "d-20261008-021744-4c76",
+          "project": "bakery",
+          "at": "2026-10-08T02:17:44Z",
+          "kind": "pick",
+          "chose": "Serif",
+          "over": [
+            "Sans"
+          ],
+          "why": null,
+          "why_source": null
+        },
+        {
+          "id": "d-20261008-021744-bfbf",
+          "project": "florist",
+          "at": "2026-10-08T02:17:44Z",
+          "kind": "pick",
+          "chose": "Serif",
+          "over": [
+            "Sans"
+          ],
+          "why": "feels hand-made",
+          "why_source": "answer"
+        }
+      ],
+      "contrary": [],
+      "suggested": {
+        "applies_when": [
+          {
+            "subject_has": "text"
+          }
+        ],
+        "alternatives": [
+          "Serif",
+          "Sans"
+        ]
+      },
+      "status": "proposed"
+    }
+  ],
+  "withheld": []
+}

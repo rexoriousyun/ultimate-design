@@ -1,0 +1,98 @@
+{
+  "id": "spirograph",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "7ad535280bf7",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "R": {
+      "verdict": "effective",
+      "values": [
+        60,
+        90,
+        120,
+        140,
+        160
+      ],
+      "steps": [
+        0.1951,
+        0.2414,
+        0.254,
+        0.2605
+      ],
+      "meanEffect": 0.2378,
+      "minStep": 0.1951,
+      "threshold": 0.0005,
+      "strip": "sweeps/spirograph/R.png"
+    },
+    "r": {
+      "verdict": "effective",
+      "values": [
+        10,
+        30,
+        47,
+        70,
+        100
+      ],
+      "steps": [
+        0.0397,
+        0.1969,
+        0.1983,
+        0.0333
+      ],
+      "meanEffect": 0.117,
+      "minStep": 0.0333,
+      "threshold": 0.0005,
+      "strip": "sweeps/spirograph/r.png"
+    },
+    "d": {
+      "verdict": "effective",
+      "values": [
+        10,
+        40,
+        70,
+        100,
+        120
+      ],
+      "steps": [
+        0.2393,
+        0.2541,
+        0.2548,
+        0.2561
+      ],
+      "meanEffect": 0.2511,
+      "minStep": 0.2393,
+      "threshold": 0.0005,
+      "strip": "sweeps/spirograph/d.png"
+    },
+    "epi": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.2771
+      ],
+      "meanEffect": 0.2771,
+      "minStep": 0.2771,
+      "threshold": 0.0005,
+      "strip": "sweeps/spirograph/epi.png"
+    }
+  }
+}

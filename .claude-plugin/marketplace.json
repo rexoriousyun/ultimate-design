@@ -1,0 +1,14 @@
+{
+  "name": "ultimate-design",
+  "description": "Ultimate Design, the local design studio, as a Claude Code plugin.",
+  "owner": {
+    "name": "Rex"
+  },
+  "plugins": [
+    {
+      "name": "ultimate-design",
+      "source": "./plugin",
+      "description": "Design in Ultimate Design's studio from any project: the design agent builds, the user approves in the studio, then Claude Code implements what was approved."
+    }
+  ]
+}

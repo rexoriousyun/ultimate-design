@@ -1,0 +1,82 @@
+{
+  "id": "star-rating",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "2f138d1e1bdd",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "value": {
+      "verdict": "effective",
+      "values": [
+        0,
+        1.2,
+        2.5,
+        3.6,
+        5
+      ],
+      "steps": [
+        0.0059,
+        0.0087,
+        0.0072,
+        0.0077
+      ],
+      "meanEffect": 0.0074,
+      "minStep": 0.0059,
+      "threshold": 0.0005,
+      "strip": "sweeps/star-rating/value.png"
+    },
+    "max": {
+      "verdict": "effective",
+      "values": [
+        3,
+        5,
+        7,
+        10
+      ],
+      "steps": [
+        0.0174,
+        0.0194,
+        0.0168
+      ],
+      "meanEffect": 0.0179,
+      "minStep": 0.0168,
+      "threshold": 0.0005,
+      "strip": "sweeps/star-rating/max.png"
+    },
+    "size": {
+      "verdict": "effective",
+      "values": [
+        12,
+        20,
+        28,
+        36,
+        48
+      ],
+      "steps": [
+        0.018,
+        0.0349,
+        0.0496,
+        0.0736
+      ],
+      "meanEffect": 0.044,
+      "minStep": 0.018,
+      "threshold": 0.0005,
+      "strip": "sweeps/star-rating/size.png"
+    }
+  }
+}

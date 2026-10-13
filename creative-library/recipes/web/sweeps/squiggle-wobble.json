@@ -1,0 +1,74 @@
+{
+  "id": "squiggle-wobble",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "de3209076375",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "scale": {
+      "verdict": "effective",
+      "values": [
+        0,
+        6,
+        12,
+        18,
+        28,
+        40
+      ],
+      "steps": [
+        0.0055,
+        0.0067,
+        0.0064,
+        0.0086,
+        0.0098
+      ],
+      "meanEffect": 0.0074,
+      "minStep": 0.0055,
+      "threshold": 0.0005,
+      "strip": "sweeps/squiggle-wobble/scale.png"
+    },
+    "baseFrequency": {
+      "verdict": "effective",
+      "values": [
+        0.005,
+        0.015,
+        0.03,
+        0.06,
+        0.1
+      ],
+      "steps": [
+        0.0164,
+        0.0164,
+        0.0132,
+        0.014
+      ],
+      "meanEffect": 0.015,
+      "minStep": 0.0132,
+      "threshold": 0.0005,
+      "strip": "sweeps/squiggle-wobble/baseFrequency.png"
+    },
+    "speed": {
+      "verdict": "unswept",
+      "reason": "motion: under reduced motion the re-seeding stops, as designed, so no still frame shows it"
+    },
+    "animate": {
+      "verdict": "unswept",
+      "reason": "motion: under reduced motion it holds one wobble, as designed, so no still frame shows it"
+    }
+  }
+}

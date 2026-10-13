@@ -1,0 +1,43 @@
+# Recipe library — web. Copy the source and adapt; never import it.
+
+- `absorb-drops` canvas — Absorb drops. recipes/web/absorb-drops.js
+- `acorn-hoard` canvas — Acorn hoard. recipes/web/acorn-hoard.js
+- `bar-chart` svg — Bar chart. recipes/web/bar-chart.js
+- `blob-shape` svg — Blob shape. recipes/web/blob-shape.js
+- `canvas-chart` canvas — Canvas chart. recipes/web/canvas-chart.js
+- `click-to-split` canvas — Click to split. recipes/web/click-to-split.js
+- `companion-perch` svg — Companion perch. recipes/web/companion-perch.js
+- `donut-chart` svg — Donut chart. recipes/web/donut-chart.js
+- `duotone-filter` svg — Duotone filter. recipes/web/duotone-filter.js
+- `flow-field` canvas — Flow field. recipes/web/flow-field.js
+- `glow-filter` svg — Glow filter. recipes/web/glow-filter.js
+- `gooey-blobs` svg — Gooey blobs. recipes/web/gooey-blobs.js
+- `halftone` canvas — Halftone. recipes/web/halftone.js
+- `heatmap-grid` svg — Heatmap grid. recipes/web/heatmap-grid.js
+- `hit-grid` canvas — Hit grid. recipes/web/hit-grid.js
+- `icon` svg — Icon. recipes/web/icon.js
+- `image-dither` canvas — Image dither. recipes/web/image-dither.js
+- `led-matrix` canvas — LED matrix. recipes/web/led-matrix.js
+- `liquid-fill-text` svg — Liquid fill text. recipes/web/liquid-fill-text.js
+- `liquid-glass` svg — Liquid glass. recipes/web/liquid-glass.js
+- `noise-grain` svg — Noise grain. recipes/web/noise-grain.js
+- `particle-field` canvas — Particle field. recipes/web/particle-field.js
+- `path-draw` svg — Path draw-on. recipes/web/path-draw.js
+- `pattern-hatch` svg — Pattern hatch. recipes/web/pattern-hatch.js
+- `pixel-sprite` canvas — Pixel sprite. recipes/web/pixel-sprite.js
+- `progress-ring` svg — Progress ring. recipes/web/progress-ring.js
+- `proximity-dots` canvas — Proximity dots. recipes/web/proximity-dots.js
+- `radial-gauge` svg — Radial gauge. recipes/web/radial-gauge.js
+- `scratch-off` canvas — Scratch off. recipes/web/scratch-off.js
+- `skeleton-shimmer` svg — Skeleton shimmer. recipes/web/skeleton-shimmer.js
+- `sparkline` svg — Sparkline. recipes/web/sparkline.js
+- `spirograph` canvas — Spirograph. recipes/web/spirograph.js
+- `squiggle-wobble` svg — Squiggle wobble. recipes/web/squiggle-wobble.js
+- `star-rating` svg — Star rating. recipes/web/star-rating.js
+- `three-instanced-grid` three — Three instanced grid. recipes/web/three-instanced-grid.js
+- `three-points` three — Three point cloud. recipes/web/three-points.js
+- `three-scene` three — Three scene. recipes/web/three-scene.js
+- `three-shader-plane` three — Three shader plane. recipes/web/three-shader-plane.js
+- `three-wireframe-globe` three — Three wireframe globe. recipes/web/three-wireframe-globe.js
+- `vhs-glitch` canvas — VHS glitch. recipes/web/vhs-glitch.js
+- `wave-divider` svg — Wave divider. recipes/web/wave-divider.js

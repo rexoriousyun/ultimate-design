@@ -1,0 +1,104 @@
+{
+  "id": "vhs-glitch",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "f1810625b646",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "split": {
+      "verdict": "effective",
+      "values": [
+        0,
+        2,
+        4,
+        8,
+        12
+      ],
+      "steps": [
+        0.0179,
+        0.0208,
+        0.0315,
+        0.0318
+      ],
+      "meanEffect": 0.0255,
+      "minStep": 0.0179,
+      "threshold": 0.0005,
+      "strip": "sweeps/vhs-glitch/split.png"
+    },
+    "bands": {
+      "verdict": "effective",
+      "values": [
+        0,
+        3,
+        5,
+        8,
+        12
+      ],
+      "steps": [
+        0.0097,
+        0.0006,
+        0.0071,
+        0.0009
+      ],
+      "meanEffect": 0.0046,
+      "minStep": 0.0006,
+      "threshold": 0.0005,
+      "strip": "sweeps/vhs-glitch/bands.png"
+    },
+    "tear": {
+      "verdict": "effective",
+      "values": [
+        0,
+        7,
+        14,
+        24,
+        40
+      ],
+      "steps": [
+        0.0086,
+        0.0085,
+        0.009,
+        0.0106
+      ],
+      "meanEffect": 0.0092,
+      "minStep": 0.0085,
+      "threshold": 0.0005,
+      "strip": "sweeps/vhs-glitch/tear.png"
+    },
+    "scanline": {
+      "verdict": "effective",
+      "values": [
+        0,
+        0.1,
+        0.22,
+        0.4,
+        0.6
+      ],
+      "steps": [
+        0.2113,
+        0.2113,
+        0.2113,
+        0.2113
+      ],
+      "meanEffect": 0.2113,
+      "minStep": 0.2113,
+      "threshold": 0.0005,
+      "strip": "sweeps/vhs-glitch/scanline.png"
+    }
+  }
+}

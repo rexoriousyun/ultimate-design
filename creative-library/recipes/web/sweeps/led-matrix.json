@@ -1,0 +1,84 @@
+{
+  "id": "led-matrix",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "899e9dff2e49",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "text": {
+      "verdict": "effective",
+      "values": [
+        "NOW BOARDING",
+        "GATE 12",
+        "DELAYED 25 MIN"
+      ],
+      "steps": [
+        0.0818,
+        0.0958
+      ],
+      "meanEffect": 0.0888,
+      "minStep": 0.0818,
+      "threshold": 0.0005,
+      "strip": "sweeps/led-matrix/text.png"
+    },
+    "rows": {
+      "verdict": "effective",
+      "values": [
+        5,
+        7,
+        9,
+        12,
+        16
+      ],
+      "steps": [
+        0.2518,
+        0.2637,
+        0.2837,
+        0.3167
+      ],
+      "meanEffect": 0.279,
+      "minStep": 0.2518,
+      "threshold": 0.0005,
+      "strip": "sweeps/led-matrix/rows.png"
+    },
+    "dot": {
+      "verdict": "effective",
+      "values": [
+        2,
+        3,
+        5,
+        7,
+        10
+      ],
+      "steps": [
+        0.3389,
+        0.4657,
+        0.5113,
+        0.5633
+      ],
+      "meanEffect": 0.4698,
+      "minStep": 0.3389,
+      "threshold": 0.0005,
+      "strip": "sweeps/led-matrix/dot.png"
+    },
+    "scroll": {
+      "verdict": "unswept",
+      "reason": "motion: under reduced motion the board stops scrolling, as designed, so no still frame shows it"
+    }
+  }
+}

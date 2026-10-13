@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoices — design system, followed</title>
+  <link rel="stylesheet" href="design-system/tokens.css">
+  <link rel="stylesheet" href="design-system/components/components.css">
+  <link rel="stylesheet" href="studio-edits.css">
+  <style>
+    /* A declared exception: the system has no warning colour yet. */
+    :root { --ds-override-warning: #8a4b00; }
+    main { padding: 24px; max-width: 40rem; }
+    .layout-row { display: flex; gap: 16px; }
+    .due { color: var(--ds-override-warning); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Invoices</h1>
+    <p class="lede">Three invoices are waiting for you.</p>
+    <div class="layout-row">
+      <section class="ds-card invoice-row">
+        <h2 class="ds-card__title">March</h2>
+        <p class="due">Due in 3 days</p>
+        <button class="ds-button" type="button">Pay March</button>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

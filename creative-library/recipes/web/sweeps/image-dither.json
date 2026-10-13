@@ -1,0 +1,58 @@
+{
+  "id": "image-dither",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "0e7e04cee3a1",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "levels": {
+      "verdict": "effective",
+      "values": [
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "steps": [
+        0.1451,
+        0.1861,
+        0.2133,
+        0.2264
+      ],
+      "meanEffect": 0.1927,
+      "minStep": 0.1451,
+      "threshold": 0.0005,
+      "strip": "sweeps/image-dither/levels.png"
+    },
+    "mono": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.1468
+      ],
+      "meanEffect": 0.1468,
+      "minStep": 0.1468,
+      "threshold": 0.0005,
+      "strip": "sweeps/image-dither/mono.png"
+    }
+  }
+}

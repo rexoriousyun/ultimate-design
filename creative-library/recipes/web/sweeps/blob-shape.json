@@ -1,0 +1,102 @@
+{
+  "id": "blob-shape",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "10e3971b2248",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "seed": {
+      "verdict": "effective",
+      "values": [
+        1,
+        7,
+        13,
+        42
+      ],
+      "steps": [
+        0.0266,
+        0.0323,
+        0.0198
+      ],
+      "meanEffect": 0.0262,
+      "minStep": 0.0198,
+      "threshold": 0.0005,
+      "strip": "sweeps/blob-shape/seed.png"
+    },
+    "points": {
+      "verdict": "effective",
+      "values": [
+        3,
+        4,
+        6,
+        8,
+        12
+      ],
+      "steps": [
+        0.0206,
+        0.0301,
+        0.0377,
+        0.0436
+      ],
+      "meanEffect": 0.033,
+      "minStep": 0.0206,
+      "threshold": 0.0005,
+      "strip": "sweeps/blob-shape/points.png"
+    },
+    "wobble": {
+      "verdict": "effective",
+      "values": [
+        0,
+        0.1,
+        0.22,
+        0.35,
+        0.5
+      ],
+      "steps": [
+        0.0153,
+        0.0179,
+        0.0201,
+        0.0214
+      ],
+      "meanEffect": 0.0187,
+      "minStep": 0.0153,
+      "threshold": 0.0005,
+      "strip": "sweeps/blob-shape/wobble.png"
+    },
+    "size": {
+      "verdict": "effective",
+      "values": [
+        80,
+        140,
+        200,
+        260,
+        320
+      ],
+      "steps": [
+        0.0846,
+        0.1002,
+        0.109,
+        0.1148
+      ],
+      "meanEffect": 0.1022,
+      "minStep": 0.0846,
+      "threshold": 0.0005,
+      "strip": "sweeps/blob-shape/size.png"
+    }
+  }
+}

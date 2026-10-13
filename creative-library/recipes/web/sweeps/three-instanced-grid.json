@@ -1,0 +1,104 @@
+{
+  "id": "three-instanced-grid",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "7da5b77254f9",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "side": {
+      "verdict": "effective",
+      "values": [
+        4,
+        8,
+        16,
+        24,
+        40
+      ],
+      "steps": [
+        0.0411,
+        0.1653,
+        0.1907,
+        0.1388
+      ],
+      "meanEffect": 0.134,
+      "minStep": 0.0411,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-instanced-grid/side.png"
+    },
+    "spacing": {
+      "verdict": "effective",
+      "values": [
+        0.2,
+        0.27,
+        0.34,
+        0.45,
+        0.6
+      ],
+      "steps": [
+        0.133,
+        0.2055,
+        0.285,
+        0.3244
+      ],
+      "meanEffect": 0.237,
+      "minStep": 0.133,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-instanced-grid/spacing.png"
+    },
+    "cubeSize": {
+      "verdict": "effective",
+      "values": [
+        0.05,
+        0.1,
+        0.2,
+        0.27,
+        0.34
+      ],
+      "steps": [
+        0.0704,
+        0.1824,
+        0.1462,
+        0.1184
+      ],
+      "meanEffect": 0.1294,
+      "minStep": 0.0704,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-instanced-grid/cubeSize.png"
+    },
+    "amplitude": {
+      "verdict": "effective",
+      "values": [
+        0,
+        0.3,
+        0.6,
+        0.9,
+        1.2
+      ],
+      "steps": [
+        0.1482,
+        0.1384,
+        0.1295,
+        0.1228
+      ],
+      "meanEffect": 0.1347,
+      "minStep": 0.1228,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-instanced-grid/amplitude.png"
+    }
+  }
+}

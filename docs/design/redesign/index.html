@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio redesign — proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  :root { --bg: #f4f4f4; --panel: #fff; --line: #e2e2e2; --text: #171717; --dim: #5a5a5a; --fail: #a3221a;
+          --sans: "Geist", system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, monospace; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 var(--sans); }
+  main { max-width: 1120px; margin: 0 auto; padding: 48px 32px 72px; }
+  .eyebrow { font: 500 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--dim); margin: 0 0 8px; }
+  h1 { font-size: 40px; line-height: 1.05; font-weight: 700; letter-spacing: -.02em; margin: 0 0 14px; max-width: 18ch; }
+  .lede { font-size: 18px; color: #333; max-width: 62ch; margin: 0 0 40px; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin: 48px 0 14px; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .box h3 { font-size: 15px; margin: 0 0 6px; }
+  .box p, .box li { margin: 0; color: #333; font-size: 14px; }
+  .box ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+  .now { border-left: 3px solid var(--fail); }
+  .dirs { display: grid; gap: 28px; }
+  .dir { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 1.4fr 1fr; }
+  .dir .shots { display: grid; gap: 1px; background: var(--line); }
+  .dir .shots a { display: block; }
+  .dir img { display: block; width: 100%; }
+  .dir .text { padding: 20px 22px; display: grid; gap: 8px; align-content: start; }
+  .dir h3 { font-size: 20px; margin: 0; }
+  .dir .tag { font: 12px var(--mono); color: var(--dim); }
+  .dir p { margin: 0; font-size: 14px; color: #333; }
+  .dir .open { display: flex; gap: 12px; font: 13px var(--mono); }
+  .dir .open a { color: var(--text); }
+  code { font: 13px var(--mono); }
+  @media (max-width: 800px) { .dir { grid-template-columns: 1fr; } h1 { font-size: 30px; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Ultimate Design · proposal · 2026-10-08</p>
+  <h1 data-priority="1">A design tool, not a chat with a canvas</h1>
+  <p class="lede" data-priority="2">The studio holds many design systems, palettes, layouts and mockups. Its own look should stay out of their way: no hue of its own around the work, space only for what earns it, and the agent as one tool among several rather than the frame everything sits in. One new structure, three looks to pick from.</p>
+
+  <h2 data-priority="3">What is wrong now</h2>
+  <div class="cols">
+    <div class="box now"><h3>It reads as Claude</h3><p>Cream paper, a serif display face, a soft indigo button and a chat column on the left: the anatomy of Claude.ai.</p></div>
+    <div class="box now"><h3>The chrome tints the work</h3><p>A warm cream surround shifts how every design's colours read. For a tool that judges palettes and design systems, that is a defect, not a style.</p></div>
+    <div class="box now"><h3>Space is not earned</h3><p>The create forms take a quarter of Home permanently; the studio stacks model, palette, cost, techniques and system controls above the chat; the version slider spans the whole width.</p></div>
+    <div class="box now"><h3>The pieces are scattered</h3><p>Design systems sit in the project grid, Library and Rules are separate pages, findings arrive as chat cards, and approval sits on the version bar.</p></div>
+  </div>
+
+  <h2>One structure, whichever look</h2>
+  <div class="cols">
+    <div class="box"><h3>A section rail</h3><ul><li>Projects, Systems, Library, Rules (with its inbox count).</li><li>Design systems get their own section: tokens, components, specimen, the designs that use them.</li><li>A wide search, always visible, across all four.</li></ul></div>
+    <div class="box"><h3>Home is the work</h3><ul><li>No create column: one “New…” opens a sheet (design, design system, from a prompt).</li><li>Large thumbnails with their state: approved, findings, system, palette.</li><li>Filters by state and by system.</li></ul></div>
+    <div class="box"><h3>Studio is canvas-first</h3><ul><li>Left: pages, directions and options of the project.</li><li>Centre: the design at true colour on a neutral surround.</li><li>Right: one panel, tabs Agent · Inspect · Findings · History. Versions become thumbnails in History.</li><li>Top: view, width, and the one primary action, Approve for build. Model, cost and references move into a project popover.</li></ul></div>
+  </div>
+
+  <h2>Three looks</h2>
+  <div class="dirs">
+    <section class="dir">
+      <div class="shots"><a href="directions/a-studio.html"><img src="assets/shot-a-studio.png" alt="A, Workbench: the studio"></a><a href="directions/a-home.html"><img src="assets/shot-a-home.png" alt="A, Workbench: projects"></a></div>
+      <div class="text"><h3>A · Workbench</h3><span class="tag">Geist · zero-chroma greys · ink primary</span><p>The quiet professional tool. Greys with no hue at all, so nothing around a design shifts its colours; black ink for the one primary action; one blue for selection. Dense, small type, everything a click away.</p><p><strong>Trade-off:</strong> the most neutral and the least personal. It could be any good design tool.</p><div class="open"><a href="directions/a-studio.html">studio</a><a href="directions/a-home.html">projects</a></div></div>
+    </section>
+    <section class="dir">
+      <div class="shots"><a href="directions/b-studio.html"><img src="assets/shot-b-studio.png" alt="B, Nightshift: the studio"></a><a href="directions/b-home.html"><img src="assets/shot-b-home.png" alt="B, Nightshift: projects"></a></div>
+      <div class="text"><h3>B · Nightshift</h3><span class="tag">Rexorious · Archivo + Chivo Mono · Volt once per view</span><p>Your own identity as the tool's chassis: void and chassis greys, stencilled mono labels, zero radius, a notched primary. Kept restrained around the work: Volt is spent once per view (Approve for build) and on the selection edge.</p><p><strong>Trade-off:</strong> unmistakably yours, and loud chrome is a risk next to a quiet design; a dark surround also makes light designs look brighter than on a white page.</p><div class="open"><a href="directions/b-studio.html">studio</a><a href="directions/b-home.html">projects</a></div></div>
+    </section>
+    <section class="dir">
+      <div class="shots"><a href="directions/c-studio.html"><img src="assets/shot-c-studio.png" alt="C, Lightbox: the studio"></a><a href="directions/c-home.html"><img src="assets/shot-c-home.png" alt="C, Lightbox: projects"></a></div>
+      <div class="text"><h3>C · Lightbox</h3><span class="tag">IBM Plex · proofing grey · floating pills</span><p>The board is the whole screen, on the mid grey printers judge colour against. Every control floats in a small white pill; the agent is a command bar at the bottom that opens into its thread. Home is a contact sheet.</p><p><strong>Trade-off:</strong> the most room for the work and the most different from today; floating panels cover the board, and the agent thread is a step further away.</p><div class="open"><a href="directions/c-studio.html">studio</a><a href="directions/c-home.html">projects</a></div></div>
+    </section>
+  </div>
+
+  <h2>What is not decided here</h2>
+  <div class="cols"><div class="box"><p>The decisions are in <code>docs/gate-studio-redesign.md</code>: the look, and each structural change on its own, so you can take the structure without a look or mix (say, A's chrome with C's board). Nothing in the app changes until you pick.</p></div></div>
+</main>
+</body>
+</html>

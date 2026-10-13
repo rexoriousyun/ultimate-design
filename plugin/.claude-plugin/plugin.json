@@ -1,0 +1,8 @@
+{
+  "name": "ultimate-design",
+  "version": "0.1.0",
+  "description": "Ultimate Design from any project: create and change designs, build a design system from the codebase, wait for the user's approval in the studio, then implement from the handoff. Starts the studio when it isn't running.",
+  "author": {
+    "name": "Rex"
+  }
+}

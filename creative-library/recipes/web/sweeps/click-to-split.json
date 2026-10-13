@@ -1,0 +1,94 @@
+{
+  "id": "click-to-split",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "2f2bab5a980c",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "seed": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "steps": [
+        0.2586,
+        0.2299,
+        0.2421
+      ],
+      "meanEffect": 0.2435,
+      "minStep": 0.2299,
+      "threshold": 0.0005,
+      "strip": "sweeps/click-to-split/seed.png"
+    },
+    "count": {
+      "verdict": "effective",
+      "values": [
+        5,
+        20,
+        40,
+        80
+      ],
+      "steps": [
+        0.104,
+        0.2175,
+        0.3
+      ],
+      "meanEffect": 0.2072,
+      "minStep": 0.104,
+      "threshold": 0.0005,
+      "strip": "sweeps/click-to-split/count.png"
+    },
+    "gravity": {
+      "verdict": "unswept",
+      "reason": "acts over time as balls fall; under reduced motion the loop never starts, so no still frame shows it"
+    },
+    "friction": {
+      "verdict": "unswept",
+      "reason": "acts over time; under reduced motion the loop never starts, so no still frame shows it"
+    },
+    "restitution": {
+      "verdict": "unswept",
+      "reason": "acts only on a bounce, over time; no still frame shows it"
+    },
+    "splitRatio": {
+      "verdict": "unswept",
+      "reason": "acts only when a ball is clicked; the sweep has no pointer"
+    },
+    "minRadius": {
+      "verdict": "effective",
+      "values": [
+        2,
+        5,
+        8,
+        12
+      ],
+      "steps": [
+        0.0301,
+        0.0322,
+        0.0408
+      ],
+      "meanEffect": 0.0344,
+      "minStep": 0.0301,
+      "threshold": 0.0005,
+      "strip": "sweeps/click-to-split/minRadius.png"
+    }
+  }
+}

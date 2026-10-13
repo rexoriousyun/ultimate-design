@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hierarchy — fail</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 2rem; font-family: system-ui, sans-serif; background: #ffffff; color: #1a1a1a; max-width: 640px; }
+  h1 { font-size: 2.75rem; font-weight: 700; line-height: 1.1; margin: 0 0 1rem; }
+  .cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0.6rem 1.2rem; border-radius: 6px;
+         background: #14532d; color: #ffffff; font-size: 1.125rem; font-weight: 600; text-decoration: none; margin: 0 0 1.5rem; }
+  /* The defect: priority 3 is set as the loudest thing on the page. */
+  .note { font-size: 3.5rem; font-weight: 800; line-height: 1.1; color: #1a1a1a; margin: 0; }
+</style>
+</head>
+<body>
+  <h1 data-priority="1">Fresh bread every morning</h1>
+  <a class="cta" href="#order" data-priority="2">Order for tomorrow</a>
+  <p class="note" data-priority="3">Sourdough, rye and seeded loaves, baked before seven.</p>
+</body>
+</html>

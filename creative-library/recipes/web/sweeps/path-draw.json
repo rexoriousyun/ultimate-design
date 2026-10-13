@@ -1,0 +1,68 @@
+{
+  "id": "path-draw",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "f04e7bd036a7",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "shape": {
+      "verdict": "effective",
+      "values": [
+        "wave",
+        "check",
+        "signature"
+      ],
+      "steps": [
+        0.0489,
+        0.0531
+      ],
+      "meanEffect": 0.051,
+      "minStep": 0.0489,
+      "threshold": 0.0005,
+      "strip": "sweeps/path-draw/shape.png"
+    },
+    "duration": {
+      "verdict": "unswept",
+      "reason": "motion: under reduced motion the path is drawn complete at once, as designed, so no still frame shows it"
+    },
+    "strokeWidth": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        4,
+        6,
+        10
+      ],
+      "steps": [
+        0.0126,
+        0.0191,
+        0.0193,
+        0.032
+      ],
+      "meanEffect": 0.0208,
+      "minStep": 0.0126,
+      "threshold": 0.0005,
+      "strip": "sweeps/path-draw/strokeWidth.png"
+    },
+    "loop": {
+      "verdict": "unswept",
+      "reason": "motion: under reduced motion nothing animates, so no still frame shows it"
+    }
+  }
+}

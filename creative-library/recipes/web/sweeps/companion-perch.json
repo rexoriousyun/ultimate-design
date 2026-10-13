@@ -1,0 +1,98 @@
+{
+  "id": "companion-perch",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "6ca9cd4dc92d",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "count": {
+      "verdict": "partial",
+      "values": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "steps": [
+        0.0066,
+        0.0066,
+        0
+      ],
+      "meanEffect": 0.0044,
+      "minStep": 0,
+      "threshold": 0.0005,
+      "flatSegments": [
+        [
+          2,
+          3
+        ]
+      ],
+      "strip": "sweeps/companion-perch/count.png"
+    },
+    "spriteSize": {
+      "verdict": "effective",
+      "values": [
+        32,
+        48,
+        64,
+        96
+      ],
+      "steps": [
+        0.0032,
+        0.0048,
+        0.0119
+      ],
+      "meanEffect": 0.0066,
+      "minStep": 0.0032,
+      "threshold": 0.0005,
+      "strip": "sweeps/companion-perch/spriteSize.png"
+    },
+    "pad": {
+      "verdict": "effective",
+      "values": [
+        0,
+        10,
+        24
+      ],
+      "steps": [
+        0.0063,
+        0.0074
+      ],
+      "meanEffect": 0.0069,
+      "minStep": 0.0063,
+      "threshold": 0.0005,
+      "strip": "sweeps/companion-perch/pad.png"
+    },
+    "key": {
+      "verdict": "effective",
+      "values": [
+        "demo",
+        "about",
+        "pricing"
+      ],
+      "steps": [
+        0.0128,
+        0.0131
+      ],
+      "meanEffect": 0.013,
+      "minStep": 0.0128,
+      "threshold": 0.0005,
+      "strip": "sweeps/companion-perch/key.png"
+    }
+  }
+}

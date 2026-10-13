@@ -1,0 +1,27 @@
+{
+  "description": "Phase 4 (PLAN.md): design asks phrased the way they arrive, each with the recipes a person would hand-pick for it. The intent ranker passes a case when one of `expect` is in its top 3. Written before recipes/web/intents.json. A case that misses (the shelf lacks it, or the ranker cannot reach it) keeps its expectation and gains a `gap` saying why; the test then asserts it still misses, so a fix shows up. Never edit `expect` to make a miss pass.",
+  "cases": [
+    {"intent": "make this feel hand-made", "expect": ["squiggle-wobble", "noise-grain", "pattern-hatch"], "source": "README"},
+    {"intent": "add depth without 3D", "expect": ["liquid-glass", "glow-filter"], "source": "README"},
+    {"intent": "break up a flat field", "expect": ["noise-grain", "pattern-hatch", "halftone", "flow-field"], "source": "README"},
+    {"intent": "make it look printed", "expect": ["halftone", "image-dither", "duotone-filter", "pattern-hatch"]},
+    {"intent": "a retro broken screen", "expect": ["vhs-glitch", "led-matrix"], "history": "a recorded ranker gap from 2026-10-07 (no synonyms: broken never met corrupted), closed the same day by the synonym groups in rank.js"},
+    {"intent": "show a trend over time", "expect": ["sparkline", "canvas-chart", "bar-chart"]},
+    {"intent": "softer, more organic shapes", "expect": ["blob-shape", "gooey-blobs", "wave-divider"]},
+    {"intent": "something to look at while it loads", "expect": ["skeleton-shimmer", "progress-ring"]},
+    {"intent": "a calm moving background", "expect": ["flow-field", "particle-field", "proximity-dots"]},
+    {"intent": "a neon sign", "expect": ["glow-filter", "led-matrix"]},
+    {"intent": "a gentler line between sections", "expect": ["wave-divider"]},
+    {"intent": "show progress toward a goal", "expect": ["progress-ring", "radial-gauge", "liquid-fill-text"]},
+    {"intent": "make the hero react to the mouse", "expect": ["proximity-dots", "liquid-glass"]},
+    {"intent": "two-tone photos in the brand colours", "expect": ["duotone-filter"]},
+    {"intent": "reveal a surprise", "expect": ["scratch-off"]},
+    {"intent": "a signature that writes itself", "expect": ["path-draw"]},
+    {"intent": "a spinning 3D object", "expect": ["three-scene", "three-wireframe-globe"]},
+    {"intent": "an error state that looks glitchy", "expect": ["vhs-glitch"], "source": "held out: written before the synonym table"},
+    {"intent": "make it respond to the mouse", "expect": ["proximity-dots", "liquid-glass"], "source": "held out: written before the synonym table"},
+    {"intent": "an old monitor look", "expect": ["vhs-glitch", "led-matrix"], "source": "held out: written before the synonym table"},
+    {"intent": "pictures in our two brand colours", "expect": ["duotone-filter"], "source": "held out: written before the synonym table"},
+    {"intent": "kerberos authentication ticket", "expect": [], "source": "PLAN: nonsense returns empty"}
+  ]
+}

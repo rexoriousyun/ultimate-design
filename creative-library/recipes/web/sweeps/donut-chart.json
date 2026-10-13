@@ -1,0 +1,80 @@
+{
+  "id": "donut-chart",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "1dc7c33ae77b",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "size": {
+      "verdict": "effective",
+      "values": [
+        100,
+        140,
+        180,
+        220,
+        280
+      ],
+      "steps": [
+        0.1029,
+        0.1201,
+        0.1322,
+        0.1543
+      ],
+      "meanEffect": 0.1274,
+      "minStep": 0.1029,
+      "threshold": 0.0005,
+      "strip": "sweeps/donut-chart/size.png"
+    },
+    "thickness": {
+      "verdict": "effective",
+      "values": [
+        8,
+        16,
+        26,
+        40,
+        60
+      ],
+      "steps": [
+        0.0318,
+        0.0345,
+        0.0388,
+        0.0382
+      ],
+      "meanEffect": 0.0358,
+      "minStep": 0.0318,
+      "threshold": 0.0005,
+      "strip": "sweeps/donut-chart/thickness.png"
+    },
+    "centerLabel": {
+      "verdict": "effective",
+      "values": [
+        "100",
+        "2,450",
+        ""
+      ],
+      "steps": [
+        0.0089,
+        0.0071
+      ],
+      "meanEffect": 0.008,
+      "minStep": 0.0071,
+      "threshold": 0.0005,
+      "strip": "sweeps/donut-chart/centerLabel.png"
+    }
+  }
+}

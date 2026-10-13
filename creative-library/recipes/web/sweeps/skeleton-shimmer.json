@@ -1,0 +1,96 @@
+{
+  "id": "skeleton-shimmer",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "34b272aa5778",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "lines": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "steps": [
+        0.1354,
+        0.117,
+        0.0936,
+        0.1336
+      ],
+      "meanEffect": 0.1199,
+      "minStep": 0.0936,
+      "threshold": 0.0005,
+      "strip": "sweeps/skeleton-shimmer/lines.png"
+    },
+    "avatar": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.0411
+      ],
+      "meanEffect": 0.0411,
+      "minStep": 0.0411,
+      "threshold": 0.0005,
+      "strip": "sweeps/skeleton-shimmer/avatar.png"
+    },
+    "lineHeight": {
+      "verdict": "effective",
+      "values": [
+        8,
+        12,
+        16,
+        20
+      ],
+      "steps": [
+        0.2735,
+        0.2411,
+        0.2155
+      ],
+      "meanEffect": 0.2434,
+      "minStep": 0.2155,
+      "threshold": 0.0005,
+      "strip": "sweeps/skeleton-shimmer/lineHeight.png"
+    },
+    "lastLineWidth": {
+      "verdict": "effective",
+      "values": [
+        20,
+        40,
+        60,
+        80,
+        100
+      ],
+      "steps": [
+        0.0236,
+        0.0236,
+        0.0236,
+        0.0236
+      ],
+      "meanEffect": 0.0236,
+      "minStep": 0.0236,
+      "threshold": 0.0005,
+      "strip": "sweeps/skeleton-shimmer/lastLineWidth.png"
+    }
+  }
+}

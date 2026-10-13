@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ultimate Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/static/tokens.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- Design: "Workbench", docs/gate-studio-redesign.md and docs/design/redesign/. Ids are used by app.js; keep them. -->
+  <main id="home" class="home" hidden>
+    <!-- The section rail (docs/gate-studio-redesign.md, section 2); a bottom tab bar on phones. -->
+    <nav class="rail" aria-label="Sections">
+      <h1 class="rail-mark"><span aria-hidden="true">UD</span><span class="visually-hidden">Ultimate Design</span></h1>
+      <a href="#/" id="nav-projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>Projects</span></a>
+      <a href="#/systems" id="nav-systems"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/></svg><span>Systems</span></a>
+      <a href="#/library" id="nav-library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 5l4 1-3 14-4-1z"/></svg><span>Library</span></a>
+      <a href="#/rules" id="nav-rules"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h14v16H5zM9 9h6M9 13h6"/></svg><span>Rules</span><span id="rules-count" class="rail-badge" hidden></span></a>
+    </nav>
+    <div class="home-main">
+      <section class="projects home-body" aria-labelledby="projects-heading">
+        <div class="projects-head">
+          <h2 id="projects-heading" class="projects-title">Projects</h2>
+          <label class="home-search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <span class="visually-hidden">Search projects, systems, techniques and palettes</span>
+            <input id="project-search" type="search" placeholder="Search projects, systems, techniques" autocomplete="off">
+            <kbd aria-hidden="true">/</kbd>
+          </label>
+          <button type="button" id="new-open" class="btn btn-primary">New…</button>
+        </div>
+        <div id="project-tools" class="project-tools" role="group" aria-label="Show"></div>
+        <p id="no-projects" class="empty-note" hidden>No projects yet. Start one with New.</p>
+        <p id="no-matches" class="empty-note" hidden>No projects match.</p>
+        <ul id="project-list" class="project-grid"></ul>
+        <section id="search-more" class="search-more" aria-label="In the library" hidden></section>
+      </section>
+    <section id="library" class="library" aria-labelledby="library-heading" hidden>
+      <div class="library-head">
+        <h2 id="library-heading" class="projects-title">Library</h2>
+        <p class="help">What designs here are built from: verified techniques and Sanzo Wada's colour combinations. Start a new design from any of them.</p>
+        <div class="segmented library-tabs" role="group" aria-label="Library section">
+          <button type="button" data-tab="techniques" aria-pressed="true">Techniques</button>
+          <button type="button" data-tab="palettes" aria-pressed="false">Wada palettes</button>
+        </div>
+      </div>
+      <div id="library-techniques" class="library-panel">
+        <div class="library-filters">
+      <label>Kind
+        <select id="lt-kind" data-filter="kind"><option value="">Any</option></select>
+      </label>
+      <label class="intent-search">What should it do?
+        <input id="lt-search" type="search" placeholder="A design ask, or a name" data-filter="search">
+      </label>
+        </div>
+        <div class="intent-examples" data-intent-examples="lt-search" role="group" aria-label="Example asks"></div>
+        <p id="library-technique-count" class="library-count" role="status"></p>
+        <ul id="library-technique-grid" class="technique-grid library-grid" aria-label="Techniques"></ul>
+      </div>
+      <div id="library-palettes" class="library-panel" hidden>
+        <div class="library-filters">
+      <label>Colours
+        <select id="lp-size" data-filter="size"><option value="">Any</option><option>2</option><option>3</option><option>4</option></select>
+      </label>
+      <label>Harmony
+        <select id="lp-harmony" data-filter="harmony"><option value="">Any</option><option value="same-tone">Same-tone</option><option value="contrast-tone">Contrast-tone</option><option value="neutral-led">Neutral-led</option></select>
+      </label>
+      <label>Value
+        <select id="lp-value" data-filter="value"><option value="">Any</option><option value="light">Light</option><option value="mid">Mid</option><option value="dark">Dark</option><option value="light-and-dark">Light and dark</option></select>
+      </label>
+      <label>Strength
+        <select id="lp-strength" data-filter="strength"><option value="">Any</option><option value="soft">Soft</option><option value="moderate">Moderate</option><option value="strong">Strong</option></select>
+      </label>
+      <label>Colour
+        <input id="lp-search" type="search" placeholder="e.g. indigo" data-filter="search">
+      </label>
+      <label class="check"><input id="lp-text" type="checkbox" data-filter="text"> Has a text pair (4.5:1)</label>
+        </div>
+        <p id="library-palette-count" class="library-count" role="status"></p>
+        <ul id="library-palette-grid" class="palette-grid library-grid" aria-label="Wada palettes"></ul>
+      </div>
+    </section>
+    <!-- Rules design-guide proposes from the user's decisions (docs/gate-rulebook.md, section 15). -->
+    <section id="rules" class="library" aria-labelledby="rules-heading" hidden>
+      <div class="library-head">
+        <h2 id="rules-heading" class="projects-title">Rules</h2>
+        <p class="help">Patterns in your decisions across projects, as design-guide proposes them. Nothing binds until you confirm it in your own words, and the accessibility floor never comes from here.</p>
+      </div>
+      <p id="rules-status" class="library-count" role="status"></p>
+      <ul id="proposal-list" class="proposal-list" aria-label="Proposed rules"></ul>
+      <div id="withheld" class="withheld" hidden>
+        <h3>Held back</h3>
+        <ul id="withheld-list"></ul>
+      </div>
+    </section>
+    </div>
+    <!-- "New…" (section 4): creating things is a sheet, not a permanent column. -->
+    <dialog id="new-dialog" class="new-dialog" aria-labelledby="new-dialog-title">
+      <div class="new-dialog-head">
+        <h2 id="new-dialog-title">New</h2>
+        <button type="button" id="new-close" class="btn-icon" aria-label="Close" title="Close">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="new-dialog-body">
+        <form id="new-project" class="card form-card">
+          <details class="create" open>
+            <summary><h2>New design</h2></summary>
+            <div class="create-fields">
+              <div class="field">
+                <label for="new-name">Name</label>
+                <input id="new-name" name="name" required autocomplete="off" placeholder="e.g. Pricing page">
+              </div>
+              <div class="field">
+                <label for="new-model">Model</label>
+                <select id="new-model" aria-describedby="new-model-help"></select>
+                <p id="new-model-help" class="help">Local models run through Ollama on this machine: free, slower, and
+                  much weaker at design. Loading one can unload another model from memory.</p>
+              </div>
+              <div class="field">
+                <label for="new-ds-select">Design system</label>
+                <select id="new-ds-select"></select>
+              </div>
+              <button type="submit" class="btn btn-primary">Create</button>
+              <div class="starters">
+                <p id="starters-label" class="help">Or start from a prompt, which you can edit before sending:</p>
+                <ul id="starter-list" class="starter-list" aria-labelledby="starters-label"></ul>
+              </div>
+            </div>
+          </details>
+        </form>
+        <form id="new-ds" class="card form-card">
+          <details class="create">
+            <summary><h2>New design system</h2></summary>
+            <div class="create-fields">
+              <div class="field">
+                <label for="ds-name">Name</label>
+                <input id="ds-name" required autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="ds-source">Source</label>
+                <input id="ds-source" autocomplete="off" spellcheck="false" class="mono"
+                       placeholder="/path, GitHub URL or Figma URL" aria-describedby="ds-error ds-source-help">
+                <p id="ds-error" class="error" role="alert"></p>
+                <p id="ds-source-help" class="help">A local folder or file (code, CSS or a screenshot), a GitHub
+                  repository URL (optionally <code>/tree/branch/folder</code>), or a Figma file URL (needs
+                  <code>FIGMA_TOKEN</code>). The agent reads it but never changes it.</p>
+              </div>
+              <div class="field">
+                <span class="field-label" id="ds-files-label">Files</span>
+                <input id="ds-files" type="file" multiple hidden aria-labelledby="ds-files-label"
+                       accept="image/*,.pdf,.docx,.pptx,.xlsx,.txt,.md,.css,.json,.svg">
+                <div class="file-row">
+                  <button type="button" id="ds-files-pick" class="btn btn-secondary btn-small"
+                          aria-describedby="ds-files-names ds-files-help">Choose files</button>
+                  <span id="ds-files-names" class="file-names">None chosen</span>
+                </div>
+                <p id="ds-files-help" class="help">Logos, brand guides, decks, screenshots. Use them with a source or
+                  on their own.</p>
+              </div>
+              <button type="submit" class="btn btn-secondary" id="ds-create">Create</button>
+            </div>
+          </details>
+        </form>
+        <section id="connectors" class="card form-card">
+          <details class="create">
+            <summary><h2>Connectors</h2></summary>
+            <div class="create-fields">
+              <p class="help">MCP servers the design agent can read context from (docs, tickets, data). Turn them on
+                per project in the studio. See <code>docs/connectors.md</code>.</p>
+              <ul id="connector-list" class="connector-list" aria-label="Connectors"></ul>
+              <form id="new-connector" class="create-fields">
+                <div class="field">
+                  <label for="connector-name">Name</label>
+                  <input id="connector-name" required autocomplete="off" spellcheck="false" placeholder="e.g. linear">
+                </div>
+                <div class="field">
+                  <label for="connector-config">Config (JSON, as in <code>.mcp.json</code>)</label>
+                  <textarea id="connector-config" required rows="3" spellcheck="false" class="mono"
+                            aria-describedby="connector-error"
+                            placeholder='{"type": "http", "url": "https://mcp.example.com/mcp"}'></textarea>
+                  <p id="connector-error" class="error" role="alert"></p>
+                </div>
+                <button type="submit" class="btn btn-secondary">Add connector</button>
+              </form>
+            </div>
+          </details>
+        </section>
+      </div>
+    </dialog>
+  </main>
+
+  <div id="studio" class="studio" hidden data-view="chat">
+    <!-- Canvas-first studio (docs/gate-studio-redesign.md, sections 5-8): pages left, the design in
+         the centre on a neutral surround, one right panel (Agent, Inspect, Findings, History). -->
+    <header class="studio-top">
+      <a href="#/" class="back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        All projects
+      </a>
+      <details id="project-menu" class="project-menu">
+        <summary><h1 id="project-name"></h1><span class="visually-hidden">, project settings</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="project-menu-panel">
+          <div class="meta-line">
+            <div class="ds-choice">
+              <label for="model-select">Model</label>
+              <select id="model-select"></select>
+            </div>
+            <p id="link-note" hidden></p>
+            <p id="ds-source-note" hidden></p>
+            <p id="palette-note" class="palette-note" hidden></p>
+            <button type="button" id="palette-browse" class="btn btn-secondary btn-small" aria-haspopup="dialog" hidden>Wada palettes</button>
+            <button type="button" id="technique-browse" class="btn btn-secondary btn-small" aria-haspopup="dialog" hidden>Techniques</button>
+            <p id="usage-note" class="usage-note" hidden></p>
+            <button type="button" id="ds-refresh" class="btn btn-secondary btn-small" hidden>Refresh source</button>
+            <div id="ds-choice" class="ds-choice" hidden>
+              <label for="ds-select">Design system</label>
+              <select id="ds-select"></select>
+            </div>
+            <details id="reference-choice" class="connector-choice reference-choice" hidden>
+              <summary id="reference-summary">References</summary>
+              <div class="reference-body">
+                <p class="help" id="reference-help">Your codebase, a product repo or brand files for the agent to build
+                  from. Read-only.</p>
+                <ul id="reference-list" class="reference-list" aria-label="Connected references" hidden></ul>
+                <form id="reference-form" class="reference-form">
+                  <label for="reference-source" class="visually-hidden">Folder path, GitHub URL or Figma URL</label>
+                  <input id="reference-source" class="mono" autocomplete="off" spellcheck="false"
+                         placeholder="/path, GitHub URL or Figma URL" aria-describedby="reference-error reference-help">
+                  <button type="submit" id="reference-add" class="btn btn-secondary btn-small">Add</button>
+                </form>
+                <p id="reference-error" class="error" role="alert"></p>
+              </div>
+            </details>
+            <details id="connector-choice" class="connector-choice" hidden>
+              <summary id="connector-summary">Connectors</summary>
+              <fieldset id="connector-options" class="connector-options">
+                <legend class="visually-hidden">Connectors for this project</legend>
+              </fieldset>
+            </details>
+          </div>
+        </div>
+      </details>
+      <span id="project-chip" class="project-chip" hidden></span>
+      <div class="toolbar">
+        <div class="segmented view-mode" role="group" aria-label="Canvas view">
+          <button type="button" id="view-page" aria-pressed="true">Page</button>
+          <button type="button" id="view-board" aria-pressed="false">Board</button>
+        </div>
+        <div class="segmented viewport" role="group" aria-label="Viewport width">
+          <button type="button" data-width="1440" aria-pressed="true" title="1440px">Desktop</button>
+          <button type="button" data-width="834" aria-pressed="false" title="834px">Tablet</button>
+          <button type="button" data-width="390" aria-pressed="false" title="390px">Mobile</button>
+        </div>
+        <label for="viewport-select" class="visually-hidden">Viewport width</label>
+        <select id="viewport-select" class="viewport-select">
+          <option value="1440">Desktop 1440</option>
+          <option value="834">Tablet 834</option>
+          <option value="390">Mobile 390</option>
+        </select>
+        <div id="page-picker" class="page-picker" hidden>
+          <label for="page-select" class="visually-hidden">Page</label>
+          <select id="page-select"></select>
+        </div>
+        <output id="zoom" class="zoom"></output>
+        <button type="button" id="reload" class="btn-icon" aria-label="Reload" title="Reload">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg>
+        </button>
+        <button type="button" id="comment-mode" class="btn btn-secondary btn-toggle" aria-pressed="false">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+          <span>Comment</span>
+        </button>
+        <button type="button" id="edit-mode" class="btn btn-secondary btn-toggle" aria-pressed="false">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M14 6l4 4"/></svg>
+          <span>Edit</span>
+        </button>
+        <button type="button" id="draw-mode" class="btn-icon btn-toggle-icon" aria-pressed="false" aria-label="Draw" title="Draw">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17c3-4 5-4 7-1s4 3 7-2 4-4 4-4"/></svg>
+        </button>
+        <button type="button" id="present" class="btn-icon" aria-label="Present" title="Present">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5l11 7-11 7V5z"/></svg>
+        </button>
+        <a id="open-tab" class="btn-icon" target="_blank" rel="noopener" aria-label="Open in new tab" title="Open in new tab">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+        </a>
+        <button type="button" id="priority-mode" class="btn btn-secondary btn-small priority-toggle" aria-pressed="false" title="Show priority marks" hidden>Priority marks</button>
+        <!-- Export and Approve for build wrap together and keep to the right end of their row. -->
+        <div class="top-actions">
+        <details class="export" id="export">
+          <summary>
+            Export
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="menu">
+            <a data-format="html" download>HTML file (single file)</a>
+            <a data-format="png" download>PNG (full page)</a>
+            <a data-format="pdf" download>PDF of this page</a>
+            <a data-format="frames" download>PDF of all board frames</a>
+            <a data-format="zip" download>ZIP of project files</a>
+            <button type="button" id="handoff">Write handoff notes (chat)</button>
+          </div>
+        </details>
+        <!-- The user confirms a design here; Claude Code (the plugin) waits for this before building it. -->
+        <button type="button" id="approve" class="btn btn-primary approve" hidden>Approve for build</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="view-switch" role="group" aria-label="Show">
+      <button type="button" data-view="chat" aria-pressed="true">Chat</button>
+      <button type="button" data-view="canvas" aria-pressed="false">Canvas</button>
+    </div>
+
+    <div class="studio-body">
+      <nav id="outline" class="outline" aria-label="Pages and options">
+        <div id="outline-pages"></div>
+        <div class="options-bar" id="options-bar" hidden>
+          <span id="options-heading">Options</span>
+          <ul id="option-list" class="option-list" aria-labelledby="options-heading"></ul>
+        </div>
+      </nav>
+
+      <section class="canvas-pane" aria-label="Canvas">
+        <div class="canvas-stage" id="canvas-stage">
+          <p id="stage-pill" class="stage-pill" role="status" hidden></p>
+          <div id="canvas-empty" class="canvas-empty" hidden>
+            <svg width="72" height="56" viewBox="0 0 72 56" fill="none" aria-hidden="true"><rect x="1" y="1" width="70" height="54" rx="6" stroke="currentColor" stroke-dasharray="4 4"/><rect x="12" y="14" width="30" height="4" rx="2" fill="currentColor" opacity=".35"/><rect x="12" y="24" width="48" height="18" rx="3" fill="currentColor" opacity=".35"/></svg>
+            <p class="canvas-empty-title">No design yet.</p>
+            <p>Describe one in the chat.</p>
+          </div>
+          <div id="board" class="board" hidden tabindex="0" aria-label="Board: arrow keys pan, plus and minus zoom, 0 fits">
+            <div id="board-surface" class="board-surface"></div>
+            <p id="board-problems" class="board-problems" role="status" hidden></p>
+            <div class="board-zoom" role="group" aria-label="Board zoom">
+              <button type="button" id="board-zoom-out" class="btn-icon" aria-label="Zoom out" title="Zoom out">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>
+              </button>
+              <output id="board-zoom-level" class="board-zoom-level">25%</output>
+              <button type="button" id="board-zoom-in" class="btn-icon" aria-label="Zoom in" title="Zoom in">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg>
+              </button>
+              <button type="button" id="board-fit" class="btn btn-secondary btn-small">Fit</button>
+            </div>
+          </div>
+          <div id="draw-bar" class="draw-bar" role="toolbar" aria-label="Drawing" hidden>
+            <button type="button" class="draw-swatch" data-color="red" aria-pressed="true" aria-label="Red pen"></button>
+            <button type="button" class="draw-swatch" data-color="blue" aria-pressed="false" aria-label="Blue pen"></button>
+            <button type="button" id="draw-undo" class="btn btn-secondary btn-small">Undo</button>
+            <button type="button" id="draw-clear" class="btn btn-secondary btn-small">Clear</button>
+            <button type="button" id="draw-attach" class="btn btn-primary btn-small">Attach sketch</button>
+          </div>
+          <section id="compare-view" class="compare-view" aria-labelledby="compare-label" hidden>
+            <div class="compare-bar">
+              <h2 id="compare-label" class="compare-label"></h2>
+              <span id="compare-status" class="compare-status" role="status"></span>
+              <button type="button" id="compare-highlight" class="btn btn-secondary btn-small" aria-pressed="true">Highlight changes</button>
+              <button type="button" id="compare-close" class="btn btn-secondary btn-small">Close</button>
+            </div>
+            <ul id="compare-files" class="compare-files" aria-label="Files changed"></ul>
+            <div class="compare-scroll" tabindex="0" aria-label="The two versions, side by side">
+              <figure class="compare-side"><figcaption id="compare-a-label"></figcaption>
+                <div class="compare-shot"><img id="compare-a" alt=""><div class="compare-boxes" id="compare-a-boxes"></div></div></figure>
+              <figure class="compare-side"><figcaption id="compare-b-label"></figcaption>
+                <div class="compare-shot"><img id="compare-b" alt=""><div class="compare-boxes" id="compare-b-boxes"></div></div></figure>
+            </div>
+          </section>
+          <div class="canvas-box" id="canvas-box">
+            <canvas id="draw-layer" class="draw-layer" aria-hidden="true" hidden></canvas>
+            <iframe id="canvas" title="Prototype preview" sandbox="allow-scripts allow-forms allow-popups allow-modals"></iframe>
+          </div>
+          <aside class="tweaks-panel" id="tweaks-panel" aria-labelledby="tweaks-heading" hidden>
+            <div class="tweaks-head">
+              <h2 id="tweaks-heading">Tweaks</h2>
+              <span id="tweaks-dirty" class="tag" hidden>Unsaved</span>
+              <button type="button" id="tweaks-collapse" class="btn-icon btn-icon-sm" aria-label="Collapse Tweaks" title="Collapse Tweaks" aria-expanded="true" aria-controls="tweaks-panel">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>
+              </button>
+            </div>
+            <form id="tweaks-form" class="tweaks-form"></form>
+            <div class="tweaks-actions">
+              <button type="button" id="tweaks-reset" class="btn btn-secondary">Reset</button>
+              <button type="button" id="tweaks-keep" class="btn btn-primary">Keep values</button>
+            </div>
+          </aside>
+          <button type="button" id="tweaks-open" class="tweaks-pill" aria-expanded="false" aria-controls="tweaks-panel" hidden>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+            Tweaks
+          </button>
+        </div>
+      </section>
+
+      <button type="button" id="chat-resize" class="resize-handle" aria-label="Resize panel"><span aria-hidden="true"></span></button>
+
+      <section class="chat-pane" aria-label="Agent and inspector">
+        <div class="side-tabs" role="tablist" aria-label="Panel">
+          <button type="button" role="tab" id="tab-agent-btn" aria-controls="tab-agent" aria-selected="true">Agent</button>
+          <button type="button" role="tab" id="tab-inspect-btn" aria-controls="tab-inspect" aria-selected="false" tabindex="-1">Inspect</button>
+          <button type="button" role="tab" id="tab-findings-btn" aria-controls="tab-findings" aria-selected="false" tabindex="-1">Findings<span id="findings-count" class="tab-count" hidden></span></button>
+          <button type="button" role="tab" id="tab-history-btn" aria-controls="tab-history" aria-selected="false" tabindex="-1">History</button>
+        </div>
+        <div id="tab-agent" class="side-panel agent-panel" role="tabpanel" aria-labelledby="tab-agent-btn">
+        <div id="chat-log" class="chat-log" role="log" aria-live="polite" aria-label="Conversation" tabindex="0"></div>
+        <section id="comments" class="panel comments" aria-labelledby="comments-heading" hidden>
+          <div class="panel-head">
+            <h2 id="comments-heading">Open comments</h2>
+            <p>Ticked ones go with your next message.</p>
+          </div>
+          <ol id="comment-list" class="comment-list"></ol>
+        </section>
+        </div>
+        <div id="tab-inspect" class="side-panel" role="tabpanel" aria-labelledby="tab-inspect-btn" hidden>
+          <div id="inspect-empty" class="side-empty">
+            <p>Turn on Edit to select elements on the page and change them here.</p>
+            <button type="button" id="inspect-edit" class="btn btn-secondary">Turn on Edit</button>
+          </div>
+          <aside class="tweaks-panel edit-panel" id="edit-panel" aria-labelledby="edit-heading" hidden>
+            <div class="tweaks-head">
+              <h2 id="edit-heading">Edit</h2>
+              <span id="edit-count" class="tag" hidden></span>
+            </div>
+            <p id="edit-target" class="help">Click an element to select it; shift-click to add more. Drag to
+              move. Double-click text to change it. Drag the corner handle to resize.</p>
+            <div id="edit-align-group" class="edit-align" role="group" aria-label="Align selected elements" hidden>
+              <button type="button" class="btn-icon" data-edge="left" aria-label="Align left edges" title="Align left edges">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 3v18"/><rect x="8" y="6" width="12" height="4" rx="1"/><rect x="8" y="14" width="7" height="4" rx="1"/></svg>
+              </button>
+              <button type="button" class="btn-icon" data-edge="center" aria-label="Align horizontal centres" title="Align horizontal centres">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18"/><rect x="5" y="6" width="14" height="4" rx="1"/><rect x="8" y="14" width="8" height="4" rx="1"/></svg>
+              </button>
+              <button type="button" class="btn-icon" data-edge="right" aria-label="Align right edges" title="Align right edges">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20 3v18"/><rect x="4" y="6" width="12" height="4" rx="1"/><rect x="9" y="14" width="7" height="4" rx="1"/></svg>
+              </button>
+              <button type="button" class="btn-icon" data-edge="top" aria-label="Align top edges" title="Align top edges">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 4h18"/><rect x="6" y="8" width="4" height="12" rx="1"/><rect x="14" y="8" width="4" height="7" rx="1"/></svg>
+              </button>
+              <button type="button" class="btn-icon" data-edge="middle" aria-label="Align vertical centres" title="Align vertical centres">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 12h18"/><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="8" width="4" height="8" rx="1"/></svg>
+              </button>
+              <button type="button" class="btn-icon" data-edge="bottom" aria-label="Align bottom edges" title="Align bottom edges">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 20h18"/><rect x="6" y="4" width="4" height="12" rx="1"/><rect x="14" y="9" width="4" height="7" rx="1"/></svg>
+              </button>
+              <div class="edit-wrap-row">
+                <button type="button" id="edit-wrap-flex" class="btn btn-secondary btn-small">Wrap in row</button>
+                <button type="button" id="edit-wrap-grid" class="btn btn-secondary btn-small">Wrap in grid</button>
+              </div>
+            </div>
+            <form id="edit-fields" class="tweaks-form edit-fields" hidden>
+              <div class="pair">
+                <div><label for="edit-width">Width</label><input id="edit-width" type="number" min="0" data-prop="width" placeholder="auto"></div>
+                <div><label for="edit-height">Height</label><input id="edit-height" type="number" min="0" data-prop="height" placeholder="auto"></div>
+              </div>
+              <div class="pair">
+                <div><label for="edit-pad-y">Padding ↕</label><input id="edit-pad-y" type="number" min="0" data-prop="padding-top padding-bottom"></div>
+                <div><label for="edit-pad-x">Padding ↔</label><input id="edit-pad-x" type="number" min="0" data-prop="padding-left padding-right"></div>
+              </div>
+              <div class="pair">
+                <div><label for="edit-mar-y">Margin ↕</label><input id="edit-mar-y" type="number" data-prop="margin-top margin-bottom"></div>
+                <div><label for="edit-mar-x">Margin ↔</label><input id="edit-mar-x" type="number" data-prop="margin-left margin-right"></div>
+              </div>
+              <div class="pair">
+                <div data-when="layout"><label for="edit-gap">Gap</label><input id="edit-gap" type="number" min="0" data-prop="gap"></div>
+                <div><label for="edit-radius">Radius</label><input id="edit-radius" type="number" min="0" data-prop="border-radius"></div>
+              </div>
+              <div class="pair" data-when="text">
+                <div><label for="edit-font">Font size</label><input id="edit-font" type="number" min="1" data-prop="font-size"></div>
+                <div><label for="edit-align">Text align</label>
+                  <select id="edit-align" data-prop="text-align">
+                    <option value="left">Left</option><option value="center">Center</option>
+                    <option value="right">Right</option><option value="justify">Justify</option>
+                  </select></div>
+              </div>
+              <div class="pair">
+                <div><label for="edit-x">Move ↔</label><input id="edit-x" type="number" data-prop="translate"></div>
+                <div><label for="edit-y">Move ↕</label><input id="edit-y" type="number" data-prop="translate"></div>
+              </div>
+              <div class="color-field">
+                <label for="edit-color">Text colour</label>
+                <div class="color-row">
+                  <input id="edit-color" type="color" data-prop="color">
+                  <select id="edit-color-token" data-prop="color" aria-label="Text colour from the design system"></select>
+                </div>
+              </div>
+              <div class="color-field">
+                <label for="edit-bg">Fill</label>
+                <div class="color-row">
+                  <input id="edit-bg" type="color" data-prop="background-color">
+                  <select id="edit-bg-token" data-prop="background-color" aria-label="Fill from the design system"></select>
+                </div>
+              </div>
+              <fieldset class="edit-type" data-when="text">
+                <legend>Type</legend>
+                <div class="field-row">
+                  <label for="edit-font-family">Font</label>
+                  <select id="edit-font-family" data-prop="font-family"></select>
+                </div>
+                <div class="field-row" id="edit-font-token-row" hidden>
+                  <label for="edit-font-token">Size token</label>
+                  <select id="edit-font-token" data-prop="font-size"></select>
+                </div>
+                <div class="pair">
+                  <div><label for="edit-weight">Weight</label>
+                    <select id="edit-weight" data-prop="font-weight">
+                      <option>100</option><option>200</option><option>300</option><option>400</option><option>500</option>
+                      <option>600</option><option>700</option><option>800</option><option>900</option>
+                    </select></div>
+                  <div><label for="edit-tracking">Tracking</label><input id="edit-tracking" type="number" step="0.1" data-prop="letter-spacing"></div>
+                </div>
+                <div class="field-row">
+                  <label for="edit-leading">Line height</label>
+                  <input id="edit-leading" type="number" min="0.8" max="3" step="0.05" data-prop="line-height" placeholder="normal">
+                </div>
+              </fieldset>
+              <fieldset class="edit-motion">
+                <legend>Motion</legend>
+                <div class="pair">
+                  <div><label for="edit-motion-enter">Entrance</label>
+                    <select id="edit-motion-enter" data-prop="motion-enter">
+                      <option value="none">None</option><option value="fade">Fade in</option>
+                      <option value="rise">Rise</option><option value="scale">Scale up</option>
+                    </select></div>
+                  <div><label for="edit-motion-hover">On hover</label>
+                    <select id="edit-motion-hover" data-prop="motion-hover">
+                      <option value="none">None</option><option value="lift">Lift</option>
+                      <option value="grow">Grow</option><option value="dim">Dim</option>
+                    </select></div>
+                </div>
+                <div class="field-row">
+                  <label for="edit-motion-speed">Speed</label>
+                  <select id="edit-motion-speed" data-prop="motion-speed">
+                    <option value="quick">Quick</option><option value="normal">Normal</option><option value="slow">Slow</option>
+                  </select>
+                  <button type="button" id="edit-motion-play" class="btn btn-secondary btn-small">Play</button>
+                </div>
+                <p class="edit-note">Plays for people who haven't asked their system for reduced motion.</p>
+              </fieldset>
+              <button type="button" id="edit-text" class="btn btn-secondary">Edit text</button>
+              <div class="edit-actions">
+                <button type="button" id="edit-technique" class="btn btn-secondary btn-small" aria-haspopup="dialog">Apply technique…</button>
+                <button type="button" id="edit-duplicate" class="btn btn-secondary btn-small">Duplicate</button>
+                <button type="button" id="edit-delete" class="btn btn-secondary btn-small danger">Delete</button>
+              </div>
+            </form>
+            <div class="tweaks-actions">
+              <button type="button" id="edit-discard" class="btn btn-secondary">Discard</button>
+              <button type="button" id="edit-save" class="btn btn-primary">Save edits</button>
+            </div>
+          </aside>
+        </div>
+        <div id="tab-findings" class="side-panel" role="tabpanel" aria-labelledby="tab-findings-btn" hidden>
+          <p id="findings-empty" class="side-empty">design-guide's rules run on the pages the agent changes, after each turn. Nothing checked yet.</p>
+          <div id="findings-panel"></div>
+        </div>
+        <div id="tab-history" class="side-panel" role="tabpanel" aria-labelledby="tab-history-btn" hidden>
+          <ol id="history-list" class="history-list" aria-label="Versions"></ol>
+          <div class="history-actions">
+            <button type="button" id="compare" class="btn btn-secondary">Compare</button>
+            <button type="button" id="branch" class="btn btn-secondary">Branch from here</button>
+            <button type="button" id="restore" class="btn btn-primary" hidden>Restore this version</button>
+          </div>
+        </div>
+        <!-- Under every tab: the agent's composer, and what is waiting on the user (a comment being
+             written, a page to capture, the reason for a change just made). -->
+        <div class="side-foot">
+          <div id="side-prompt" class="side-prompt"></div>
+          <form id="comment-form" class="panel comment-form" hidden>
+            <label for="comment-note" id="comment-target"></label>
+            <textarea id="comment-note" rows="2" required></textarea>
+            <div class="row end">
+              <button type="button" id="comment-cancel" class="btn btn-secondary">Cancel</button>
+              <button type="submit" class="btn btn-primary">Add comment</button>
+            </div>
+          </form>
+          <form id="capture-form" class="panel capture-form" hidden>
+            <label for="capture-url">Capture a web page as a reference</label>
+            <input id="capture-url" type="url" placeholder="https://example.com" autocomplete="off">
+            <div class="row end">
+              <button type="button" id="capture-cancel" class="btn btn-secondary">Cancel</button>
+              <button type="submit" id="capture-go" class="btn btn-primary">Capture</button>
+            </div>
+          </form>
+          <form id="chat-form" class="composer">
+            <ul id="attachment-list" class="attachment-list" aria-label="Attached to your next message" hidden></ul>
+            <label for="chat-input" class="visually-hidden">Message</label>
+            <textarea id="chat-input" rows="2" placeholder="Describe a prototype, or what to change"></textarea>
+            <div class="composer-row">
+              <input id="attach-input" type="file" multiple hidden aria-label="Files to attach"
+                     accept="image/*,.pdf,.docx,.pptx,.xlsx,.txt,.md,.csv,.json,.html,.css,.js,.svg">
+              <button type="button" id="attach" class="btn-icon" aria-label="Attach files" title="Attach files">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5l-8.6 8.6a5 5 0 0 1-7.1-7.1l8.6-8.6a3.3 3.3 0 0 1 4.7 4.7l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4l7.9-7.9"/></svg>
+              </button>
+              <button type="button" id="capture" class="btn-icon" aria-label="Capture a web page" title="Capture a web page">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+              </button>
+              <button type="button" id="plan-first" class="btn btn-secondary btn-small plan-first" aria-pressed="false"
+                      title="The agent shows a plan to approve before it builds">Plan first</button>
+              <span id="status" role="status"></span>
+              <button type="button" id="stop" class="btn btn-secondary btn-stop" hidden>
+                <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><rect width="10" height="10" rx="1.5" fill="currentColor"/></svg>
+                Stop
+              </button>
+              <button type="submit" id="send" class="btn-icon btn-send" aria-label="Send" title="Send">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <dialog id="palette-browser" class="library-dialog" aria-labelledby="palette-browser-title">
+    <div class="library-dialog-head">
+      <div>
+        <h2 id="palette-browser-title">Wada palettes</h2>
+        <p class="help">Sanzo Wada's 348 colour combinations. Choose one and the agent restyles this design with it; the message is in the chat box for you to edit and send.</p>
+      </div>
+      <button type="button" id="palette-close" class="btn-icon" aria-label="Close" title="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="library-filters">
+      <label>Colours
+        <select id="pf-size" data-filter="size"><option value="">Any</option><option>2</option><option>3</option><option>4</option></select>
+      </label>
+      <label>Harmony
+        <select id="pf-harmony" data-filter="harmony"><option value="">Any</option><option value="same-tone">Same-tone</option><option value="contrast-tone">Contrast-tone</option><option value="neutral-led">Neutral-led</option></select>
+      </label>
+      <label>Value
+        <select id="pf-value" data-filter="value"><option value="">Any</option><option value="light">Light</option><option value="mid">Mid</option><option value="dark">Dark</option><option value="light-and-dark">Light and dark</option></select>
+      </label>
+      <label>Strength
+        <select id="pf-strength" data-filter="strength"><option value="">Any</option><option value="soft">Soft</option><option value="moderate">Moderate</option><option value="strong">Strong</option></select>
+      </label>
+      <label>Colour
+        <input id="pf-search" type="search" placeholder="e.g. indigo" data-filter="search">
+      </label>
+      <label class="check"><input id="pf-text" type="checkbox" data-filter="text"> Has a text pair (4.5:1)</label>
+    </div>
+    <p id="palette-count" class="library-count" role="status"></p>
+    <ul id="palette-grid" class="palette-grid library-grid" aria-labelledby="palette-browser-title"></ul>
+  </dialog>
+  <dialog id="technique-browser" class="library-dialog" aria-labelledby="technique-browser-title">
+    <div class="library-dialog-head">
+      <div>
+        <h2 id="technique-browser-title">Techniques</h2>
+        <p id="technique-browser-help" class="help">Verified visual techniques from the library: textures, patterns, effects, motion, charts and 3D. Choose one and the agent builds it into this design; the message is in the chat box for you to edit and send.</p>
+      </div>
+      <button type="button" id="technique-close" class="btn-icon" aria-label="Close" title="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div id="technique-list" class="library-view">
+      <div class="library-filters">
+      <label>Kind
+        <select id="tf-kind" data-filter="kind"><option value="">Any</option></select>
+      </label>
+      <label class="intent-search">What should it do?
+        <input id="tf-search" type="search" placeholder="A design ask, or a name" data-filter="search">
+      </label>
+      </div>
+      <div class="intent-examples" data-intent-examples="tf-search" role="group" aria-label="Example asks"></div>
+      <p id="technique-count" class="library-count" role="status"></p>
+      <ul id="technique-grid" class="technique-grid library-grid" aria-labelledby="technique-browser-title"></ul>
+    </div>
+    <div id="technique-detail" class="technique-detail" hidden>
+      <button type="button" id="technique-back" class="btn btn-secondary btn-small">&larr; All techniques</button>
+      <div class="technique-detail-body">
+        <iframe id="technique-demo" class="technique-demo" title="Live demo" sandbox="allow-scripts"></iframe>
+        <div class="technique-about">
+          <h3 id="technique-name"></h3>
+          <p id="technique-kind" class="technique-kind"></p>
+          <p id="technique-description"></p>
+          <p id="technique-target" class="technique-target" hidden></p>
+          <div class="row">
+            <button type="button" id="technique-use" class="btn btn-primary">Use on this design</button>
+          </div>
+          <details class="technique-notes">
+            <summary>How it works</summary>
+            <pre id="technique-notes"></pre>
+          </details>
+          <details class="technique-notes">
+            <summary>What can be tuned</summary>
+            <ul id="technique-props" class="technique-props"></ul>
+          </details>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <div id="present-view" class="present-view" role="dialog" aria-modal="true" aria-labelledby="present-title" tabindex="-1" hidden>
+    <div class="present-stage"><iframe id="present-frame" title="Presentation"
+      sandbox="allow-scripts allow-forms allow-popups allow-modals"></iframe></div>
+    <div class="present-bar">
+      <button type="button" id="present-prev" class="btn-icon" aria-label="Previous frame" title="Previous frame">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <p id="present-title" class="present-title"></p>
+      <button type="button" id="present-next" class="btn-icon" aria-label="Next frame" title="Next frame">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <button type="button" id="present-exit" class="btn btn-secondary btn-small">Exit</button>
+    </div>
+  </div>
+
+  <script src="/static/markdown.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

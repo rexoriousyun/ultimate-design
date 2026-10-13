@@ -1,0 +1,102 @@
+{
+  "id": "pattern-hatch",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "343cb1597459",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "size": {
+      "verdict": "effective",
+      "values": [
+        3,
+        4,
+        6,
+        8,
+        12,
+        16,
+        24
+      ],
+      "steps": [
+        0.4521,
+        0.4231,
+        0.3645,
+        0.298,
+        0.2414,
+        0.1724
+      ],
+      "meanEffect": 0.3253,
+      "minStep": 0.1724,
+      "threshold": 0.0005,
+      "strip": "sweeps/pattern-hatch/size.png"
+    },
+    "weight": {
+      "verdict": "effective",
+      "values": [
+        0.5,
+        1,
+        1.5,
+        2,
+        3,
+        4
+      ],
+      "steps": [
+        0.195,
+        0.2253,
+        0.233,
+        0.2438,
+        0.2055
+      ],
+      "meanEffect": 0.2205,
+      "minStep": 0.195,
+      "threshold": 0.0005,
+      "strip": "sweeps/pattern-hatch/weight.png"
+    },
+    "angle": {
+      "verdict": "effective",
+      "values": [
+        0,
+        15,
+        30,
+        45,
+        60,
+        90
+      ],
+      "steps": [
+        0.3538,
+        0.3534,
+        0.3523,
+        0.3522,
+        0.3537
+      ],
+      "meanEffect": 0.3531,
+      "minStep": 0.3522,
+      "threshold": 0.0005,
+      "identical": [
+        {
+          "values": [
+            0,
+            180
+          ],
+          "diff": 0.0193,
+          "holds": true
+        }
+      ],
+      "strip": "sweeps/pattern-hatch/angle.png"
+    }
+  }
+}

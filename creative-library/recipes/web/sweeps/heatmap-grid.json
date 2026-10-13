@@ -1,0 +1,102 @@
+{
+  "id": "heatmap-grid",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "fb4b2fe0446c",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "columns": {
+      "verdict": "effective",
+      "values": [
+        8,
+        16,
+        26,
+        40,
+        52
+      ],
+      "steps": [
+        0.1547,
+        0.2345,
+        0.3879,
+        0.3953
+      ],
+      "meanEffect": 0.2931,
+      "minStep": 0.1547,
+      "threshold": 0.0005,
+      "strip": "sweeps/heatmap-grid/columns.png"
+    },
+    "cell": {
+      "verdict": "effective",
+      "values": [
+        6,
+        9,
+        13,
+        16,
+        20
+      ],
+      "steps": [
+        0.1976,
+        0.3117,
+        0.4141,
+        0.5413
+      ],
+      "meanEffect": 0.3662,
+      "minStep": 0.1976,
+      "threshold": 0.0005,
+      "strip": "sweeps/heatmap-grid/cell.png"
+    },
+    "gap": {
+      "verdict": "effective",
+      "values": [
+        0,
+        1,
+        3,
+        4,
+        6
+      ],
+      "steps": [
+        0.2452,
+        0.3362,
+        0.3043,
+        0.3672
+      ],
+      "meanEffect": 0.3132,
+      "minStep": 0.2452,
+      "threshold": 0.0005,
+      "strip": "sweeps/heatmap-grid/gap.png"
+    },
+    "radius": {
+      "verdict": "effective",
+      "values": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "steps": [
+        0.0152,
+        0.0369,
+        0.0783
+      ],
+      "meanEffect": 0.0435,
+      "minStep": 0.0152,
+      "threshold": 0.0005,
+      "strip": "sweeps/heatmap-grid/radius.png"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "id": "halftone",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "278eb66df4b5",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "cell": {
+      "verdict": "effective",
+      "values": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        12,
+        16,
+        24,
+        32
+      ],
+      "steps": [
+        0.1909,
+        0.1715,
+        0.1461,
+        0.1215,
+        0.1116,
+        0.099,
+        0.0944,
+        0.088
+      ],
+      "meanEffect": 0.1279,
+      "minStep": 0.088,
+      "threshold": 0.0005,
+      "strip": "sweeps/halftone/cell.png"
+    },
+    "angle": {
+      "verdict": "effective",
+      "values": [
+        0,
+        15,
+        30,
+        45,
+        60,
+        75
+      ],
+      "steps": [
+        0.1168,
+        0.1172,
+        0.1177,
+        0.1181,
+        0.1172
+      ],
+      "meanEffect": 0.1174,
+      "minStep": 0.1168,
+      "threshold": 0.0005,
+      "identical": [
+        {
+          "values": [
+            0,
+            90
+          ],
+          "diff": 0.0008,
+          "holds": true
+        }
+      ],
+      "strip": "sweeps/halftone/angle.png"
+    },
+    "invert": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.1895
+      ],
+      "meanEffect": 0.1895,
+      "minStep": 0.1895,
+      "threshold": 0.0005,
+      "strip": "sweeps/halftone/invert.png"
+    }
+  }
+}

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A · Workbench — studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  /* Direction A, Workbench: zero-chroma greys so the chrome never tints the work; ink is the
+     primary, one blue marks selection and focus. Dense 13px UI. */
+  :root {
+    --bg: #f4f4f4; --panel: #ffffff; --raised: #ececec; --line: #e2e2e2; --line-strong: #c9c9c9;
+    --text: #171717; --dim: #5e5e5e; --ink: #171717; --on-ink: #ffffff;
+    --select: #1f55e0; --select-soft: #eaf0ff; --fail: #b4231a; --ok: #1d6b3a;
+    --surround: #e4e4e4;
+    --sans: "Geist", system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; height: 100vh; overflow: hidden; background: var(--bg); color: var(--text);
+         font: 13px/1.45 var(--sans); display: grid; grid-template-columns: 60px 1fr; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  code { font: 12px var(--mono); }
+  .rail { background: var(--panel); border-right: 1px solid var(--line); display: flex; flex-direction: column;
+          align-items: center; padding: 10px 0; gap: 4px; }
+  .mark { width: 32px; height: 32px; border-radius: 8px; background: var(--ink); color: var(--on-ink);
+          display: grid; place-items: center; font: 600 12px var(--mono); margin-bottom: 10px; }
+  .rail a { width: 52px; min-height: 48px; border-radius: 8px; display: grid; justify-items: center; align-content: center; gap: 2px;
+            color: var(--dim); text-decoration: none; font-size: 10px; }
+  .rail a svg { width: 18px; height: 18px; }
+  .rail a[aria-current] { background: var(--raised); color: var(--text); }
+  .rail .badge { font: 500 10px var(--mono); background: var(--fail); color: #fff; border-radius: 99px; padding: 0 5px; }
+  .app { display: grid; grid-template-rows: 48px 1fr; min-width: 0; min-height: 0; }
+  .top { display: flex; align-items: center; gap: 8px; padding: 0 12px; background: var(--panel); border-bottom: 1px solid var(--line); }
+  .crumb { display: flex; align-items: baseline; gap: 6px; font-weight: 600; font-size: 14px; }
+  .crumb span { color: var(--dim); font-weight: 400; font-size: 13px; }
+  .chip { font: 500 11px var(--mono); border: 1px solid var(--line-strong); border-radius: 99px; padding: 2px 8px; color: var(--dim); }
+  .seg { display: flex; background: var(--raised); border-radius: 8px; padding: 2px; }
+  .seg button { border: 0; background: none; padding: 4px 10px; border-radius: 6px; min-height: 28px; color: var(--dim); }
+  .seg button[aria-pressed="true"] { background: var(--panel); color: var(--text); box-shadow: 0 1px 2px rgb(0 0 0 / .1); }
+  .spacer { flex: 1; }
+  .btn { border: 1px solid var(--line-strong); background: var(--panel); border-radius: 8px; padding: 0 12px; min-height: 32px; }
+  .btn.primary { background: var(--ink); color: var(--on-ink); border-color: var(--ink); font-weight: 600; }
+  .work { display: grid; grid-template-columns: 220px 1fr 360px; min-height: 0; }
+  .pages { background: var(--panel); border-right: 1px solid var(--line); padding: 12px 8px; overflow: auto; }
+  h2.label { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--dim); margin: 8px 8px 6px; }
+  .pages ul { list-style: none; margin: 0 0 14px; padding: 0; }
+  .pages li { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; min-height: 32px; }
+  .pages li[aria-current] { background: var(--select-soft); color: var(--select); font-weight: 500; }
+  .pages li img { width: 36px; height: 23px; object-fit: cover; border-radius: 3px; border: 1px solid var(--line); }
+  .pages .n { margin-left: auto; font: 11px var(--mono); color: var(--dim); }
+  .canvas { background: var(--surround); display: grid; place-items: center; padding: 36px 28px; min-width: 0; position: relative; }
+  .frame { width: min(100%, calc((100vh - 130px) * 1.6)); box-shadow: 0 1px 2px rgb(0 0 0 / .12), 0 8px 24px rgb(0 0 0 / .08); }
+  .frame img { display: block; width: 100%; }
+  .frame-label { position: absolute; top: 12px; left: 28px; font: 11px var(--mono); color: var(--dim); }
+  .side { background: var(--panel); border-left: 1px solid var(--line); display: grid; grid-template-rows: auto 1fr auto; min-height: 0; }
+  .tabs { display: flex; gap: 2px; padding: 6px 8px 0; border-bottom: 1px solid var(--line); }
+  .tabs button { border: 0; background: none; padding: 8px 10px; min-height: 36px; color: var(--dim); border-bottom: 2px solid transparent; }
+  .tabs button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--ink); font-weight: 500; }
+  .tabs .count { font: 10px var(--mono); background: #fbe9e7; color: var(--fail); border-radius: 99px; padding: 1px 6px; margin-left: 4px; }
+  .thread { padding: 14px; overflow: auto; display: grid; gap: 12px; align-content: start; }
+  .msg-user { justify-self: end; background: var(--raised); border-radius: 10px 10px 2px 10px; padding: 8px 10px; max-width: 85%; }
+  .msg-agent p { margin: 0 0 6px; }
+  .steps { display: flex; align-items: center; gap: 8px; font: 11px var(--mono); color: var(--dim); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+  .steps .okdot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
+  .finding { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 2px; }
+  .finding code { font-size: 11px; color: var(--dim); }
+  .finding b { color: var(--fail); font-weight: 600; }
+  .composer { border-top: 1px solid var(--line); padding: 10px; }
+  .composer label { display: block; font-size: 12px; color: var(--dim); margin-bottom: 4px; }
+  .composer textarea { width: 100%; border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: inherit; resize: none; min-height: 60px; }
+</style>
+</head>
+<body>
+  <nav class="rail" aria-label="Sections">
+    <div class="mark" aria-hidden="true">UD</div>
+    <a href="a-home.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Projects</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/></svg>Systems</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 5l4 1-3 14-4-1z"/></svg>Library</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h14v16H5zM9 9h6M9 13h6"/></svg>Rules <span class="badge">3</span></a>
+  </nav>
+  <div class="app">
+    <header class="top">
+      <div class="crumb" data-priority="3">Groove Cellar <span>/ index.html</span></div>
+      <span class="chip">no system · wada 112</span>
+      <div class="spacer"></div>
+      <div class="seg" role="group" aria-label="View"><button aria-pressed="true">Page</button><button aria-pressed="false">Board</button></div>
+      <div class="seg" role="group" aria-label="Width"><button aria-pressed="true">1440</button><button aria-pressed="false">834</button><button aria-pressed="false">390</button></div>
+      <div class="spacer"></div>
+      <button class="btn">Comment</button>
+      <button class="btn">Edit</button>
+      <button class="btn">Export</button>
+      <button class="btn primary" data-priority="2">Approve for build</button>
+    </header>
+    <div class="work">
+      <aside class="pages" aria-label="Pages">
+        <h2 class="label">Pages</h2>
+        <ul>
+          <li aria-current="page"><img src="../assets/thumb-groove-cellar.png" alt="">index.html</li>
+          <li><img src="../assets/thumb-tea-house.png" alt="">menu.html</li>
+          <li><img src="../assets/thumb-fix-check.png" alt="">events.html</li>
+        </ul>
+        <h2 class="label">Directions</h2>
+        <ul><li>A · Crate dig <span class="n">v3</span></li><li>B · Listening bar <span class="n">v3</span></li></ul>
+        <h2 class="label">Options here</h2>
+        <ul><li>1a · Hero, record <span class="n">kept</span></li><li>1b · Hero, poster</li></ul>
+      </aside>
+      <main class="canvas" aria-label="Canvas">
+        <span class="frame-label">index.html · 1440 × 900 · 54%</span>
+        <div class="frame" data-priority="1"><img src="../assets/design-groove-cellar.jpg" alt="Groove Cellar landing page: a large condensed headline beside a record"></div>
+      </main>
+      <aside class="side" aria-label="Agent and inspector">
+        <div class="tabs" role="tablist"><button role="tab" aria-selected="true">Agent</button><button role="tab" aria-selected="false">Inspect</button><button role="tab" aria-selected="false">Findings<span class="count">2</span></button><button role="tab" aria-selected="false">History</button></div>
+        <div class="thread">
+          <div class="msg-user">Make the record spin slower and give the events page the same grain.</div>
+          <div class="steps"><span class="okdot" aria-hidden="true"></span>14 steps · verified clean · 2m 10s</div>
+          <div class="msg-agent"><p>Slowed the record to one turn every 6 s, and moved the grain into a shared <code>grain.css</code> both pages link.</p><p>design-guide still flags two things:</p></div>
+          <div class="finding"><span><b>Must fix</b> · Footer note is 3.9:1 on the paper</span><code>contrast-minimum · index.html</code></div>
+          <div class="finding"><span>Raw padding 17px on the event cards</span><code>no-raw-design-values · events.html</code></div>
+        </div>
+        <form class="composer"><label for="ask">Ask the agent</label><textarea id="ask" placeholder="Describe a change, or @ a frame"></textarea></form>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

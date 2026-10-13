@@ -1,0 +1,66 @@
+{
+  "id": "icon",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "71e4600ddde0",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "name": {
+      "verdict": "effective",
+      "values": [
+        "cube",
+        "chart",
+        "check",
+        "sparkle"
+      ],
+      "steps": [
+        0.003,
+        0.001,
+        0.003
+      ],
+      "meanEffect": 0.0023,
+      "minStep": 0.001,
+      "threshold": 0.0005,
+      "strip": "sweeps/icon/name.png"
+    },
+    "size": {
+      "verdict": "effective",
+      "values": [
+        12,
+        16,
+        20,
+        32,
+        48
+      ],
+      "steps": [
+        0.0253,
+        0.0362,
+        0.0456,
+        0.0458
+      ],
+      "meanEffect": 0.0382,
+      "minStep": 0.0253,
+      "threshold": 0.0005,
+      "strip": "sweeps/icon/size.png"
+    },
+    "class": {
+      "verdict": "unswept",
+      "reason": "a hook for the caller's stylesheet; the recipe styles nothing by it, so no frame of its own can show it"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{"rows": ["Proposal", "A · Workbench", "B · Nightshift", "C · Lightbox"],
+ "frames": [
+  {"page": "index.html", "title": "Proposal", "width": 1440, "row": 0},
+  {"page": "directions/a-studio.html", "title": "A · Studio", "width": 1440, "row": 1},
+  {"page": "directions/a-home.html", "title": "A · Projects", "width": 1440, "row": 1},
+  {"page": "directions/b-studio.html", "title": "B · Studio", "width": 1440, "row": 2},
+  {"page": "directions/b-home.html", "title": "B · Projects", "width": 1440, "row": 2},
+  {"page": "directions/c-studio.html", "title": "C · Studio", "width": 1440, "row": 3},
+  {"page": "directions/c-home.html", "title": "C · Projects", "width": 1440, "row": 3}]}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renew your claim</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, sans-serif; background: #ffffff; color: #1a1a1a; margin: 0; padding: 1rem; max-width: 40rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 1rem; }
+  p { line-height: 1.5; color: #333333; }
+  .actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+  /* The defect: 32px targets pass the 24px floor but are too small for users with limited motor precision. */
+  button, .actions a {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 32px; min-height: 32px; height: 32px; padding: 0 0.75rem;
+    font-size: 1rem; border-radius: 6px;
+  }
+  button { background: #14532d; color: #ffffff; border: none; }
+  .actions a { color: #14532d; border: 1px solid #14532d; text-decoration: none; }
+  button:focus-visible, .actions a:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 2px; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Renew your claim</h1>
+    <p>Check your details, then confirm. You can save and come back later.</p>
+    <div class="actions">
+      <button type="button">Confirm renewal</button>
+      <a href="#save">Save for later</a>
+      <a href="#help">Get help</a>
+    </div>
+  </main>
+</body>
+</html>

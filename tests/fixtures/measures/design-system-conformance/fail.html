@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoices — design system, bypassed</title>
+  <link rel="stylesheet" href="design-system/tokens.css">
+  <link rel="stylesheet" href="design-system/components/components.css">
+  <link rel="stylesheet" href="studio-edits.css">
+  <style>
+    main { padding: 24px; max-width: 40rem; }
+    /* A raw colour no token or declared exception supplies. */
+    .due { color: #a3155a; }
+    /* A font the system does not have. */
+    .lede { font-family: "Courier New", monospace; }
+    /* A look-alike: boxed like ds-card, but not ds-card. */
+    .invoice-card { background: #fbfaf7; border: 1px solid #5c5c70; padding: 16px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Invoices</h1>
+    <p class="lede">Three invoices are waiting for you.</p>
+    <section class="invoice-card">
+      <h2>March</h2>
+      <p class="due">Due in 3 days</p>
+      <button class="ds-button" type="button">Pay March</button>
+    </section>
+  </main>
+</body>
+</html>

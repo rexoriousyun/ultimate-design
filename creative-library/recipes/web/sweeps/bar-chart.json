@@ -1,0 +1,86 @@
+{
+  "id": "bar-chart",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "c7eca4915e16",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "radius": {
+      "verdict": "partial",
+      "values": [
+        0,
+        2,
+        4,
+        8,
+        12
+      ],
+      "steps": [
+        0.0004,
+        0.0007,
+        0.0021,
+        0.0031
+      ],
+      "meanEffect": 0.0016,
+      "minStep": 0.0004,
+      "threshold": 0.0005,
+      "flatSegments": [
+        [
+          0,
+          2
+        ]
+      ],
+      "strip": "sweeps/bar-chart/radius.png"
+    },
+    "height": {
+      "verdict": "effective",
+      "values": [
+        120,
+        180,
+        220,
+        280,
+        360
+      ],
+      "steps": [
+        0.3443,
+        0.2069,
+        0.2446,
+        0.2579
+      ],
+      "meanEffect": 0.2634,
+      "minStep": 0.2069,
+      "threshold": 0.0005,
+      "strip": "sweeps/bar-chart/height.png"
+    },
+    "color": {
+      "verdict": "effective",
+      "values": [
+        "#14532d",
+        "#d9ff1e",
+        "#c2255c"
+      ],
+      "steps": [
+        0.4226,
+        0.4226
+      ],
+      "meanEffect": 0.4226,
+      "minStep": 0.4226,
+      "threshold": 0.0005,
+      "strip": "sweeps/bar-chart/color.png"
+    }
+  }
+}

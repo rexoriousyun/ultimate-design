@@ -1,0 +1,24 @@
+{
+  "name": "creative-library",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "recipes": "./engine/cli.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "sync": "node engine/cli.js sync",
+    "render": "node engine/cli.js render",
+    "harvest": "node engine/cli.js harvest",
+    "sweep": "node engine/cli.js sweep"
+  },
+  "dependencies": {
+    "playwright": "^1.49.1"
+  },
+  "devDependencies": {
+    "three": "0.128.0",
+    "vitest": "^2.1.8"
+  }
+}

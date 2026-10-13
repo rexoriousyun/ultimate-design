@@ -1,0 +1,13 @@
+/* A small design system, shaped like ultimate-design's: tokens light and dark. */
+:root {
+  --ds-ink: #1a1a2e;
+  --ds-paper: #fbfaf7;
+  --ds-accent: #1f5f8b;
+  --ds-on-accent: #ffffff;
+  --ds-line: #5c5c70;
+  --ds-font: "Georgia", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ds-ink: #f2f0ea; --ds-paper: #15151f; }
+}
+body { margin: 0; font-family: var(--ds-font); color: var(--ds-ink); background: var(--ds-paper); }

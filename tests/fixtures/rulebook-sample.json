@@ -1,0 +1,3168 @@
+{
+  "version": "cd418f4738bf",
+  "generated": "2026-10-08T07:13:37.855Z",
+  "format": 1,
+  "project": "research-pass",
+  "lead": "users",
+  "tokens": null,
+  "tokens_from": {
+    "file": null,
+    "reason": "no design-guide.json and none of tokens.json, tokens.css, design-system/tokens.json, design-system/tokens.css"
+  },
+  "decision_log": {
+    "file": null,
+    "reason": "no decision log named (--decisions, or design-guide.json \"decisions\")"
+  },
+  "rules": [
+    {
+      "id": "accessible-name-contains-label",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A control’s accessible name must contain its visible label",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:label-content-name-mismatch",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "observing",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.5.3 Label in Name (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the criterion was added in WCAG 2.1 specifically because voice control had no other way to work, and it names a population rather than a preference"
+        },
+        {
+          "name": "axe-core rule 'label-content-name-mismatch', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "aria-allowed-attr",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "An ARIA attribute must be one its role supports",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:aria-allowed-attr",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the allowed set is published per role, so conformance is decidable rather than arguable"
+        },
+        {
+          "name": "axe-core rule 'aria-allowed-attr', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "aria-attr-value-valid",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "An ARIA attribute value must be one the attribute accepts",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:aria-valid-attr-value",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; each ARIA attribute has a published value type, so conformance is decidable rather than arguable"
+        },
+        {
+          "name": "axe-core rule 'aria-valid-attr-value', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "aria-hidden-not-focusable",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Hidden-from-assistive-tech elements must not be focusable",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:aria-hidden-focus",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake. The failure is invisible to sighted testing by construction: the element is only hidden from the accessibility tree, not from the screen"
+        },
+        {
+          "name": "axe-core rule 'aria-hidden-focus', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "aria-required-attr",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A role that requires attributes must carry them",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:aria-required-attr",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; ARIA specifies the required attributes per role, so this is a lookup rather than a judgement"
+        },
+        {
+          "name": "axe-core rule 'aria-required-attr', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "aria-role-is-real",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A role attribute must name a role that exists",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:aria-roles",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the set of valid roles is a published enumeration, so conformance is decidable rather than arguable"
+        },
+        {
+          "name": "axe-core rule 'aria-roles', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "aria-widget-structure",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A composite ARIA widget must contain the children its role requires",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:aria-required-children",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 1.3.1 Info and Relationships (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the required-children relationships are specified per role in ARIA rather than inferred"
+        },
+        {
+          "name": "axe-core rule 'aria-required-children', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "autocomplete-valid",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Autocomplete tokens must be ones the browser understands",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:autocomplete-valid",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 1.3.5 Identify Input Purpose (Level AA)",
+          "url": null,
+          "incentive": "standards body with no commercial stake. The check is a token-vocabulary comparison rather than a judgment, so it cannot disagree with a reasonable author — an invalid token is invalid, not unfashionable"
+        },
+        {
+          "name": "axe-core rule 'autocomplete-valid', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "forms"
+    },
+    {
+      "id": "bypass-blocks",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A page with a navigation block needs a way past it",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        },
+        {
+          "subject_has": "navigation-block"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "bypassBlocks",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.4.1 Bypass Blocks (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the criterion is uncontested, though it is broader than what this entry enforces — see the narrowing below"
+        },
+        {
+          "name": "axe-core rule 'bypass' — evaluated and deliberately NOT used",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling, but the reason for rejecting the rule is mechanical rather than a judgement about Deque: the rule returns `incomplete` on every page it was run against, including one with no landmark, no heading and no skip link, so it cannot produce the failing verdict a tier-0 entry needs"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "contrast-minimum",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Text must meet minimum contrast against its background",
+      "applies_when": [
+        {
+          "subject_has": "text"
+        },
+        {
+          "bundle_has": "axe"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "contrast",
+        "params": {
+          "min": 4.5,
+          "large": 3
+        },
+        "properties": [
+          "color",
+          "background-color",
+          "font-size",
+          "font-weight",
+          "opacity"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 1.4.3 Contrast (Minimum), AA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "Deque axe-core color-contrast rule",
+          "url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast",
+          "incentive": "Deque authors axe and sells accessibility tooling; the algorithm is widely adopted but the company benefits from contrast checking being seen as a solved, tool-gated problem"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "control-accessible-name",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Every control needs an accessible name",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "controlAccessibleName",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 4.1.2 Name, Role, Value, A",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "Apple HIG / Material Design icon-button guidance (accessibilityLabel / contentDescription)",
+          "url": null,
+          "incentive": "platform vendors — both ship a required-label field in their own component APIs, which also drives adoption of their component libraries"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "data-table-headers",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Every data cell in a table needs a header",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:td-has-header",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "observing",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 1.3.1 Info and Relationships (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the rule applies only to tables large enough that the relationship cannot be held in memory, so it does not argue with small layout tables"
+        },
+        {
+          "name": "axe-core rule 'td-has-header', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "desk-research",
+      "layer": "method",
+      "status": "proposed",
+      "statement": "Desk research — find, grade and record secondary sources",
+      "applies_when": [
+        {
+          "stage": "ideation"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Define the problem, gather published data, grade each source by method and incentive, and record what it could not answer."
+      },
+      "severity": null,
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Mayya Azarova, \"Secondary Research in UX\", Nielsen Norman Group, 2022",
+          "url": "https://www.nngroup.com/articles/secondary-research-in-ux/",
+          "incentive": "a UX consultancy that sells research training and services"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "destructive-confirm",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "\"Are you sure?\" modal vs undo toast",
+      "applies_when": [
+        {
+          "subject_has": "destructive-action"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "PASS if a truly unrecoverable, high-cost destructive action (delete account, permanent\ndata loss) is gated behind a confirmation dialog.\nPASS if a cheap, frequent, server-side-reversible destructive action (archive, remove a\ntag, delete a row) executes immediately with an undo toast (roughly 4-8s window).\nFLAG if a low-stakes, frequent action is gated behind a blocking confirm dialog, or if\na truly unrecoverable action relies only on an undo toast.\nNOT-APPLICABLE if there is no destructive action in the bundle, or reversibility\ncannot be determined from the bundle.\n"
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Nielsen Norman Group and similar usability-research firms — confirmation-dialog and undo-pattern guidance",
+          "url": null,
+          "incentive": "paid usability consultancies; findings come from their own studies, not an independent meta-analysis"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "feedback",
+      "stance": {
+        "choice": "context-dependent",
+        "alternatives": [
+          "confirm-modal",
+          "undo-toast"
+        ],
+        "why": "also depends o nthe context"
+      }
+    },
+    {
+      "id": "document-title",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Every page needs a non-empty title",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:document-title",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.4.2 Page Titled (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the criterion is unambiguous and has no competing interpretation to weigh"
+        },
+        {
+          "name": "axe-core rule 'document-title', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "edge-persona-present",
+      "layer": "research",
+      "status": "proposed",
+      "statement": "The personas include at least one edge persona",
+      "applies_when": [
+        {
+          "bundle_has": "ux.personas"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "edgePersonaPresent",
+        "via": "ux check",
+        "properties": [],
+        "viewports": []
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Iris dev flow — the user pool \"always includes edge and adversarial personas\" (draft)",
+          "url": "https://claude.ai/code/artifact/2d15f876-9d86-4e43-b2e7-8ac98d5f1a23",
+          "incentive": "Rex's own process document; no outside party benefits"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "edge-personas-from-population-data",
+      "layer": "method",
+      "status": "proposed",
+      "statement": "Edge personas from population data",
+      "applies_when": [
+        {
+          "stage": "ideation"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Build edge personas from prevalence figures, describing the barrier rather than the diagnosis, with the same goals as everyone else."
+      },
+      "severity": null,
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "World Health Organization, \"Disability\" fact sheet, 2023",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/disability-and-health",
+          "incentive": "UN health agency; advocates for disability inclusion"
+        },
+        {
+          "name": "W3C, \"Making Content Usable for People with Cognitive and Learning Disabilities\", Working Group Note, 2021",
+          "url": "https://www.w3.org/TR/coga-usable/",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "Microsoft Inclusive Design, \"Solve for one, extend to many\"",
+          "url": "https://inclusive.microsoft.design/",
+          "incentive": "platform vendor promoting its own design approach"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "empty-state-content",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Illustration + primary CTA vs minimal text + inline suggestion",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "An illustration and one clear CTA work when there's a genuine next step; the same treatment becomes filler decoration when there's no real action to offer, like a zero-result search where the fix is adjusting the query."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "ux-master's own synthesis, no external study or vendor identified",
+          "url": null,
+          "incentive": "none identifiable — this is a design convention observed across products, not a cited finding; treat the claim as plausible but unverified until a real source is found"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-07-28",
+        "from_decisions": []
+      },
+      "category": "empty",
+      "stance": {
+        "choice": "illustrated",
+        "alternatives": [
+          "illustrated",
+          "minimal"
+        ],
+        "why": "A would be preferable but it really depends on the space and the design."
+      }
+    },
+    {
+      "id": "error-messaging-placement",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Inline per-field errors vs a summary banner",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        },
+        {
+          "form_fields": ">=1"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "PASS if a form of roughly 6 or fewer fields shows errors inline, next to each failing\nfield, on submit.\nPASS if a longer or multi-section form shows a summary banner above the form on\nsubmit, with each item deep-linking to its field, in addition to (or instead of)\ninline text.\nFLAG if a long form relies on inline-only errors with nothing surfaced above the fold\non submit, or if a 1-2 field form shows a summary banner that duplicates\nalready-visible inline text.\nNOT-APPLICABLE if the form has no validation, or error placement cannot be determined\nfrom the bundle.\n"
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 3.3.1 Error Identification",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-identification",
+          "incentive": "consensus standards body; mandates that errors are identified, but is silent on where"
+        },
+        {
+          "name": "Baymard Institute form usability research",
+          "url": null,
+          "incentive": "sells e-commerce UX consulting; findings skew to checkout funnels and may not transfer to internal tools"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-07-28",
+        "from_decisions": []
+      },
+      "category": "feedback",
+      "stance": {
+        "choice": "inline",
+        "alternatives": [
+          "inline",
+          "summary"
+        ],
+        "why": "It depends how long each field is."
+      }
+    },
+    {
+      "id": "evaluating-without-users",
+      "layer": "method",
+      "status": "proposed",
+      "statement": "Evaluating without users — heuristic evaluation and cognitive walkthrough",
+      "applies_when": [
+        {
+          "stage": "prototyping"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Several evaluators judge independently against heuristics; a walkthrough asks four questions at every action of a first-time task."
+      },
+      "severity": null,
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Kate Moran and Kelley Gordon, \"How to Conduct a Heuristic Evaluation\", Nielsen Norman Group, 2023",
+          "url": "https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/",
+          "incentive": "a UX consultancy that sells research training and services"
+        },
+        {
+          "name": "Wikipedia, \"Cognitive walkthrough\" (summarizing Wharton, Rieman, Lewis and Polson, 1994; the 1994 paper itself was not opened)",
+          "url": "https://en.wikipedia.org/wiki/Cognitive_walkthrough",
+          "incentive": "open encyclopedia, no commercial stake"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "focus-order-sane",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Tab order must follow visual/reading order",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "focusOrder",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "observing",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 2.4.3 Focus Order, A",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-order",
+          "incentive": "consensus standards body, no commercial stake"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "focus-visible",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Every focusable element must show a visible focus indicator",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "focusVisible",
+        "via": "gate",
+        "properties": [
+          "outline",
+          "box-shadow",
+          "border"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 2.4.7 Focus Visible, AA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-visible",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "WCAG 2.2 SC 2.4.11 Focus Not Obscured (Minimum), AA",
+          "url": null,
+          "incentive": "consensus standards body, no commercial stake"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "form-field-labeled",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Every form field must have a programmatically associated label",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "formFieldLabeled",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 1.3.1 Info and Relationships, A / SC 4.1.2 Name Role Value, A",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "Deque axe-core label rule",
+          "url": "https://dequeuniversity.com/rules/axe/4.9/label",
+          "incentive": "Deque authors axe and sells accessibility tooling"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "frame-content-reachable",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A frame holding focusable content must be reachable",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:frame-focusable-content",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.1.1 Keyboard (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the failure is mechanical — the content is demonstrably present and demonstrably unreachable"
+        },
+        {
+          "name": "axe-core rule 'frame-focusable-content', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "frame-titled",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Every frame needs an accessible name",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:frame-title",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A), and 2.4.1 Bypass Blocks",
+          "url": null,
+          "incentive": "standards body with no commercial stake; embedded third-party frames are the usual offender and the usual thing nobody owns"
+        },
+        {
+          "name": "axe-core rule 'frame-title', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "goal-gradient-progress",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Artificial head-start progress vs honest, zero-start progress indicators",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Pre-filling a progress bar to show a head start leverages a real, well-studied motivation effect; faking progress the user didn't earn is a manipulation some teams and users will not accept once they notice."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Goal-gradient hypothesis — Hull (1932, 1934); Kivetz, Urminsky & Zheng, \"The Goal-Gradient Hypothesis Resurrected: Purchase Acceleration, Illusionary Goal Progress, and Customer Retention\" (University of Chicago); as curated on lawsofux.com",
+          "url": null,
+          "incentive": "the underlying psychology (people work harder as perceived proximity to a goal increases) is genuine, peer-reviewed research with no commercial stake in this specific application; lawsofux.com's own citation quality varies entry to entry"
+        },
+        {
+          "name": "Applied \"pre-fill for a psychological head start\" recommendation, as framed by this corpus",
+          "url": null,
+          "incentive": "this specific application — artificially crediting progress the user hasn't made — is a growth/engagement tactic, not part of the cited research itself, and is the actual point of contention here"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "onboarding",
+      "stance": {
+        "choice": "honest-zero-start",
+        "alternatives": [
+          "prefilled-head-start",
+          "honest-zero-start"
+        ],
+        "why": "waste of space"
+      }
+    },
+    {
+      "id": "goodui-inferred-autofocus-form-field",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Autofocus the first field vs leaving initial focus untouched",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Autofocusing the primary input on a dedicated data-entry screen removes a click; autofocusing on a content page or on mobile can jar a reader, jump scroll position, or trigger the keyboard unexpectedly."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "GoodUI pattern library (goodui.org), \"Auto Focused Form Field\" — pattern name only",
+          "url": null,
+          "incentive": "conversion-rate optimization vendor; the source scrape captured the pattern's title but no experiment description or measured result for this one"
+        },
+        {
+          "name": "WAI unexpected-change-of-context guidance (WCAG 3.2.1/3.2.2 territory)",
+          "url": null,
+          "incentive": "standards-adjacent concern, no commercial stake — autofocus stealing focus on page load is a documented failure pattern (WCAG technique F41) when it moves a screen-reader user's position without warning"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "forms",
+      "stance": {
+        "choice": "no-autofocus",
+        "alternatives": [
+          "autofocus-first-field",
+          "no-autofocus"
+        ],
+        "why": "better user experience for keyboard user"
+      }
+    },
+    {
+      "id": "goodui-inferred-fewer-form-fields",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Ruthless field elimination vs fields kept for a real downstream reason",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        },
+        {
+          "form_fields": ">=1"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Removing every non-essential field raises completion; some \"non-essential\" fields exist for fraud prevention, account recovery, or a genuine later need, and removing them just defers the ask."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "GoodUI pattern library (goodui.org), \"Fewer Form Fields\" — a real cited test (password/email confirmation removed from a signup/checkout funnel, replaced with an auto-generated password emailed to the user; impact on progression and sales measured)",
+          "url": null,
+          "incentive": "conversion-rate optimization vendor — the cited metric is completion/sales, not data quality, account-recovery cost, or fraud risk; a field's removal can look purely like a win when measured only on the funnel it was cut from"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "forms",
+      "stance": {
+        "choice": "justified-fields",
+        "alternatives": [
+          "minimal-fields",
+          "justified-fields"
+        ],
+        "why": "they all still need to be seen. if unnecessayr they shouldnt be seen here."
+      }
+    },
+    {
+      "id": "goodui-inferred-natural-language-forms",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Conversational (mad-libs) form inputs vs traditional stacked forms",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Embedding inputs into a readable sentence can feel less clinical for a short filter or intake question; it gets awkward and hard to scan once the data being collected is long or structurally complex."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "GoodUI pattern library (goodui.org), \"Natural Language Forms\" — pattern name only",
+          "url": null,
+          "incentive": "conversion-rate optimization vendor; the source scrape used to build this corpus captured the pattern's title but no experiment description or measured result for this one, so there is nothing here beyond the pattern name to weigh incentive against"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "forms",
+      "stance": {
+        "choice": "natural-language-sentence",
+        "alternatives": [
+          "natural-language-sentence",
+          "stacked-form"
+        ],
+        "why": "smarter and intuitive"
+      }
+    },
+    {
+      "id": "goodui-inferred-progressive-disclosure-fields",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Reveal form fields incrementally vs showing the whole form upfront",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        },
+        {
+          "form_fields": ">=4"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Starting with only the most critical fields and revealing the rest as the user commits lowers perceived length; showing everything upfront lets a user judge full scope and trust before investing any effort."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "GoodUI pattern library (goodui.org), \"Progressive Fields\" — a real cited test (a buy-box component initially shown with fewer, smaller fields; impact on initial progression and sales measured). The source notes the experiment ran shorter than usual after triggering a loss-protection stop rule, so the vendor's own writeup flags the effect may be inflated from lower statistical power.",
+          "url": null,
+          "incentive": "conversion-rate optimization vendor, and this specific result is explicitly flagged by the source as possibly underpowered"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "forms",
+      "stance": {
+        "choice": "progressive-reveal",
+        "alternatives": [
+          "progressive-reveal",
+          "all-fields-upfront"
+        ],
+        "why": "better space utilization"
+      }
+    },
+    {
+      "id": "goodui-inferred-visible-vs-hidden-search",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Exposed search bar vs collapsed search icon",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "A persistent, wide search input maximizes usage on content- or catalog-heavy sites; collapsing it behind an icon reclaims header space for guided browsing on marketing or portfolio sites."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "GoodUI pattern library (goodui.org), \"Visible Search\" — a real cited test (a site's search bar was removed for logged-out users in one variation; the source notes it as a control-vs-variation swap without a clearly stated winner)",
+          "url": null,
+          "incentive": "conversion-rate optimization vendor; unlike some other entries in this batch, the source scrape for this pattern doesn't state which arm won, so treat the \"exposed search wins\" framing as GoodUI's usual editorial slant rather than an established result here specifically"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-07-28",
+        "from_decisions": []
+      },
+      "category": "nav",
+      "stance": {
+        "choice": "visible-search-bar",
+        "alternatives": [
+          "visible-search-bar",
+          "hidden-search-icon"
+        ],
+        "why": "also depends on the spaces"
+      }
+    },
+    {
+      "id": "heading-order",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Heading levels must not skip",
+      "applies_when": [
+        {
+          "subject_has": "headings"
+        },
+        {
+          "bundle_has": "axe"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:heading-order",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 Technique G141 / SC 1.3.1 Info and Relationships, A",
+          "url": "https://www.w3.org/WAI/WCAG22/Techniques/general/G141",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "Deque axe-core heading-order rule",
+          "url": "https://dequeuniversity.com/rules/axe/4.9/heading-order",
+          "incentive": "Deque authors axe and sells accessibility tooling"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "hierarchy-matches-priority",
+      "layer": "art",
+      "status": "proposed",
+      "statement": "A design's rendered prominence follows its declared order of importance",
+      "applies_when": [
+        {
+          "subject_has": "text"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "hierarchy",
+        "params": {
+          "marks": "data-priority=\"1\", \"2\", \"3\"… on the elements, in order of importance",
+          "prominence": "text size × weight × text contrast × fill × outline × position, from rendered styles",
+          "margin": "each lower priority scores at least 10% less than every higher one in its scope",
+          "scope": "one [data-option] section, or the page",
+          "unmarked": "no unmarked text may rival priority 1",
+          "missing": "a design page with no data-priority marks is itself a finding; design-system specimens are exempt"
+        },
+        "properties": [
+          "font-size",
+          "font-weight",
+          "color",
+          "background-color",
+          "border-color",
+          "box-shadow"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "ultimate-design docs/decisions.md, 2026-09-19 — \"Hierarchy is declared by the agent and measured by verify\"",
+          "url": null,
+          "incentive": "Rex's own studio, recording his complaint that nothing makes a generated design read in order of importance; written for the tool that enforces the rule"
+        },
+        {
+          "name": "ultimate-design's verify, hierarchy check (app/hierarchy.js)",
+          "url": null,
+          "incentive": "written for ultimate-design, the tool that enforces this rule; it has a stake in the rule holding"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "design-system"
+    },
+    {
+      "id": "html-lang",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "The page must declare its language",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "htmlLangValid",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 3.1.1 Language of Page, A",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-page",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "Deque axe-core html-has-lang rule",
+          "url": "https://dequeuniversity.com/rules/axe/4.9/html-has-lang",
+          "incentive": "Deque authors axe and sells accessibility tooling"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "image-alt",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Every meaningful image must have alt text",
+      "applies_when": [
+        {
+          "subject_has": "images"
+        },
+        {
+          "bundle_has": "axe"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:image-alt",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 1.1.1 Non-text Content, A",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "Deque axe-core image-alt rule",
+          "url": "https://dequeuniversity.com/rules/axe/4.9/image-alt",
+          "incentive": "Deque authors axe and sells accessibility tooling"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "journey-maps-from-research",
+      "layer": "method",
+      "status": "proposed",
+      "statement": "Journey maps from secondary research",
+      "applies_when": [
+        {
+          "stage": "ideation"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "One journey per persona and scenario, phases broken into steps that name a screen, each step marked evidence, assumed or simulated."
+      },
+      "severity": null,
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Sarah Gibbons, \"Journey Mapping 101\", Nielsen Norman Group, 2018",
+          "url": "https://www.nngroup.com/articles/journey-mapping-101/",
+          "incentive": "a UX consultancy that sells research training and services"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "journey-names-persona",
+      "layer": "research",
+      "status": "proposed",
+      "statement": "Every journey belongs to a persona that exists",
+      "applies_when": [
+        {
+          "bundle_has": "ux.journeys"
+        },
+        {
+          "bundle_has": "ux.personas"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "journeyNamesPersona",
+        "via": "ux check",
+        "properties": [],
+        "viewports": []
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Iris dev flow, stage 1 — journeys.md \"per persona\" (draft)",
+          "url": "https://claude.ai/code/artifact/2d15f876-9d86-4e43-b2e7-8ac98d5f1a23",
+          "incentive": "Rex's own process document; no outside party benefits"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "journey-steps-grounded",
+      "layer": "research",
+      "status": "proposed",
+      "statement": "Every journey step says how it is known",
+      "applies_when": [
+        {
+          "bundle_has": "ux.journeys"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "journeyStepsGrounded",
+        "via": "ux check",
+        "properties": [],
+        "viewports": []
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Iris dev flow — \"Evidence and simulation stay apart\" (draft)",
+          "url": "https://claude.ai/code/artifact/2d15f876-9d86-4e43-b2e7-8ac98d5f1a23",
+          "incentive": "Rex's own process document; no outside party benefits"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "keyboard-reachable",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Every interactive element must be reachable by keyboard alone",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "keyboardReachable",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 2.1.1 Keyboard, A",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard",
+          "incentive": "consensus standards body, no commercial stake"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "label-placement",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Label placement above vs inline (left-aligned)",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Top-aligned labels let the eye travel a single vertical line, cutting fill time versus left-aligned labels that force a horizontal jump per row; costs vertical space."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Baymard Institute form usability research",
+          "url": null,
+          "incentive": "sells e-commerce UX consulting; findings skew to checkout funnels and may not transfer to dense enterprise or internal-tool forms"
+        },
+        {
+          "name": "Nielsen Norman Group — form label alignment research",
+          "url": null,
+          "incentive": "paid usability consultancy; findings reflect NN/g's own testing methodology, not an independent meta-analysis"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "forms",
+      "stance": {
+        "choice": "top-aligned-labels",
+        "alternatives": [
+          "top-aligned-labels",
+          "left-aligned-labels"
+        ],
+        "why": "much better for this case due to long field"
+      }
+    },
+    {
+      "id": "link-not-colour-alone",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A link inside text must be distinguishable without colour",
+      "applies_when": [
+        {
+          "subject_has": "text"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:link-in-text-block",
+        "via": "gate",
+        "properties": [
+          "color",
+          "text-decoration"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 1.4.1 Use of Color (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the rule is narrower than the criterion — it checks only links inside blocks of text, where the surrounding prose supplies the comparison"
+        },
+        {
+          "name": "axe-core rule 'link-in-text-block', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "list-structure",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A list must contain list items and nothing else",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:list",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 1.3.1 Info and Relationships (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the permitted children of a list are defined by HTML, not by a heuristic"
+        },
+        {
+          "name": "axe-core rule 'list', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "loading-pattern",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Skeleton screens vs spinners",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "PASS if list/card content with a known, fixed layout shows gray placeholder blocks\nmatching that layout while loading.\nPASS if content of genuinely unpredictable shape, or a wait under roughly 1 second,\nshows a plain spinner instead.\nFLAG if a fixed-layout list/card view shows only a bare spinner for a wait over a\ncouple of seconds, or if a skeleton is built for content whose shape varies too much\nfor the skeleton to resemble the result.\nNOT-APPLICABLE if there is no loading state to observe, or wait duration/layout\npredictability cannot be determined from the bundle.\n"
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Doherty Threshold — Doherty & Thadani, \"The Economic Value of a Rapid Response Time\", IBM Systems Journal, 1982; as curated on lawsofux.com",
+          "url": null,
+          "incentive": "original study is vendor-neutral (IBM research on system response time); lawsofux.com's curation is a psychology reference whose citation quality varies entry to entry"
+        },
+        {
+          "name": "Nielsen Norman Group and similar usability-research firms — perceived-performance / skeleton-screen findings",
+          "url": null,
+          "incentive": "paid usability consultancies; findings come from their own studies, not an independent meta-analysis"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "empty",
+      "stance": {
+        "choice": "skeleton",
+        "alternatives": [
+          "skeleton",
+          "spinner"
+        ],
+        "why": "gives better preview of what user will get"
+      }
+    },
+    {
+      "id": "mobile-nav-pattern",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Bottom tab bar vs hamburger/drawer menu",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        },
+        {
+          "viewport": "mobile"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "PASS if primary mobile navigation is a persistent, thumb-reachable tab bar with 5 or\nfewer top-level destinations.\nFLAG if primary navigation is a hamburger/drawer menu while 5 or fewer top-level\ndestinations would fit a tab bar, or if a tab bar is stretched past ~5 items with a\ncramped \"More\" catch-all.\nNOT-APPLICABLE if viewport is not mobile, or the product has no navigation with\nconsistent top-level destinations (e.g. a single-purpose utility screen).\n"
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Nielsen Norman Group and other usability-research firms — mobile navigation pattern comparisons (tab bar vs hamburger discoverability)",
+          "url": null,
+          "incentive": "paid usability consultancies; findings come from their own moderated studies, not an independent meta-analysis, and skew toward the client verticals they're hired to test"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-07-28",
+        "from_decisions": []
+      },
+      "category": "nav",
+      "stance": {
+        "choice": "tab-bar",
+        "alternatives": [
+          "tab-bar",
+          "hamburger"
+        ],
+        "why": "mobile vs desktop. choosing A for scalablilinty"
+      }
+    },
+    {
+      "id": "modal-focus-handling",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Focus-trapped modal vs inline expand/disclosure",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "A modal is right for actions that need full attention (a form, a destructive confirm); inline expansion keeps the user's place for short, low-stakes content but disorients scroll position once the revealed content is long or itself multi-step."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WAI-ARIA Authoring Practices Guide — Dialog (Modal) Pattern",
+          "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+          "incentive": "consensus standards body, no commercial stake — this is the source for the focus-trap mechanics, not for which pattern to reach for"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y",
+      "stance": {
+        "choice": "focus-trap-modal",
+        "alternatives": [
+          "focus-trap-modal",
+          "inline-expand"
+        ],
+        "why": "it is disruptive but gives user more attention to the choices"
+      }
+    },
+    {
+      "id": "no-nested-interactive",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Interactive controls must not nest inside one another",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:nested-interactive",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the failure is structural rather than stylistic, and screen readers genuinely differ in what they expose for the inner control"
+        },
+        {
+          "name": "axe-core rule 'nested-interactive', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "no-raw-design-values",
+      "layer": "art",
+      "status": "confirmed",
+      "statement": "Project code must use design tokens, not raw color/spacing/radius values",
+      "applies_when": [
+        {
+          "bundle_has": "repo.tokens"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "token-only",
+        "params": {
+          "properties": [
+            "color",
+            "background-color",
+            "border-color",
+            "padding-top",
+            "padding-right",
+            "padding-bottom",
+            "padding-left",
+            "margin-top",
+            "margin-right",
+            "margin-bottom",
+            "margin-left",
+            "border-radius"
+          ]
+        },
+        "properties": [
+          "color",
+          "background-color",
+          "border-color",
+          "padding",
+          "margin",
+          "border-radius"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "observing",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "W3C Design Tokens Community Group format",
+          "url": "https://tr.designtokens.org/format/",
+          "incentive": "standards-community effort with token-tooling vendors participating; no single commercial beneficiary"
+        },
+        {
+          "name": "This project's own PLAN.md, Phase 4 (\"Art direction\")",
+          "url": null,
+          "incentive": "authored by Rex for this repo — the check exists specifically to make derived tokens binding rather than advisory, so it has a direct stake in the rule holding"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "design-system"
+    },
+    {
+      "id": "no-timed-refresh",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A page must not refresh or redirect itself on a timer",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:meta-refresh",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2.1 Timing Adjustable (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake. Worth noting the criterion permits timed changes that can be turned off, extended, or adjusted — what it forbids is the unannounceable, uncancellable kind, which is exactly what meta refresh is"
+        },
+        {
+          "name": "axe-core rule 'meta-refresh', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "notification-pattern",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Auto-dismissing toast vs persistent notification center",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "A toast suits confirming an action the user just took, where context is already established; a notification center is needed for events the user didn't directly trigger and may need to review later."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Material Design — Snackbars component guidance (Google)",
+          "url": null,
+          "incentive": "platform vendor documenting its own component library; the guidance describes Google's own design system defaults, not an independent finding"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "micro",
+      "stance": {
+        "choice": "toast",
+        "alternatives": [
+          "toast",
+          "notification-center"
+        ],
+        "why": "gives better ui that user can notice"
+      }
+    },
+    {
+      "id": "onboarding-flow",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Upfront modal walkthrough vs progressive disclosure",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "PASS if first-run teaching is delivered as contextual tips shown the first time a\nfeature is reached, gated on a per-user \"seen\" flag.\nFLAG if the product opens with a multi-screen upfront tour (more than 4 screens, or\nany tour at all if the interaction model is otherwise conventional).\nNOT-APPLICABLE if there is no first-run experience to observe, or first-run state\ncannot be determined from the bundle.\n"
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Nielsen Norman Group and similar usability-research firms — product tour completion/skip-rate findings",
+          "url": null,
+          "incentive": "paid usability consultancies; findings come from their own studies, not an independent meta-analysis"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-07-28",
+        "from_decisions": []
+      },
+      "category": "onboarding",
+      "stance": {
+        "choice": "progressive",
+        "alternatives": [
+          "progressive",
+          "upfront"
+        ],
+        "why": "i dont like both but choosing a as its less disruptive."
+      }
+    },
+    {
+      "id": "optimistic-ui-updates",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Optimistic UI for fast, reversible actions",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Updating the UI before the server confirms removes the biggest single source of perceived latency, but only where a rollback is cheap and non-jarring — never where a wrong optimistic state has real cost."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Optimistic UI / optimistic response, as documented by GraphQL client libraries (Apollo, Relay) and general frontend practice",
+          "url": null,
+          "incentive": "none particular — this is a widely adopted engineering pattern documented across multiple independent tools, not a single vendor's claim"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "micro",
+      "stance": {
+        "choice": "optimistic-update",
+        "alternatives": [
+          "optimistic-update",
+          "confirmed-update"
+        ],
+        "why": "no reason for delay"
+      }
+    },
+    {
+      "id": "pagination-vs-infinite-scroll",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Pagination vs infinite scroll",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Infinite scroll suits discovery feeds with no meaningful \"page 2\"; numbered pagination is needed whenever position matters — bookmarking, sharing, or returning to a specific spot."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Nielsen Norman Group — infinite-scroll usability research",
+          "url": null,
+          "incentive": "paid usability consultancy; findings come from their own studies, not an independent meta-analysis"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "empty",
+      "stance": {
+        "choice": "numbered-pagination",
+        "alternatives": [
+          "numbered-pagination",
+          "infinite-scroll"
+        ],
+        "why": "it depends on the context. depending on how many need to be seen"
+      }
+    },
+    {
+      "id": "palette-conformance",
+      "layer": "art",
+      "status": "proposed",
+      "statement": "A page that names a Wada palette uses its colours",
+      "applies_when": [
+        {
+          "project_has": "palette"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "palette",
+        "params": {
+          "meta": "<meta name=\"palette\" content=\"wada:NNN\">, one of Sanzo Wada's 348 combinations (creative-library/palettes/wada/)",
+          "exceptions": [
+            "--palette-override-* custom properties (the design agent's declared exceptions, listed in verify's report)",
+            "colours in studio-edits*.css (Rex's own Edit-mode choices)"
+          ]
+        },
+        "properties": [
+          "color",
+          "background-color",
+          "border-color"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Sanzo Wada, A Dictionary of Color Combinations (1933; Seigensha reprint), as catalogued in creative-library/palettes/wada/",
+          "url": null,
+          "incentive": "a published colour reference; its publisher profits from sales of the book, not from any one page's colours"
+        },
+        {
+          "name": "ultimate-design's verify, palette check (app/preview.py with app/conformance.js)",
+          "url": null,
+          "incentive": "written for ultimate-design, the tool that enforces this rule; it has a stake in the rule holding"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "design-system"
+    },
+    {
+      "id": "persona-traits-complete",
+      "layer": "research",
+      "status": "proposed",
+      "statement": "Every persona states every user trait",
+      "applies_when": [
+        {
+          "bundle_has": "ux.personas"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "personaTraitsComplete",
+        "via": "ux check",
+        "properties": [],
+        "viewports": []
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Rex's decisions on the user layer, 2026-10-06 (docs/user-layer.md)",
+          "url": null,
+          "incentive": "Rex's own working rule for his projects; no outside party benefits"
+        },
+        {
+          "name": "Iris dev flow, stage 1 — personas.md (draft)",
+          "url": "https://claude.ai/code/artifact/2d15f876-9d86-4e43-b2e7-8ac98d5f1a23",
+          "incentive": "Rex's own process document; no outside party benefits"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "persona-traits-valid",
+      "layer": "research",
+      "status": "proposed",
+      "statement": "A stated trait uses the vocabulary and says how it is known",
+      "applies_when": [
+        {
+          "bundle_has": "ux.personas"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "personaTraitsValid",
+        "via": "ux check",
+        "properties": [],
+        "viewports": []
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Rex's decisions on the user layer, 2026-10-06 (docs/user-layer.md)",
+          "url": null,
+          "incentive": "Rex's own working rule for his projects; no outside party benefits"
+        },
+        {
+          "name": "Iris dev flow — \"Evidence and simulation stay apart\" (draft)",
+          "url": "https://claude.ai/code/artifact/2d15f876-9d86-4e43-b2e7-8ac98d5f1a23",
+          "incentive": "Rex's own process document; no outside party benefits"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "personas-from-statistics",
+      "layer": "method",
+      "status": "proposed",
+      "statement": "Personas built from published statistics",
+      "applies_when": [
+        {
+          "stage": "ideation"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "One persona per segment the data shows; every trait cites the figure it rests on, or is marked assumed or unknown."
+      },
+      "severity": null,
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Salminen, Guan, Jung and Jansen, \"A Survey of 15 Years of Data-Driven Persona Development\", International Journal of Human-Computer Interaction, 2021",
+          "url": "https://persona.qcri.org/blog/a-survey-of-15-years-of-data-driven-persona-development/",
+          "incentive": "academic authors, posted on their own persona-research project site; they build data-driven persona methods"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "postels-law-forgiving-inputs",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Forgiving input parsing vs strict format validation",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Silently accepting and normalizing varied input formats removes friction, but over-permissive parsing risks silently misinterpreting ambiguous data the user actually got wrong."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Postel's Law / Robustness Principle (Jon Postel, IETF networking) — as curated on lawsofux.com",
+          "url": null,
+          "incentive": "originally a protocol-design principle for TCP, applied here to UI by analogy; the analogy is imperfect (a network peer isn't a distracted human who may have made a real mistake), and lawsofux.com's citation quality varies entry to entry"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "forms",
+      "stance": {
+        "choice": "strict-format",
+        "alternatives": [
+          "forgiving-parsing",
+          "strict-format"
+        ],
+        "why": "better for user and data"
+      }
+    },
+    {
+      "id": "prefer-existing-recipe",
+      "layer": "recipe",
+      "status": "confirmed",
+      "statement": "Reach for an existing recipe before hand-rolling a construction it already covers",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "recipeReinvention",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "The tier-2 library in the creative-library sibling (recipes/web/), ported from ui-master's component set — the signatures are read from its recipes/web/manifest.json, generated from the UI.define() specs",
+          "url": null,
+          "incentive": "no external stake; this is the substrate asserting its own sibling library exists, which is self-serving by construction. The check is worth only as much as the recipes are — a signature pointing at a bad recipe is worse than no signature."
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "reuse"
+    },
+    {
+      "id": "project-settings-declared",
+      "layer": "research",
+      "status": "proposed",
+      "statement": "The project declares its audience and whether users or taste lead",
+      "applies_when": [
+        {
+          "bundle_has": "ux.personas"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "projectSettingsDeclared",
+        "via": "ux check",
+        "properties": [],
+        "viewports": []
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Rex's decisions on the user layer, 2026-10-06 (docs/user-layer.md)",
+          "url": null,
+          "incentive": "Rex's own working rule for his projects; no outside party benefits"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "reduced-motion-respected",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Animation must honor prefers-reduced-motion",
+      "applies_when": [
+        {
+          "subject_has": "animation"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "reducedMotion",
+        "via": "gate",
+        "properties": [
+          "animation",
+          "transition"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "observing",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 2.3.3 Animation from Interactions, AAA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions",
+          "incentive": "consensus standards body, no commercial stake; this SC is AAA (aspirational for most audits), included here at tier-0 as a stricter local standard rather than a legal minimum"
+        },
+        {
+          "name": "CSS Media Queries Level 5, prefers-reduced-motion (W3C)",
+          "url": "https://www.w3.org/TR/mediaqueries-5/#prefers-reduced-motion",
+          "incentive": "consensus web-standards body defining the mechanism, no commercial stake"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "reflow",
+      "layer": "floor",
+      "status": "proposed",
+      "statement": "Content must reflow at 320 CSS px without horizontal scrolling",
+      "applies_when": [
+        {
+          "subject_has": "text"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "reflow",
+        "params": {
+          "width": 320
+        },
+        "properties": [
+          "width",
+          "min-width",
+          "overflow-x",
+          "white-space"
+        ],
+        "viewports": [
+          320
+        ]
+      },
+      "severity": "fail",
+      "maturity": "observing",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 1.4.10 Reflow, AA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+          "incentive": "consensus standards body, no commercial stake"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "scrollable-region-keyboard-accessible",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A scrollable region must be reachable by keyboard",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:scrollable-region-focusable",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.1.1 Keyboard (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the failure mode is silent, which is what makes a check worth more here than a review"
+        },
+        {
+          "name": "axe-core rule 'scrollable-region-focusable', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "search-vs-browse",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Inline autocomplete dropdown vs dedicated results page",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Autocomplete suits a known-item lookup the user can pick from without leaving context; a results page is needed once a query can return more matches than fit in a short dropdown, or needs filters and sorting."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Baymard Institute site-search usability research",
+          "url": null,
+          "incentive": "sells e-commerce UX consulting; findings skew to product-catalog search and may not transfer to non-commerce lookups"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "nav",
+      "stance": {
+        "choice": "context-dependent",
+        "alternatives": [
+          "autocomplete",
+          "results-page"
+        ],
+        "why": "depends on the familiarty possibly both"
+      }
+    },
+    {
+      "id": "select-named",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A select needs an accessible name",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:select-name",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the rule fires only where a control genuinely has no name from any source, including label, aria-label and title"
+        },
+        {
+          "name": "axe-core rule 'select-name', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "simulated-users-limits",
+      "layer": "method",
+      "status": "proposed",
+      "statement": "What simulated users can and cannot stand in for",
+      "applies_when": [
+        {
+          "stage": "prototyping"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "Persona agents supplement research, never replace it; LLMs misportray and flatten identity groups, worst where identity matters."
+      },
+      "severity": null,
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Angelina Wang, Jamie Morgenstern and John P. Dickerson, \"Large language models that replace human participants can harmfully misportray and flatten identity groups\", Nature Machine Intelligence",
+          "url": "https://arxiv.org/abs/2402.01908",
+          "incentive": "academic researchers; no product interest stated"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "research"
+    },
+    {
+      "id": "space-must-be-earned",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Space is the deciding variable: an element keeps its space only by earning it",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "PASS if every element occupying significant space on the screen is carrying its weight — conveying information, offering an action, or giving structure a reader needs.\nFLAG if something takes real space without earning it: progress credited before the user did anything, a tooltip or panel dumping fields beyond what the hover implied, decorative filler standing in for an empty state, or form fields with no stated downstream purpose.\nDensity itself is NOT a finding. A dense screen where every element earns its place passes; a sparse screen carrying one unearned ornament flags. Do not reward minimalism as such.\nNOT-APPLICABLE if the screen has no substantive content to weigh, or the screenshot is unavailable.\n"
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Rex's own recorded picks and rationales in knowledge/taste/.picks/ — six entries across onboarding, forms, dataviz, empty and nav",
+          "url": null,
+          "incentive": "none external; this is the substrate reading Rex back to himself, which is self-referential by construction. Its worth depends entirely on whether he recognises the pattern as his — that is what confirmation is for."
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "meta",
+      "stance": {
+        "choice": "earn-the-space",
+        "alternatives": [
+          "earn-the-space",
+          "space-is-cheap"
+        ],
+        "why": "Confirmed 2026-08-01. The reasoning is the six calls this was read out of, in my own words at the time:\n\n- prefilled progress bar: \"waste of space\"\n- progressive reveal: \"better space utilization\"\n- tooltip: \"depends on the platform, but overall shorter the better\"\n- top-aligned labels: \"much better for this case due to long field\"\n- empty state: \"it really depends on the space and the design\"\n- visible search bar: \"also depends on the spaces\"\n\nAnd the two that stop this being a minimise-everything rule, also mine:\n\n- justified fields: \"they all still need to be seen. if unnecessayr they shouldnt be seen here.\"\n- visible search bar over a hidden icon — more permanent chrome, kept because it earns it."
+      }
+    },
+    {
+      "id": "summary-named",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "A disclosure summary needs discernible text",
+      "applies_when": [
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:summary-name",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 4.1.2 Name, Role, Value (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; a control with no name is unambiguously unusable rather than a matter of degree"
+        },
+        {
+          "name": "axe-core rule 'summary-name', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "svg-image-named",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "An SVG exposed as an image needs an accessible name",
+      "applies_when": [
+        {
+          "subject_has": "images"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:svg-img-alt",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 1.1.1 Non-text Content (Level A)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the rule only fires where the author has already declared the graphic meaningful, so it cannot argue with a decision about whether it is"
+        },
+        {
+          "name": "axe-core rule 'svg-img-alt', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "target-size-enhanced",
+      "layer": "user",
+      "status": "proposed",
+      "statement": "Targets of at least 44px when users have limited motor precision",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        },
+        {
+          "user_trait": "motor-precision:limited"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "target-size",
+        "params": {
+          "min": 44
+        },
+        "properties": [
+          "width",
+          "height",
+          "min-width",
+          "min-height",
+          "padding"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 2.5.5 Target Size (Enhanced), AAA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "NN/g, Usability for Senior Citizens (Nielsen), 2013",
+          "url": "https://www.nngroup.com/articles/usability-seniors-improvements/",
+          "incentive": "a UX consultancy that sells research training and services"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": null,
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y",
+      "users": {
+        "rank": "evidence",
+        "reason": "motor-precision limited: assumed for a public product (docs/user-layer.md)"
+      }
+    },
+    {
+      "id": "target-size-minimum",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Interactive targets must be at least 24x24 CSS px",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        },
+        {
+          "viewport": "any"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "target-size",
+        "params": {
+          "min": 24,
+          "spacing_exemption": true
+        },
+        "properties": [
+          "width",
+          "height",
+          "min-width",
+          "min-height",
+          "padding"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 2.5.8 Target Size (Minimum), AA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "WCAG 2.2 SC 2.5.5 Target Size (Enhanced), AAA — 44x44",
+          "url": null,
+          "incentive": "same"
+        },
+        {
+          "name": "Apple HIG 44pt, Material Design 48dp",
+          "url": null,
+          "incentive": "platform vendors; larger minimums also serve their own hardware ergonomics and are not neutral recommendations"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "text-spacing-overridable",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Text spacing must be overridable by the reader",
+      "applies_when": [
+        {
+          "subject_has": "text"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "axe:avoid-inline-spacing",
+        "via": "gate",
+        "properties": [
+          "letter-spacing",
+          "word-spacing",
+          "line-height"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 1.4.12 Text Spacing (Level AA)",
+          "url": null,
+          "incentive": "standards body with no commercial stake; the specific thresholds come from reading research rather than from a vendor product"
+        },
+        {
+          "name": "axe-core rule 'avoid-inline-spacing', which implements the criterion above",
+          "url": null,
+          "incentive": "Deque sells accessibility tooling and consulting, so its rule set is not disinterested — but this rule is a mechanical restatement of a published criterion rather than a proprietary heuristic, and the criterion is cited separately above so the two can be weighed apart"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-03",
+        "from_decisions": []
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "tooltip-density",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "How much to put in a chart tooltip",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "A minimal tooltip (exact value plus 2-3 supporting fields) answers what the hover implies; a denser tooltip serves power users who want more context without opening the underlying table — a real density/clarity tradeoff."
+      },
+      "severity": "flag",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "ux-master's own synthesis, no external study or vendor identified",
+          "url": null,
+          "incentive": "none identifiable — this is a design convention, not a cited finding; treat the specific \"2-3 fields\" figure as a reasonable-sounding heuristic, not a measured threshold"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-08-01",
+        "from_decisions": []
+      },
+      "category": "dataviz",
+      "stance": {
+        "choice": "minimal-tooltip",
+        "alternatives": [
+          "minimal-tooltip",
+          "dense-tooltip"
+        ],
+        "why": "depends on the platform, but overall shorter the better"
+      }
+    },
+    {
+      "id": "validation-timing",
+      "layer": "taste",
+      "status": "confirmed",
+      "statement": "Validate on blur, not on submit",
+      "applies_when": [
+        {
+          "subject_has": "forms"
+        },
+        {
+          "form_fields": ">=3"
+        }
+      ],
+      "check": {
+        "kind": "review",
+        "look_for": "PASS if field-level errors appear after a field loses focus and only for fields the\nuser has already interacted with.\nFLAG if all errors appear only on submit attempt, or if errors appear on every\nkeystroke before the field has ever been blurred, or if an untouched field is\npre-marked as invalid on load.\nNOT-APPLICABLE if no form has 3 or more fields, or if validation behavior cannot be\ndetermined from the bundle (say which).\n"
+      },
+      "severity": "flag",
+      "maturity": "observing",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "Baymard Institute form usability research",
+          "url": null,
+          "incentive": "sells e-commerce UX consulting; findings skew to checkout funnels and may not transfer to internal tools"
+        },
+        {
+          "name": "GoodUI",
+          "url": null,
+          "incentive": "conversion-rate vendor — recommendations optimize revenue, not necessarily user comprehension"
+        },
+        {
+          "name": "WCAG 3.3.1 Error Identification",
+          "url": null,
+          "incentive": "standards body; mandates identifying errors but is silent on timing"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": "2026-07-27",
+        "from_decisions": []
+      },
+      "category": "forms",
+      "stance": {
+        "choice": "on-blur",
+        "alternatives": [
+          "on-submit",
+          "on-change-debounced"
+        ],
+        "why": "Errors should land next to the mistake while I still remember making it. A submit-time\nwall makes me re-read a form I already thought I was done with. I accept that the\nevidence for this is weak and vendor-tinted — this is a call, not a finding.\n"
+      }
+    },
+    {
+      "id": "zoom-not-disabled",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Pinch-to-zoom must not be disabled",
+      "applies_when": [
+        {
+          "subject_has": "text"
+        },
+        {
+          "bundle_has": "dom"
+        },
+        {
+          "viewport": "mobile"
+        }
+      ],
+      "check": {
+        "kind": "engine",
+        "name": "zoomNotDisabled",
+        "via": "gate",
+        "properties": [],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 1.4.4 Resize Text, AA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "WCAG 2.2 SC 1.4.10 Reflow, AA",
+          "url": null,
+          "incentive": "consensus standards body, no commercial stake"
+        }
+      ],
+      "provenance": {
+        "confirmed_by": "rex",
+        "confirmed_on": null,
+        "from_decisions": []
+      },
+      "category": "a11y"
+    }
+  ],
+  "withheld": [
+    {
+      "id": "design-system-conformance",
+      "reason": "no design-system/ folder in the project"
+    }
+  ]
+}

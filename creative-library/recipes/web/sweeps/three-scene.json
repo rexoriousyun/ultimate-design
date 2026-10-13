@@ -1,0 +1,70 @@
+{
+  "id": "three-scene",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "573c8392212f",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "geometry": {
+      "verdict": "effective",
+      "values": [
+        "icosahedron",
+        "torusKnot",
+        "box"
+      ],
+      "steps": [
+        0.1539,
+        0.1064
+      ],
+      "meanEffect": 0.1301,
+      "minStep": 0.1064,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-scene/geometry.png"
+    },
+    "color": {
+      "verdict": "effective",
+      "values": [
+        "#2f9e4f",
+        "#c2255c",
+        "#3b5bdb"
+      ],
+      "steps": [
+        0.1456,
+        0.1456
+      ],
+      "meanEffect": 0.1456,
+      "minStep": 0.1456,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-scene/color.png"
+    },
+    "wireframe": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.0927
+      ],
+      "meanEffect": 0.0927,
+      "minStep": 0.0927,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-scene/wireframe.png"
+    }
+  }
+}

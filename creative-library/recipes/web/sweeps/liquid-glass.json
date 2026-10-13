@@ -1,0 +1,86 @@
+{
+  "id": "liquid-glass",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "9046f96cb4c8",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "blur": {
+      "verdict": "partial",
+      "values": [
+        0,
+        4,
+        12,
+        24
+      ],
+      "steps": [
+        0.1977,
+        0.1475,
+        0.0002
+      ],
+      "meanEffect": 0.1151,
+      "minStep": 0.0002,
+      "threshold": 0.0005,
+      "flatSegments": [
+        [
+          12,
+          24
+        ]
+      ],
+      "strip": "sweeps/liquid-glass/blur.png"
+    },
+    "distortion": {
+      "verdict": "effective",
+      "values": [
+        0,
+        7,
+        14,
+        28,
+        40
+      ],
+      "steps": [
+        0.0027,
+        0.0022,
+        0.0027,
+        0.0025
+      ],
+      "meanEffect": 0.0025,
+      "minStep": 0.0022,
+      "threshold": 0.0005,
+      "strip": "sweeps/liquid-glass/distortion.png"
+    },
+    "radius": {
+      "verdict": "effective",
+      "values": [
+        0,
+        10,
+        20,
+        40
+      ],
+      "steps": [
+        0.0007,
+        0.0019,
+        0.0068
+      ],
+      "meanEffect": 0.0031,
+      "minStep": 0.0007,
+      "threshold": 0.0005,
+      "strip": "sweeps/liquid-glass/radius.png"
+    }
+  }
+}

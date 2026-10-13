@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>creative-library</title>
+<!--
+  One entry point for everything in this repo. The three parts have nothing in common
+  technically — live web recipes, PyQt6 recipes that can only be shown as stills, and
+  brand systems that are documents — so the header is what ties them together rather
+  than any shared rendering. Every count in it comes from a manifest, never a literal.
+
+  Web recipes mount exactly the way engine/recipes/render.js mounts them: three.js
+  first, registry.js before any recipe, then UI.get(id).demo(stage). A tile that fails
+  here would fail `npm run render`.
+
+  The studio serves it at http://localhost:8765/creative-library/ as the maintenance view;
+  users browse the library in the studio (Home, Library).
+  Without the studio, serve from the ultimate-design root (the brand systems in ../design-systems/
+  then come from the studio's workspace only when the studio serves it) — three.js is resolved out of node_modules, the same pinned devDependency the
+  gate uses rather than a CDN:
+
+    python3 -m http.server 8000 --bind 127.0.0.1
+    http://127.0.0.1:8000/creative-library/
+-->
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #1a1a1a;
+    background: #f4f4f2;
+    line-height: 1.5;
+  }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, monospace; }
+
+  /* ---- header: the one fixed thing across all three parts ---- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+    border-bottom: 1px solid #d8d8d4;
+  }
+  .bar {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 14px 28px 0;
+  }
+  .bar h1 { margin: 0; font-size: 16px; font-weight: 650; letter-spacing: -.01em; }
+  .bar .sub { font-size: 12.5px; color: #666; }
+  nav { display: flex; gap: 2px; padding: 10px 28px 0; flex-wrap: wrap; }
+  nav a {
+    padding: 7px 14px 9px;
+    font-size: 13.5px;
+    color: #555;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover { color: #1a1a1a; background: #f4f4f2; }
+  nav a[aria-current="page"] {
+    color: #1a1a1a;
+    font-weight: 600;
+    border-bottom-color: #1a1a1a;
+  }
+  nav a .n { font-family: ui-monospace, monospace; font-size: 11px; color: #999; }
+  nav a[aria-current="page"] .n { color: #666; }
+
+  /* Filters belong to the recipes view, so they live in the header but hide with it. */
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 28px;
+    border-top: 1px solid #eee;
+  }
+  .filters.hidden { display: none; }
+  .chip {
+    padding: 4px 11px;
+    font-size: 12px;
+    font-family: ui-monospace, monospace;
+    color: #555;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .chip:hover { border-color: #999; }
+  .chip[aria-pressed="true"] { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+  .filters input {
+    flex: 0 1 260px;
+    padding: 5px 9px;
+    font: inherit;
+    font-size: 12.5px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+  }
+  .filters .tally { margin-left: auto; font-size: 11.5px; font-family: ui-monospace, monospace; color: #666; }
+  .filters .tally b { font-weight: 600; color: #1a1a1a; }
+
+  /* ---- views ---- */
+  .view { display: none; }
+  .view.active { display: block; }
+  .intro { padding: 22px 28px 0; max-width: 74ch; font-size: 13.5px; color: #555; }
+  .intro p { margin: 0 0 10px; }
+
+  /* Masonry. A row-based grid wastes a band of whitespace on every row, sized to the
+     tallest tile in it — and these previews range from a 40px sparkline to a stack of
+     five sprite canvases, so that band was most of the page. Columns pack each tile
+     under the previous one instead. The cost is column-major order, which is what
+     Pinterest does too. */
+  .grid {
+    column-width: 330px;
+    column-gap: 18px;
+    padding: 20px 28px 64px;
+  }
+  .tile {
+    background: #fff;
+    border: 1px solid #ddd;
+    /* inline-block + width:100% is what actually stops a tile splitting across a
+       column break; break-inside alone is not honoured everywhere. */
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 18px;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+  }
+  .tile.hidden { display: none; }
+  .stage {
+    padding: 16px;              /* matches render.js's #stage padding */
+    min-height: 180px;
+    /* Capped so one tall demo cannot own a whole column. Scroll rather than crop:
+       a preview that silently hides half its output is worse than no preview. */
+    max-height: 420px;
+    overflow: auto;
+    /* Block, not flex — deliberately the same normal flow render.js gives its #stage.
+       Flex was centring nicely and quietly breaking any preview whose root is a
+       position:relative block with no intrinsic width: as a flex item it shrank to
+       zero and took its absolutely-positioned children with it. A preview must lay
+       out here exactly as it does under the gate, or the tile is not evidence. */
+    display: block;
+    border-bottom: 1px solid #eee;
+  }
+  /* Set after mount, only when the preview actually overflows its cap. Without it a
+     capped preview — the icon catalogue is the tall one — ends mid-glyph and reads as
+     a rendering fault rather than a scroll region. */
+  .stage.scrolls { box-shadow: inset 0 -20px 16px -18px rgba(0, 0, 0, .28); }
+  .stage > * { max-width: 100%; }
+  .stage img { display: block; max-width: 100%; height: auto; }
+  .meta { padding: 12px 16px 14px; }
+  .name { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .name h2 { margin: 0; font-size: 15px; font-weight: 600; }
+  .id { font-family: ui-monospace, monospace; font-size: 10.5px; color: #666; }
+  .badge {
+    font-family: ui-monospace, monospace;
+    font-size: 10.5px;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 1px 5px;
+    background: #fafafa;
+  }
+  .desc { margin: 6px 0 0; font-size: 12.5px; color: #555; }
+  .state { margin: 8px 0 0; font-size: 12px; font-family: ui-monospace, monospace; }
+  .state:empty { margin: 0; }
+  .state.failed { color: #b3261e; }
+  .state.skipped { color: #8a6d1f; }
+  details { margin-top: 8px; }
+  summary { cursor: pointer; font-size: 11.5px; font-family: ui-monospace, monospace; color: #666; }
+  details table { border-collapse: collapse; margin-top: 6px; font-size: 11.5px; }
+  details td { padding: 2px 10px 2px 0; font-family: ui-monospace, monospace; vertical-align: top; }
+  details td:last-child { color: #777; }
+  .ports { margin: 8px 0 0; font-size: 11.5px; font-family: ui-monospace, monospace; color: #666; }
+  .ports a { color: #1a6b3a; }
+
+  /* A system is a finished document; it is shown as itself, never re-skinned. */
+  .doc-frame { border: 0; width: 100%; height: calc(100vh - 132px); display: block; background: #08090A; }
+  .doc-links {
+    padding: 10px 28px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 12.5px;
+    border-bottom: 1px solid #e4e4e0;
+    background: #fff;
+  }
+  .doc-links .who { font-weight: 600; }
+  .doc-links .back { color: #1a6b3a; text-decoration: none; }
+  .doc-links .back:hover { text-decoration: underline; }
+  .doc-links .spacer { margin-left: auto; }
+
+  .systems { padding: 22px 28px 64px; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; align-items: start; }
+  .system { background: #fff; border: 1px solid #ddd; }
+  .swatch { display: flex; height: 56px; }
+  .swatch span { flex: 1; }
+  .system .body { padding: 14px 16px 16px; }
+  .system h2 { margin: 0; font-size: 16px; font-weight: 650; display: flex; align-items: baseline; gap: 8px; }
+  .system .ver { font-family: ui-monospace, monospace; font-size: 11px; color: #777; font-weight: 400; }
+  .system .tagline { margin: 2px 0 0; font-size: 12.5px; color: #444; }
+  .system .desc { margin: 8px 0 0; font-size: 12.5px; color: #555; }
+  .system dl { margin: 10px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: 11.5px; font-family: ui-monospace, monospace; }
+  .system dt { color: #888; }
+  .system dd { margin: 0; color: #333; }
+  .system .actions { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .system .actions a {
+    padding: 5px 11px;
+    font-size: 12px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    color: #333;
+    background: #fafafa;
+  }
+  .system .actions a:hover { border-color: #999; }
+  .system .actions a.primary { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+
+  .boot { padding: 32px 28px; font-family: ui-monospace, monospace; font-size: 13px; }
+  .boot.err { color: #b3261e; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <h1>creative-library</h1>
+    <span class="sub">visual-code techniques, and the brand system they get dressed in</span>
+  </div>
+  <nav id="nav">
+    <a href="#recipes" data-view="recipes">Web recipes <span class="n" id="web-n"></span></a>
+    <a href="#qt" data-view="qt">Qt shelf <span class="n" id="qt-n"></span></a>
+    <a href="#systems" data-view="systems">Design systems <span class="n" id="systems-n"></span></a>
+  </nav>
+  <div class="filters hidden" id="filters">
+    <span class="chip" data-primitive="all" aria-pressed="true">all</span>
+    <span class="chip" data-primitive="canvas" aria-pressed="false">canvas</span>
+    <span class="chip" data-primitive="svg" aria-pressed="false">svg</span>
+    <span class="chip" data-primitive="three" aria-pressed="false">three</span>
+    <input id="search" type="search" placeholder="filter by name or description…" aria-label="Filter recipes">
+    <span class="tally" id="tally"></span>
+  </div>
+</header>
+
+<section class="view" id="view-recipes">
+  <div class="grid" id="web-grid"><div class="boot" id="boot">loading recipes…</div></div>
+</section>
+
+<section class="view" id="view-qt">
+  <div class="intro">
+    <p>
+      Three PyQt6 recipes. These are stills — a Qt widget cannot run in a browser, so
+      what is shown is the screenshot <code>npm run render</code> committed, which is the
+      same gate the web shelf passes.
+    </p>
+  </div>
+  <div class="grid" id="qt-grid"></div>
+</section>
+
+<section class="view" id="view-systems">
+  <div class="systems" id="systems-list"></div>
+  <div id="systems-doc" hidden>
+    <div class="doc-links">
+      <a class="back" href="#systems">← all systems</a>
+      <span class="who" id="doc-who"></span>
+      <span class="spacer"></span>
+      <a id="doc-standalone" target="_blank" rel="noopener">Open standalone ↗</a>
+      <a id="doc-tokens" target="_blank" rel="noopener">tokens ↗</a>
+    </div>
+    <iframe class="doc-frame" id="doc-frame" title="Design system document" loading="lazy"></iframe>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  var THREE_BUILD = 'node_modules/three/build/three.min.js';
+  var VIEWS = ['recipes', 'qt', 'systems'];
+  var webComponents = [];
+  var systems = [];
+  var filter = { primitive: 'all', text: '' };
+
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = function () { reject(new Error('failed to load ' + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  /* ---- routing: hash picks the view, header stays put ---- */
+
+  /**
+   * `#systems` lists them, `#systems/<id>` opens one — so a specific system stays
+   * linkable as more of them land, without the header growing a tab per system.
+   */
+  function route() {
+    var parts = location.hash.slice(1).split('/');
+    var view = VIEWS.indexOf(parts[0]) === -1 ? 'recipes' : parts[0];
+
+    VIEWS.forEach(function (v) {
+      document.getElementById('view-' + v).classList.toggle('active', v === view);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#nav a'), function (a) {
+      if (a.dataset.view === view) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    document.getElementById('filters').classList.toggle('hidden', view !== 'recipes');
+
+    if (view === 'systems') openSystem(parts[1] || null);
+  }
+
+  function openSystem(id) {
+    var doc = document.getElementById('systems-doc');
+    var list = document.getElementById('systems-list');
+    var system = systems.filter(function (s) { return s.id === id; })[0];
+
+    if (!system) {
+      doc.hidden = true;
+      list.hidden = false;
+      return;
+    }
+
+    list.hidden = true;
+    doc.hidden = false;
+    document.getElementById('doc-who').textContent = system.name + ' v' + system.version;
+    document.getElementById('doc-standalone').href = system.doc;
+    document.getElementById('doc-tokens').href = system.tokens;
+
+    // A system document is a heavy page with its own webfonts, so it loads on the
+    // visit that asks for it, and only when the frame is not already showing it.
+    var frame = document.getElementById('doc-frame');
+    if (frame.getAttribute('data-showing') !== system.id) {
+      frame.src = system.doc;
+      frame.setAttribute('data-showing', system.id);
+      frame.title = system.name + ' design system';
+    }
+  }
+
+  window.addEventListener('hashchange', route);
+
+  /* ---- shared tile ---- */
+
+  function propsTable(props) {
+    var keys = Object.keys(props || {});
+    if (keys.length === 0) return null;
+    var details = el('details');
+    details.appendChild(el('summary', null, keys.length + ' prop' + (keys.length === 1 ? '' : 's')));
+    var table = document.createElement('table');
+    keys.forEach(function (key) {
+      var spec = props[key];
+      var row = table.insertRow();
+      row.insertCell().textContent = key;
+      row.insertCell().textContent = spec.type === 'enum'
+        ? spec.values.join(' | ') + '  (' + spec.default + ')'
+        : String(spec.default) + '  ' + spec.type;
+    });
+    details.appendChild(table);
+    return details;
+  }
+
+  function buildTile(component) {
+    var tile = el('div', 'tile');
+    tile.dataset.primitive = component.primitive;
+    tile.dataset.haystack = (component.id + ' ' + component.label + ' ' + (component.description || '')).toLowerCase();
+
+    var stage = el('div', 'stage');
+    tile.appendChild(stage);
+
+    var meta = el('div', 'meta');
+    var name = el('div', 'name');
+    name.appendChild(el('h2', null, component.label));
+    name.appendChild(el('span', 'badge', component.primitive));
+    name.appendChild(el('span', 'id', component.id));
+    meta.appendChild(name);
+    if (component.description) meta.appendChild(el('p', 'desc', component.description));
+
+    var state = el('p', 'state');
+    meta.appendChild(state);
+
+    var table = propsTable(component.props);
+    if (table) meta.appendChild(table);
+    tile.appendChild(meta);
+
+    return { tile: tile, stage: stage, state: state, meta: meta };
+  }
+
+  /* ---- web shelf ---- */
+
+  /** The gate's rule: a declared requirement naming THREE, with no THREE present. */
+  function unmetRequirement(component) {
+    var requires = component.requires || [];
+    var needsThree = requires.some(function (r) { return /\bTHREE\b/.test(r); });
+    return needsThree && typeof window.THREE === 'undefined' ? requires.join(', ') : null;
+  }
+
+  function defaultProps(component) {
+    var props = component.props || {};
+    return Object.keys(props).reduce(function (out, key) {
+      out[key] = props[key].default;
+      return out;
+    }, {});
+  }
+
+  /**
+   * preview(), not demo(). Every recipe declares both: demo() is the scripted showcase
+   * and ships its own control chrome — the Line/Bar buttons, the Sparse/Dense picker —
+   * which is right for the screenshot the gate takes and wrong for a wall of tiles,
+   * where 12 of 37 previews were showing buttons that belong to the demo rather than to
+   * the technique. preview() renders the construction against a caller-supplied set of
+   * props and nothing else, which is exactly this. Props come from the manifest's own
+   * defaults, so a tile shows the recipe as documented.
+   */
+  function mount(component, stage, state) {
+    var unmet = unmetRequirement(component);
+    if (unmet) {
+      state.className = 'state skipped';
+      state.textContent = 'skipped — unmet dependency: ' + unmet;
+      return;
+    }
+    var spec = window.UI.get(component.id);
+    var renderer = typeof spec.preview === 'function' ? 'preview' : 'demo';
+    try {
+      if (renderer === 'preview') spec.preview(stage, defaultProps(component));
+      else spec.demo(stage);
+    } catch (err) {
+      state.className = 'state failed';
+      state.textContent = renderer + '() threw: ' + err.message;
+    }
+
+    // After paint — a canvas recipe sizes itself on the next frame, so measuring
+    // synchronously here would miss most of the overflow.
+    requestAnimationFrame(function () {
+      stage.classList.toggle('scrolls', stage.scrollHeight > stage.clientHeight + 2);
+    });
+  }
+
+  function applyFilter() {
+    var shown = 0;
+    webComponents.forEach(function (entry) {
+      var okPrimitive = filter.primitive === 'all' || entry.component.primitive === filter.primitive;
+      var okText = !filter.text || entry.tile.dataset.haystack.indexOf(filter.text) !== -1;
+      var visible = okPrimitive && okText;
+      entry.tile.classList.toggle('hidden', !visible);
+      if (visible) shown++;
+    });
+    document.getElementById('tally').innerHTML =
+      'showing <b>' + shown + '</b> of <b>' + webComponents.length + '</b>';
+  }
+
+  function wireFilters() {
+    Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (chip) {
+      chip.addEventListener('click', function () {
+        filter.primitive = chip.dataset.primitive;
+        Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (c) {
+          c.setAttribute('aria-pressed', String(c === chip));
+        });
+        applyFilter();
+      });
+    });
+    document.getElementById('search').addEventListener('input', function (e) {
+      filter.text = e.target.value.trim().toLowerCase();
+      applyFilter();
+    });
+  }
+
+  function bootWeb() {
+    var grid = document.getElementById('web-grid');
+    var boot = document.getElementById('boot');
+
+    return fetch('recipes/web/manifest.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('recipes/web/manifest.json — HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (manifest) {
+        // three.js before any recipe; a missing build is a skip reason, not a failure.
+        return loadScript(THREE_BUILD)
+          .catch(function () { console.warn('three.js not found at ' + THREE_BUILD + ' — its recipes will skip'); })
+          .then(function () { return loadScript('recipes/web/registry.js'); })  // defines window.UI
+          .then(function () {
+            // Sequential: dependsOn is satisfied by load order on this shelf.
+            return manifest.components.reduce(function (chain, component) {
+              return chain.then(function () { return loadScript(component.source); });
+            }, Promise.resolve());
+          })
+          .then(function () { return manifest; });
+      })
+      .then(function (manifest) {
+        boot.remove();
+        document.getElementById('web-n').textContent = String(manifest.components.length);
+
+        // Mounting the whole shelf up front would leave every rAF loop on it running at
+        // once, which measures the browser rather than the recipes.
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            observer.unobserve(entry.target);
+            entry.target._mount();
+          });
+        }, { rootMargin: '200px' });
+
+        manifest.components.forEach(function (component) {
+          var built = buildTile(component);
+          built.tile._mount = function () { mount(component, built.stage, built.state); };
+          grid.appendChild(built.tile);
+          observer.observe(built.tile);
+          webComponents.push({ component: component, tile: built.tile });
+        });
+
+        wireFilters();
+        applyFilter();
+      })
+      .catch(function (err) {
+        boot.className = 'boot err';
+        boot.textContent = err.message + ' — serve from the repo root.';
+      });
+  }
+
+  /* ---- qt shelf: stills, with the link back to the web recipe each one ports ---- */
+
+  function bootQt() {
+    var grid = document.getElementById('qt-grid');
+    return fetch('recipes/qt/manifest.json')
+      .then(function (res) { return res.ok ? res.json() : Promise.reject(new Error('qt manifest — HTTP ' + res.status)); })
+      .then(function (manifest) {
+        document.getElementById('qt-n').textContent = String(manifest.components.length);
+        manifest.components.forEach(function (component) {
+          var built = buildTile(component);
+          var img = el('img');
+          img.src = 'recipes/qt/screenshots/' + component.id + '.png';
+          img.alt = component.label + ' rendered by PyQt6';
+          img.loading = 'lazy';
+          built.stage.appendChild(img);
+
+          if (component.ports) {
+            var ports = el('p', 'ports');
+            ports.appendChild(document.createTextNode('ports '));
+            var link = el('a', null, component.ports.replace(/^recipes\/web\//, ''));
+            link.href = '#recipes';
+            ports.appendChild(link);
+            built.meta.insertBefore(ports, built.meta.querySelector('details'));
+          }
+          grid.appendChild(built.tile);
+        });
+      })
+      .catch(function (err) {
+        grid.appendChild(el('div', 'boot err', err.message));
+      });
+  }
+
+  /* ---- design systems: a registry, so a second one is an entry not a rewrite ---- */
+
+  function buildSystem(system) {
+    var card = el('div', 'system');
+
+    var swatch = el('div', 'swatch');
+    (system.swatch || []).forEach(function (hex) {
+      var chip = el('span');
+      chip.style.background = hex;
+      chip.title = hex;
+      swatch.appendChild(chip);
+    });
+    card.appendChild(swatch);
+
+    var body = el('div', 'body');
+    var h2 = el('h2');
+    h2.appendChild(document.createTextNode(system.name));
+    h2.appendChild(el('span', 'ver', 'v' + system.version));
+    body.appendChild(h2);
+    if (system.tagline) body.appendChild(el('p', 'tagline', system.tagline));
+    if (system.description) body.appendChild(el('p', 'desc', system.description));
+
+    var facts = [
+      ['prefix', system.prefix],
+      ['tokens', system.tokenCount != null ? String(system.tokenCount) : null],
+      ['sections', system.sections != null ? String(system.sections) : null],
+      ['type', (system.typefaces || []).join(', ') || null],
+    ].filter(function (pair) { return pair[1]; });
+
+    if (facts.length) {
+      var dl = document.createElement('dl');
+      facts.forEach(function (pair) {
+        dl.appendChild(el('dt', null, pair[0]));
+        dl.appendChild(el('dd', null, pair[1]));
+      });
+      body.appendChild(dl);
+    }
+
+    var actions = el('div', 'actions');
+    var open = el('a', 'primary', 'Open');
+    open.href = '#systems/' + system.id;
+    actions.appendChild(open);
+
+    [['Standalone ↗', system.doc], ['tokens ↗', system.tokens], ['README ↗', system.readme]]
+      .filter(function (pair) { return pair[1]; })
+      .forEach(function (pair) {
+        var link = el('a', null, pair[0]);
+        link.href = pair[1];
+        link.target = '_blank';
+        link.rel = 'noopener';
+        actions.appendChild(link);
+      });
+
+    body.appendChild(actions);
+    card.appendChild(body);
+    return card;
+  }
+
+  function bootSystems() {
+    var list = document.getElementById('systems-list');
+    // Brand systems are the studio workspace's design-systems/, served beside this library at
+    // ../design-systems/; the manifest's paths are relative to that folder.
+    var base = '../design-systems/';
+    return fetch(base + 'manifest.json')
+      .then(function (res) { return res.ok ? res.json() : Promise.reject(new Error(base + 'manifest.json — HTTP ' + res.status)); })
+      .then(function (manifest) {
+        systems = (manifest.systems || []).map(function (s) {
+          return Object.assign({}, s, { doc: base + s.doc, tokens: base + s.tokens, readme: s.readme && base + s.readme });
+        });
+        document.getElementById('systems-n').textContent = String(systems.length);
+        systems.forEach(function (system) { list.appendChild(buildSystem(system)); });
+        route();   // the hash may already name a system that did not exist a moment ago
+      })
+      .catch(function (err) {
+        list.appendChild(el('div', 'boot err', err.message));
+      });
+  }
+
+  route();
+  bootWeb();
+  bootQt();
+  bootSystems();
+})();
+</script>
+
+</body>
+</html>

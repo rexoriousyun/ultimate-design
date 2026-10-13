@@ -1,0 +1,98 @@
+{
+  "id": "wave-divider",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "92420fe2ebfb",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "amplitude": {
+      "verdict": "effective",
+      "values": [
+        0,
+        9,
+        18,
+        28,
+        40
+      ],
+      "steps": [
+        0.0477,
+        0.0523,
+        0.0571,
+        0.0683
+      ],
+      "meanEffect": 0.0564,
+      "minStep": 0.0477,
+      "threshold": 0.0005,
+      "strip": "sweeps/wave-divider/amplitude.png"
+    },
+    "cycles": {
+      "verdict": "effective",
+      "values": [
+        0.5,
+        1,
+        2,
+        3,
+        6
+      ],
+      "steps": [
+        0.118,
+        0.1183,
+        0.1201,
+        0.1197
+      ],
+      "meanEffect": 0.119,
+      "minStep": 0.118,
+      "threshold": 0.0005,
+      "strip": "sweeps/wave-divider/cycles.png"
+    },
+    "height": {
+      "verdict": "effective",
+      "values": [
+        40,
+        70,
+        90,
+        120,
+        160
+      ],
+      "steps": [
+        0.3646,
+        0.2414,
+        0.2875,
+        0.3018
+      ],
+      "meanEffect": 0.2988,
+      "minStep": 0.2414,
+      "threshold": 0.0005,
+      "strip": "sweeps/wave-divider/height.png"
+    },
+    "flip": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.7006
+      ],
+      "meanEffect": 0.7006,
+      "minStep": 0.7006,
+      "threshold": 0.0005,
+      "strip": "sweeps/wave-divider/flip.png"
+    }
+  }
+}

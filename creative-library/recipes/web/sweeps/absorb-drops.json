@@ -1,0 +1,124 @@
+{
+  "id": "absorb-drops",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "3501bc0d59d9",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "seed": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "steps": [
+        0.0139,
+        0.0141,
+        0.017
+      ],
+      "meanEffect": 0.015,
+      "minStep": 0.0139,
+      "threshold": 0.0005,
+      "strip": "sweeps/absorb-drops/seed.png"
+    },
+    "catcherWidth": {
+      "verdict": "effective",
+      "values": [
+        60,
+        120,
+        180,
+        280,
+        400
+      ],
+      "steps": [
+        0.0048,
+        0.0048,
+        0.008,
+        0.0096
+      ],
+      "meanEffect": 0.0068,
+      "minStep": 0.0048,
+      "threshold": 0.0005,
+      "strip": "sweeps/absorb-drops/catcherWidth.png"
+    },
+    "dropRadius": {
+      "verdict": "effective",
+      "values": [
+        2,
+        4,
+        6,
+        9,
+        14
+      ],
+      "steps": [
+        0.0196,
+        0.0071,
+        0.0139,
+        0.0314
+      ],
+      "meanEffect": 0.018,
+      "minStep": 0.0071,
+      "threshold": 0.0005,
+      "strip": "sweeps/absorb-drops/dropRadius.png"
+    },
+    "fallSpeed": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "steps": [
+        0.0035,
+        0.0046,
+        0.0067
+      ],
+      "meanEffect": 0.0049,
+      "minStep": 0.0035,
+      "threshold": 0.0005,
+      "strip": "sweeps/absorb-drops/fallSpeed.png"
+    },
+    "accel": {
+      "verdict": "unswept",
+      "reason": "compounds frame over frame while drops fall; the single frame painted under reduced motion holds one step of it, which no still can show"
+    },
+    "seedDrops": {
+      "verdict": "effective",
+      "values": [
+        0,
+        7,
+        14,
+        28,
+        40
+      ],
+      "steps": [
+        0.0035,
+        0.0037,
+        0.0086,
+        0.0063
+      ],
+      "meanEffect": 0.0055,
+      "minStep": 0.0035,
+      "threshold": 0.0005,
+      "strip": "sweeps/absorb-drops/seedDrops.png"
+    }
+  }
+}

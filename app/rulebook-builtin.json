@@ -1,0 +1,163 @@
+{
+  "version": "builtin-1",
+  "format": 1,
+  "source": "builtin",
+  "project": null,
+  "about": "The accessibility floor ultimate-design measures in the page itself, for workspaces whose rules are 'builtin' (app/workspace.py). Copied from design-guide's floor rules.",
+  "rules": [
+    {
+      "id": "contrast-minimum",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Text must meet minimum contrast against its background",
+      "applies_when": [
+        {
+          "subject_has": "text"
+        },
+        {
+          "bundle_has": "axe"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "contrast",
+        "params": {
+          "min": 4.5,
+          "large": 3
+        },
+        "properties": [
+          "color",
+          "background-color",
+          "font-size",
+          "font-weight",
+          "opacity"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 1.4.3 Contrast (Minimum), AA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "Deque axe-core color-contrast rule",
+          "url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast",
+          "incentive": "Deque authors axe and sells accessibility tooling; the algorithm is widely adopted but the company benefits from contrast checking being seen as a solved, tool-gated problem"
+        }
+      ],
+      "provenance": {
+        "from": "design-guide's floor layer, as exported 2026-10-08"
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "reflow",
+      "layer": "floor",
+      "status": "proposed",
+      "statement": "Content must reflow at 320 CSS px without horizontal scrolling",
+      "applies_when": [
+        {
+          "subject_has": "text"
+        },
+        {
+          "bundle_has": "dom"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "reflow",
+        "params": {
+          "width": 320
+        },
+        "properties": [
+          "width",
+          "min-width",
+          "overflow-x",
+          "white-space"
+        ],
+        "viewports": [
+          320
+        ]
+      },
+      "severity": "fail",
+      "maturity": "observing",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 1.4.10 Reflow, AA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+          "incentive": "consensus standards body, no commercial stake"
+        }
+      ],
+      "provenance": {
+        "from": "design-guide's floor layer, as exported 2026-10-08"
+      },
+      "category": "a11y"
+    },
+    {
+      "id": "target-size-minimum",
+      "layer": "floor",
+      "status": "confirmed",
+      "statement": "Interactive targets must be at least 24x24 CSS px",
+      "applies_when": [
+        {
+          "subject_has": "interactive-elements"
+        },
+        {
+          "viewport": "any"
+        }
+      ],
+      "check": {
+        "kind": "measure",
+        "measure": "target-size",
+        "params": {
+          "min": 24,
+          "spacing_exemption": true
+        },
+        "properties": [
+          "width",
+          "height",
+          "min-width",
+          "min-height",
+          "padding"
+        ],
+        "viewports": [
+          1440,
+          390
+        ]
+      },
+      "severity": "fail",
+      "maturity": "stable",
+      "fix": null,
+      "evidence": [
+        {
+          "name": "WCAG 2.2 SC 2.5.8 Target Size (Minimum), AA",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum",
+          "incentive": "consensus standards body, no commercial stake"
+        },
+        {
+          "name": "WCAG 2.2 SC 2.5.5 Target Size (Enhanced), AAA — 44x44",
+          "url": null,
+          "incentive": "same"
+        },
+        {
+          "name": "Apple HIG 44pt, Material Design 48dp",
+          "url": null,
+          "incentive": "platform vendors; larger minimums also serve their own hardware ergonomics and are not neutral recommendations"
+        }
+      ],
+      "provenance": {
+        "from": "design-guide's floor layer, as exported 2026-10-08"
+      },
+      "category": "a11y"
+    }
+  ],
+  "withheld": []
+}

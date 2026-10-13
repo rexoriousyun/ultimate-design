@@ -1,0 +1,88 @@
+{
+  "id": "liquid-fill-text",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "d84c975b3bbf",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "value": {
+      "verdict": "effective",
+      "values": [
+        0,
+        0.25,
+        0.42,
+        0.75,
+        1
+      ],
+      "steps": [
+        0.0104,
+        0.0266,
+        0.04,
+        0.0051
+      ],
+      "meanEffect": 0.0205,
+      "minStep": 0.0051,
+      "threshold": 0.0005,
+      "strip": "sweeps/liquid-fill-text/value.png"
+    },
+    "amplitude": {
+      "verdict": "effective",
+      "values": [
+        0,
+        3,
+        7,
+        11,
+        16
+      ],
+      "steps": [
+        0.0032,
+        0.0039,
+        0.0044,
+        0.005
+      ],
+      "meanEffect": 0.0041,
+      "minStep": 0.0032,
+      "threshold": 0.0005,
+      "strip": "sweeps/liquid-fill-text/amplitude.png"
+    },
+    "wavelength": {
+      "verdict": "effective",
+      "values": [
+        60,
+        100,
+        140,
+        200,
+        280
+      ],
+      "steps": [
+        0.0058,
+        0.0078,
+        0.0081,
+        0.0075
+      ],
+      "meanEffect": 0.0073,
+      "minStep": 0.0058,
+      "threshold": 0.0005,
+      "strip": "sweeps/liquid-fill-text/wavelength.png"
+    },
+    "animate": {
+      "verdict": "unswept",
+      "reason": "motion: under reduced motion the surface stops, as designed, so no still frame shows it"
+    }
+  }
+}

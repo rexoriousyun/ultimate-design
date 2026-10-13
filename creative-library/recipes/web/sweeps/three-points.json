@@ -1,0 +1,116 @@
+{
+  "id": "three-points",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "8a00940d6621",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "seed": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "steps": [
+        0.1045,
+        0.1052,
+        0.1048
+      ],
+      "meanEffect": 0.1048,
+      "minStep": 0.1045,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-points/seed.png"
+    },
+    "count": {
+      "verdict": "effective",
+      "values": [
+        500,
+        2000,
+        6000,
+        12000,
+        20000
+      ],
+      "steps": [
+        0.0196,
+        0.047,
+        0.0637,
+        0.0762
+      ],
+      "meanEffect": 0.0516,
+      "minStep": 0.0196,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-points/count.png"
+    },
+    "size": {
+      "verdict": "effective",
+      "values": [
+        0.022,
+        0.035,
+        0.05,
+        0.075,
+        0.1
+      ],
+      "steps": [
+        0.0273,
+        0.0866,
+        0.1358,
+        0.1399
+      ],
+      "meanEffect": 0.0974,
+      "minStep": 0.0273,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-points/size.png"
+    },
+    "radius": {
+      "verdict": "effective",
+      "values": [
+        0.8,
+        1.2,
+        1.5,
+        1.9,
+        2.2
+      ],
+      "steps": [
+        0.0813,
+        0.1045,
+        0.1209,
+        0.1206
+      ],
+      "meanEffect": 0.1068,
+      "minStep": 0.0813,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-points/radius.png"
+    },
+    "sizeAttenuation": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.1208
+      ],
+      "meanEffect": 0.1208,
+      "minStep": 0.1208,
+      "threshold": 0.0005,
+      "strip": "sweeps/three-points/sizeAttenuation.png"
+    }
+  }
+}

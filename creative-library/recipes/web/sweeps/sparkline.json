@@ -1,0 +1,112 @@
+{
+  "id": "sparkline",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "5ce1e96fde50",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "strokeWidth": {
+      "verdict": "effective",
+      "values": [
+        0.75,
+        1,
+        1.5,
+        2,
+        3
+      ],
+      "steps": [
+        0.0057,
+        0.008,
+        0.0082,
+        0.0102
+      ],
+      "meanEffect": 0.008,
+      "minStep": 0.0057,
+      "threshold": 0.0005,
+      "strip": "sweeps/sparkline/strokeWidth.png"
+    },
+    "width": {
+      "verdict": "effective",
+      "values": [
+        60,
+        90,
+        120,
+        180,
+        240
+      ],
+      "steps": [
+        0.0107,
+        0.0135,
+        0.018,
+        0.0238
+      ],
+      "meanEffect": 0.0165,
+      "minStep": 0.0107,
+      "threshold": 0.0005,
+      "strip": "sweeps/sparkline/width.png"
+    },
+    "height": {
+      "verdict": "effective",
+      "values": [
+        16,
+        24,
+        32,
+        48,
+        64
+      ],
+      "steps": [
+        0.0123,
+        0.0128,
+        0.0206,
+        0.0184
+      ],
+      "meanEffect": 0.016,
+      "minStep": 0.0123,
+      "threshold": 0.0005,
+      "strip": "sweeps/sparkline/height.png"
+    },
+    "fill": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.0344
+      ],
+      "meanEffect": 0.0344,
+      "minStep": 0.0344,
+      "threshold": 0.0005,
+      "strip": "sweeps/sparkline/fill.png"
+    },
+    "showLast": {
+      "verdict": "effective",
+      "values": [
+        false,
+        true
+      ],
+      "steps": [
+        0.0006
+      ],
+      "meanEffect": 0.0006,
+      "minStep": 0.0006,
+      "threshold": 0.0005,
+      "strip": "sweeps/sparkline/showLast.png"
+    }
+  }
+}

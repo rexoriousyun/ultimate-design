@@ -1,0 +1,84 @@
+{
+  "id": "gooey-blobs",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "acf1bee1c7b3",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "blur": {
+      "verdict": "effective",
+      "values": [
+        4,
+        7,
+        10,
+        14,
+        20
+      ],
+      "steps": [
+        0.0061,
+        0.0101,
+        0.0136,
+        0.0165
+      ],
+      "meanEffect": 0.0116,
+      "minStep": 0.0061,
+      "threshold": 0.0005,
+      "strip": "sweeps/gooey-blobs/blur.png"
+    },
+    "contrast": {
+      "verdict": "effective",
+      "values": [
+        6,
+        12,
+        18,
+        28,
+        40
+      ],
+      "steps": [
+        0.0534,
+        0.0201,
+        0.0154,
+        0.0107
+      ],
+      "meanEffect": 0.0249,
+      "minStep": 0.0107,
+      "threshold": 0.0005,
+      "strip": "sweeps/gooey-blobs/contrast.png"
+    },
+    "offset": {
+      "verdict": "effective",
+      "values": [
+        -16,
+        -12,
+        -8,
+        -4,
+        -2
+      ],
+      "steps": [
+        0.024,
+        0.0182,
+        0.0214,
+        0.0186
+      ],
+      "meanEffect": 0.0206,
+      "minStep": 0.0182,
+      "threshold": 0.0005,
+      "strip": "sweeps/gooey-blobs/offset.png"
+    }
+  }
+}

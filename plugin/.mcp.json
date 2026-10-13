@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "ultimate-design": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/ultimate-design-mcp"
+    }
+  }
+}

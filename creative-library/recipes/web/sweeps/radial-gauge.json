@@ -1,0 +1,104 @@
+{
+  "id": "radial-gauge",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "bfa7935da826",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "value": {
+      "verdict": "effective",
+      "values": [
+        0,
+        0.25,
+        0.5,
+        0.62,
+        1
+      ],
+      "steps": [
+        0.0169,
+        0.0156,
+        0.0126,
+        0.0277
+      ],
+      "meanEffect": 0.0182,
+      "minStep": 0.0126,
+      "threshold": 0.0005,
+      "strip": "sweeps/radial-gauge/value.png"
+    },
+    "size": {
+      "verdict": "effective",
+      "values": [
+        100,
+        140,
+        180,
+        220,
+        280
+      ],
+      "steps": [
+        0.0534,
+        0.061,
+        0.066,
+        0.077
+      ],
+      "meanEffect": 0.0644,
+      "minStep": 0.0534,
+      "threshold": 0.0005,
+      "strip": "sweeps/radial-gauge/size.png"
+    },
+    "thickness": {
+      "verdict": "effective",
+      "values": [
+        4,
+        8,
+        14,
+        22,
+        32
+      ],
+      "steps": [
+        0.0154,
+        0.0197,
+        0.0244,
+        0.0286
+      ],
+      "meanEffect": 0.022,
+      "minStep": 0.0154,
+      "threshold": 0.0005,
+      "strip": "sweeps/radial-gauge/thickness.png"
+    },
+    "sweep": {
+      "verdict": "effective",
+      "values": [
+        120,
+        180,
+        220,
+        270,
+        340
+      ],
+      "steps": [
+        0.0125,
+        0.0098,
+        0.0121,
+        0.0166
+      ],
+      "meanEffect": 0.0128,
+      "minStep": 0.0098,
+      "threshold": 0.0005,
+      "strip": "sweeps/radial-gauge/sweep.png"
+    }
+  }
+}

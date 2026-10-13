@@ -1,0 +1,104 @@
+{
+  "id": "particle-field",
+  "generatedBy": "recipes sweep",
+  "context": {
+    "viewport": [
+      640,
+      400
+    ],
+    "reducedMotion": "reduce",
+    "settleMs": 350,
+    "repeats": 3
+  },
+  "thresholds": {
+    "FLOOR_MULTIPLE": 4,
+    "MIN_EFFECT": 0.0005,
+    "IDENTICAL_TOLERANCE": 0.0005,
+    "IDENTICAL_RATIO": 0.1
+  },
+  "declared": "13987bdd2b29",
+  "noiseFloor": 0,
+  "status": "swept",
+  "params": {
+    "seed": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "steps": [
+        0.2413,
+        0.2287,
+        0.2306
+      ],
+      "meanEffect": 0.2335,
+      "minStep": 0.2287,
+      "threshold": 0.0005,
+      "strip": "sweeps/particle-field/seed.png"
+    },
+    "count": {
+      "verdict": "effective",
+      "values": [
+        20,
+        40,
+        70,
+        110,
+        150
+      ],
+      "steps": [
+        0.0561,
+        0.1618,
+        0.3366,
+        0.4363
+      ],
+      "meanEffect": 0.2477,
+      "minStep": 0.0561,
+      "threshold": 0.0005,
+      "strip": "sweeps/particle-field/count.png"
+    },
+    "linkDist": {
+      "verdict": "effective",
+      "values": [
+        40,
+        70,
+        110,
+        150,
+        200
+      ],
+      "steps": [
+        0.0405,
+        0.1324,
+        0.238,
+        0.3766
+      ],
+      "meanEffect": 0.1969,
+      "minStep": 0.0405,
+      "threshold": 0.0005,
+      "strip": "sweeps/particle-field/linkDist.png"
+    },
+    "speed": {
+      "verdict": "unswept",
+      "reason": "motion: sets velocities only; under reduced motion one frame is painted, so no still frame shows it"
+    },
+    "dotRadius": {
+      "verdict": "effective",
+      "values": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "steps": [
+        0.0069,
+        0.0123,
+        0.0278
+      ],
+      "meanEffect": 0.0157,
+      "minStep": 0.0069,
+      "threshold": 0.0005,
+      "strip": "sweeps/particle-field/dotRadius.png"
+    }
+  }
+}
