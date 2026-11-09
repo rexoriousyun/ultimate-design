@@ -60,7 +60,7 @@ tests. No test calls the real `claude` CLI or spends usage.
 | `tests/test_builtin.py` | built-in design systems: seeded at startup from the workspace's `design-systems/` (listed systems with a folder only), followed on later starts (a version per change), a user project of the same name left alone, attached without the specimen and `specimen/`, read-only (403 on chat, edits, tweaks, restore, delete) but duplicable |
 | `tests/test_palette.py` | Wada palettes: combinations read from the library data (001 and 006 as printed), meta parsing; real Chromium: a page in its palette is clean, an off-palette colour fails `verify` naming the palette, `--palette-override-*` and Edit-mode colours pass, an unknown number is reported, no meta means no check, a design system wins over a palette |
 | `tests/test_techniques.py` | the technique catalogue (41 web recipes with screenshot, source and header notes), its routes and the screenshot mount, demo pages that load three.js and dependencies only when declared, and a demo painting in real Chromium; each recipe's intents in the catalogue; parameter maps and per-prop sweep evidence in the catalogue, and the strips served |
-| `tests/test_docs.py` | the docs mention every route, event type, module, MCP tool, CLI flag and test file |
+| `tests/test_docs.py` | the docs mention every route, event type, module, MCP tool, CLI flag and test file; the images README.md and docs/case-study.md show exist |
 
 ## Writing tests
 

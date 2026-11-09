@@ -1,5 +1,9 @@
 # Ultimate Design
 
+**Describe a page. A design agent builds it, then checks its own work.**
+
+![The studio: pages on the left, a landing page on the canvas, the design agent's chat on the right](docs/images/studio.png)
+
 A local chat-to-prototype design studio. Describe a page or flow in chat; a design agent
 (headless Claude Code) writes HTML/CSS/JS into a project folder, checks the rendered result
 itself, and the canvas shows it live. Refine it with chat, comments on elements, direct edits
@@ -69,6 +73,8 @@ Tests never call a model: they use a fake engine.
 
 ## Docs
 
+- `docs/case-study.md` — the case study: why it exists, how it works, what I learned, with screenshots
+  (also on [rexoriousyun.github.io](https://rexoriousyun.github.io/#/work/ultimate-design)).
 - `docs/workspace.md` — workspaces: guides, design systems, rules, team setup.
 - `docs/setup-brief.md` — a brief to hand an AI assistant that sets up a company workspace.
 - `SPEC.md` — scope, milestones, status, known limits.

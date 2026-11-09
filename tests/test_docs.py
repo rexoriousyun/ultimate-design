@@ -70,3 +70,9 @@ def test_every_test_file_is_in_testing_doc():
 def test_doc_map_files_exist():
     for name in re.findall(r"^\| `([^`]+\.md)` \|", doc("CLAUDE.md"), re.M):
         assert (ROOT / name).is_file(), f"CLAUDE.md doc map lists missing file {name}"
+
+
+def test_images_in_readme_and_case_study_exist():
+    for name in ("README.md", "docs/case-study.md"):
+        for src in re.findall(r"!\[[^\]]*\]\(([^)\s]+)\)", doc(name)):
+            assert (ROOT / name).parent.joinpath(src).is_file(), f"{name} shows a missing image {src}"
