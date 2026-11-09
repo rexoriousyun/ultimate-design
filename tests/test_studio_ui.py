@@ -1114,11 +1114,11 @@ def test_model_can_be_switched_in_the_studio(live_server, page):
     open_studio(page, live_server, slug)
     open_settings(page)
     expect(page.locator("#model-select option").first).to_contain_text("default")
-    page.select_option("#model-select", "claude-haiku-4-5-20251001")
+    page.select_option("#model-select", "claude-haiku-5-5")
     expect(page.locator("#status")).to_have_text("Model changed from your next message.")
-    assert projects.get(slug)["model"] == "claude-haiku-4-5-20251001"
+    assert projects.get(slug)["model"] == "claude-haiku-5-5"
     page.goto(f"{live_server}/#/")
-    expect(page.locator("#project-list li", has_text="Switchable").locator(".meta")).to_have_text("Claude haiku-4-5")
+    expect(page.locator("#project-list li", has_text="Switchable").locator(".meta")).to_have_text("Claude haiku-5-5")
 
 
 def test_present_steps_through_the_frames(live_server, page):

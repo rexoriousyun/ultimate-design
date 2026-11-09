@@ -63,7 +63,7 @@ class TurnOptions:
 # Claude models a project can switch between (the engine's default is used when meta.model
 # is None). Switching among these keeps the conversation; see server.set_model.
 CLAUDE_MODELS = {"claude-opus-5-5": "Opus 5.5", "claude-fable-5-1": "Fable 5.1",
-                 "claude-sonnet-5-5": "Sonnet 5.5", "claude-haiku-4-5-20251001": "Haiku 4.5"}
+                 "claude-sonnet-5-5": "Sonnet 5.5", "claude-haiku-5-5": "Haiku 5.5"}
 DEFAULT_MODEL = "claude-opus-5-5"
 
 OLLAMA_URL = os.environ.get("PM_OLLAMA_URL", "http://localhost:11434")

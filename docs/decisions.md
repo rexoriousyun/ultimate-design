@@ -299,7 +299,7 @@ component out of it. After the check, the same agent switched to `ds-card` in on
 ## 2026-10-06 — Opus 5.5 by default; the model list follows the current lineup
 `claude-opus-5` and `claude-sonnet-5` were superseded and Rex no longer uses them. The
 default is `claude-opus-5-5`, and the switchable list is Opus 5.5, Fable 5.1, Sonnet 5.5
-and Haiku 4.5. Opus 5.5's own effort default is `medium`, but the engine always passes
+and Haiku 4.5 (Haiku 5.5 since 2026-11-08, below). Opus 5.5's own effort default is `medium`, but the engine always passes
 `--effort` (`high` unless `PM_EFFORT` says otherwise), so turns keep the depth they had. No
 stored project named an old model; one that did would still show it in the picker and run.
 Tests point `OLLAMA_URL` at a closed port so a machine's pulled models (long Hugging Face
@@ -636,3 +636,8 @@ maintainer, as `archive/master` (privately). Commits use the GitHub no-reply add
 Personal use is unchanged by going public: the maintainer's workspace (`workspace/`,
 `"rules": "design-guide"`), design-guide, the Iris tracker and the installed skills all live
 outside the repo, so the public code is the same code the maintainer runs.
+
+## 2026-11-08 — Haiku 5.5 replaces Haiku 4.5 in the model list
+Following the rule above that the list matches the current lineup (Rex, 2026-11-01): the
+switchable models are now Opus 5.5, Fable 5.1, Sonnet 5.5 and Haiku 5.5 (`claude-haiku-5-5`).
+A project that stored `claude-haiku-4-5-20251001` still shows it in the picker and runs.

@@ -35,6 +35,10 @@ def test_default_model_is_current(monkeypatch):
     # Superseded models are not offered for new choices.
     assert "claude-opus-5" not in engine.CLAUDE_MODELS
     assert "claude-sonnet-5" not in engine.CLAUDE_MODELS
+    assert "claude-haiku-4-5-20251001" not in engine.CLAUDE_MODELS
+    # The switchable list is the current lineup.
+    assert list(engine.CLAUDE_MODELS) == ["claude-opus-5-5", "claude-fable-5-1",
+                                          "claude-sonnet-5-5", "claude-haiku-5-5"]
 
 
 def test_run_sets_provider_env_for_the_cli(tmp_path, monkeypatch):
@@ -146,9 +150,9 @@ def test_switching_models_keeps_or_restarts_the_conversation(client, monkeypatch
     projects.touch(slug, session_id="s1")
     assert client.put(f"/api/projects/{slug}/model", json={"model": "gpt-9"}).status_code == 400
     # Between Claude models the conversation continues.
-    meta = client.put(f"/api/projects/{slug}/model", json={"model": "claude-haiku-4-5-20251001"}).json()
-    assert meta["model"] == "claude-haiku-4-5-20251001" and meta["session_id"] == "s1"
-    assert server.turn_options(projects.get(slug)).model == "claude-haiku-4-5-20251001"
+    meta = client.put(f"/api/projects/{slug}/model", json={"model": "claude-haiku-5-5"}).json()
+    assert meta["model"] == "claude-haiku-5-5" and meta["session_id"] == "s1"
+    assert server.turn_options(projects.get(slug)).model == "claude-haiku-5-5"
     # To a local model: a new session, and the agent is told.
     meta = client.put(f"/api/projects/{slug}/model", json={"model": "ollama:qwen3:8b"}).json()
     assert meta["session_id"] is None and "new conversation" in meta["pending_note"]
